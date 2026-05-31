@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Projects | Super-Prime Residential Construction London | LDB Construction</title>
+<meta name="description" content="Explore 18 years of super-prime residential construction projects in London, including Mayfair and Knightsbridge, built with an uncompromising focus on quality.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --cream: #F5F0E8;
+    --warm-white: #FAF8F4;
+    --charcoal: #1C1C1A;
+    --dark: #0E0E0C;
+    --gold: #B8965A;
+    --gold-light: #D4AF7A;
+    --stone: #8C8070;
+    --stone-light: #C4B8A8;
+    --serif: 'Cormorant Garamond', Georgia, serif;
+    --sans: 'Montserrat', sans-serif;
+  }
+  html { scroll-behavior: smooth; }
+  body { background: var(--dark); color: var(--cream); font-family: var(--sans); font-weight: 300; overflow-x: hidden; cursor: none; }
+  ::-webkit-scrollbar { width: 3px; }
+  ::-webkit-scrollbar-track { background: var(--dark); }
+  ::-webkit-scrollbar-thumb { background: var(--gold); }
+
+  .cursor { position: fixed; width: 8px; height: 8px; background: var(--gold); border-radius: 50%; pointer-events: none; z-index: 9999; transition: transform 0.15s ease; transform: translate(-50%, -50%); }
+  .cursor-ring { position: fixed; width: 36px; height: 36px; border: 1px solid var(--gold); border-radius: 50%; pointer-events: none; z-index: 9998; transition: transform 0.35s ease, width 0.3s, height 0.3s, opacity 0.3s; transform: translate(-50%, -50%); opacity: 0.6; }
+  .cursor-ring.hover { width: 56px; height: 56px; opacity: 1; }
+
+  /* NAV */
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; display: flex; align-items: center; justify-content: space-between; padding: 28px 60px; background: rgba(14,14,12,0.95); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(184,150,90,0.15); }
+  .nav-logo { font-family: var(--serif); font-size: 1.5rem; font-weight: 300; letter-spacing: 0.25em; color: var(--cream); text-decoration: none; text-transform: uppercase; }
+  .nav-links { display: flex; gap: 40px; list-style: none; }
+  .nav-links a { color: var(--stone-light); text-decoration: none; font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 500; position: relative; transition: color 0.3s; }
+  .nav-links a::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 1px; background: var(--gold); transition: width 0.4s ease; }
+  .nav-links a:hover { color: var(--gold); }
+  .nav-links a:hover::after { width: 100%; }
+  .nav-links a.active { color: var(--gold); }
+
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: none; z-index: 1001; }
+  .hamburger span { display: block; width: 26px; height: 1px; background: var(--cream); transition: all 0.3s; }
+  .hamburger.open span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+  .hamburger.open span:nth-child(2) { opacity: 0; }
+  .hamburger.open span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+  .mobile-menu { position: fixed; inset: 0; background: var(--dark); z-index: 999; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 40px; opacity: 0; pointer-events: none; transition: opacity 0.4s; }
+  .mobile-menu.open { opacity: 1; pointer-events: all; }
+  .mobile-menu a { font-family: var(--serif); font-size: 2.5rem; color: var(--cream); text-decoration: none; transition: color 0.3s; }
+  .mobile-menu a:hover { color: var(--gold); }
+
+  /* PAGE HERO */
+  .page-hero {
+    height: 60vh;
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    padding: 0 60px 70px;
+    overflow: hidden;
+  }
+  .page-hero-bg {
+    position: absolute;
+    inset: 0;
+    background-image: url('https://cdn.prod.website-files.com/685156a56eb5f8ca77f408f2/6851798d28ec98b7efec106d_ldb-home-page-image-1.webp');
+    background-size: cover;
+    background-position: center;
+    animation: zoomOut 10s ease forwards;
+  }
+  @keyframes zoomOut { from { transform: scale(1.08); } to { transform: scale(1.0); } }
+  .page-hero-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(14,14,12,0.92) 0%, rgba(14,14,12,0.4) 60%, rgba(14,14,12,0.3) 100%); }
+  .page-hero-content { position: relative; z-index: 2; opacity: 0; animation: fadeUp 1s 0.3s forwards; }
+  .page-hero-tag { font-size: 0.6rem; letter-spacing: 0.35em; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; display: flex; align-items: center; gap: 14px; }
+  .page-hero-tag::before { content: ''; display: inline-block; width: 30px; height: 1px; background: var(--gold); }
+  .page-hero h1 { font-family: var(--serif); font-size: clamp(3rem, 6vw, 5.5rem); font-weight: 300; line-height: 1.1; letter-spacing: 0.02em; }
+  .page-hero h1 em { font-style: italic; color: var(--gold-light); }
+
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+  /* FILTER */
+  .filter-bar {
+    padding: 40px 60px;
+    background: var(--charcoal);
+    border-bottom: 1px solid rgba(184,150,90,0.1);
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    align-items: center;
+    opacity: 0;
+    animation: fadeIn 0.8s 0.6s forwards;
+  }
+  .filter-label { font-size: 0.6rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--stone); margin-right: 16px; }
+  .filter-btn {
+    background: transparent;
+    border: 1px solid rgba(184,150,90,0.2);
+    color: var(--stone-light);
+    font-family: var(--sans);
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 10px 22px;
+    cursor: none;
+    transition: all 0.3s;
+    font-weight: 500;
+  }
+  .filter-btn:hover, .filter-btn.active { border-color: var(--gold); color: var(--gold); background: rgba(184,150,90,0.05); }
+
+  /* PROJECTS GRID */
+  .projects-section { padding: 80px 60px 140px; }
+  .projects-masonry {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3px;
+  }
+  .proj-card {
+    position: relative;
+    overflow: hidden;
+    cursor: none;
+    display: block;
+    text-decoration: none;
+  }
+  .proj-card.large { grid-column: span 2; }
+  .proj-card img { width: 100%; height: 100%; min-height: 340px; object-fit: cover; display: block; transition: transform 0.8s ease; }
+  .proj-card.large img { min-height: 520px; }
+  .proj-card:hover img { transform: scale(1.06); }
+  .proj-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(14,14,12,0.9) 0%, transparent 55%);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 36px;
+    transition: background 0.4s;
+  }
+  .proj-card:hover .proj-overlay { background: linear-gradient(to top, rgba(14,14,12,0.96) 0%, rgba(14,14,12,0.15) 100%); }
+  .proj-area { font-size: 0.58rem; letter-spacing: 0.35em; text-transform: uppercase; color: var(--gold); margin-bottom: 8px; }
+  .proj-name { font-family: var(--serif); font-size: 1.8rem; font-weight: 300; color: var(--cream); line-height: 1.2; }
+  .proj-card.large .proj-name { font-size: 2.6rem; }
+  .proj-meta {
+    display: flex;
+    gap: 24px;
+    margin-top: 12px;
+    opacity: 0;
+    transform: translateY(12px);
+    transition: opacity 0.35s, transform 0.35s;
+  }
+  .proj-card:hover .proj-meta { opacity: 1; transform: translateY(0); }
+  .proj-meta-item { font-size: 0.7rem; color: var(--stone-light); letter-spacing: 0.08em; }
+  .proj-meta-item span { color: var(--gold); display: block; font-size: 0.58rem; letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 3px; }
+  .proj-view-btn {
+    margin-top: 20px;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.62rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold);
+    border: 1px solid var(--gold);
+    padding: 10px 20px;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.35s 0.05s, transform 0.35s 0.05s, background 0.3s, color 0.3s;
+    width: fit-content;
+  }
+  .proj-card:hover .proj-view-btn { opacity: 1; transform: translateY(0); }
+  .proj-view-btn:hover { background: var(--gold); color: var(--dark); }
+
+  /* LIGHTBOX */
+  .lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 2000;
+    background: rgba(14,14,12,0.97);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s;
+  }
+  .lightbox.open { opacity: 1; pointer-events: all; }
+  .lightbox-inner {
+    position: relative;
+    width: 90vw;
+    max-width: 1100px;
+    height: 90vh;
+    display: flex;
+  }
+  .lightbox-gallery {
+    flex: 1;
+    position: relative;
+    overflow: hidden;
+  }
+  .lightbox-img {
+    position: absolute;
+    inset: 0;
+    width: 100%; height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 0.5s;
+  }
+  .lightbox-img.active { opacity: 1; }
+  .lightbox-info {
+    width: 320px;
+    background: var(--charcoal);
+    padding: 60px 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .lb-tag { font-size: 0.58rem; letter-spacing: 0.35em; text-transform: uppercase; color: var(--gold); margin-bottom: 12px; }
+  .lb-title { font-family: var(--serif); font-size: 2.8rem; font-weight: 300; line-height: 1.1; margin-bottom: 24px; }
+  .lb-desc { font-size: 0.78rem; color: var(--stone-light); line-height: 1.9; letter-spacing: 0.04em; margin-bottom: 30px; }
+  .lb-stats { display: flex; flex-direction: column; gap: 16px; padding-top: 24px; border-top: 1px solid rgba(184,150,90,0.2); }
+  .lb-stat-label { font-size: 0.58rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--stone); margin-bottom: 3px; }
+  .lb-stat-val { font-size: 0.88rem; color: var(--cream); letter-spacing: 0.05em; }
+  .lb-nav { display: flex; gap: 12px; margin-top: auto; }
+  .lb-btn {
+    width: 44px; height: 44px;
+    border: 1px solid rgba(184,150,90,0.3);
+    background: transparent;
+    color: var(--gold);
+    display: flex; align-items: center; justify-content: center;
+    cursor: none;
+    transition: all 0.3s;
+  }
+  .lb-btn:hover { background: var(--gold); color: var(--dark); border-color: var(--gold); }
+  .lb-close {
+    position: absolute;
+    top: 24px; right: 24px;
+    width: 44px; height: 44px;
+    border: 1px solid rgba(184,150,90,0.3);
+    background: transparent;
+    color: var(--cream);
+    display: flex; align-items: center; justify-content: center;
+    cursor: none;
+    z-index: 10;
+    transition: all 0.3s;
+    font-size: 1.2rem;
+  }
+  .lb-close:hover { background: var(--gold); color: var(--dark); }
+  .lb-img-nav { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 20px; }
+  .lb-thumb {
+    width: 50px; height: 35px;
+    object-fit: cover;
+    opacity: 0.4;
+    cursor: none;
+    transition: opacity 0.3s;
+  }
+  .lb-thumb.active { opacity: 1; outline: 1px solid var(--gold); }
+
+  /* REVEAL */
+  .reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.8s ease, transform 0.8s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* FOOTER */
+  footer { background: var(--charcoal); padding: 60px; border-top: 1px solid rgba(184,150,90,0.15); display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 50px; }
+  .footer-logo { font-family: var(--serif); font-size: 1.6rem; font-weight: 300; letter-spacing: 0.2em; color: var(--cream); text-transform: uppercase; margin-bottom: 16px; }
+  .footer-tagline { font-size: 0.72rem; color: var(--stone); line-height: 1.8; letter-spacing: 0.06em; }
+  .footer-col h4 { font-size: 0.6rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); margin-bottom: 22px; font-weight: 500; }
+  .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+  .footer-col ul a { color: var(--stone-light); text-decoration: none; font-size: 0.78rem; letter-spacing: 0.08em; transition: color 0.3s; }
+  .footer-col ul a:hover { color: var(--gold); }
+  .footer-bottom { background: var(--charcoal); padding: 24px 60px; border-top: 1px solid rgba(255,255,255,0.05); display: flex; justify-content: space-between; align-items: center; }
+  .footer-bottom p { font-size: 0.7rem; color: var(--stone); letter-spacing: 0.08em; }
+  .social-links { display: flex; gap: 20px; }
+  .social-links a { color: var(--stone); text-decoration: none; font-size: 0.7rem; letter-spacing: 0.15em; transition: color 0.3s; }
+  .social-links a:hover { color: var(--gold); }
+
+  @media (max-width: 1024px) { nav { padding: 24px 36px; } .page-hero { padding: 0 36px 60px; } .filter-bar, .projects-section { padding-left: 36px; padding-right: 36px; } .projects-masonry { grid-template-columns: 1fr 1fr; } .proj-card.large { grid-column: span 2; } footer, .footer-bottom { padding: 50px 36px; } }
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+    nav { padding: 20px 24px; }
+    .page-hero { padding: 0 24px 50px; }
+    .filter-bar { padding: 30px 24px; }
+    .projects-section { padding: 50px 24px 100px; }
+    .projects-masonry { grid-template-columns: 1fr; }
+    .proj-card.large { grid-column: auto; }
+    .proj-card.large img { min-height: 340px; }
+    .proj-card.large .proj-name { font-size: 2rem; }
+    .lightbox-inner { flex-direction: column; height: auto; max-height: 90vh; overflow-y: auto; }
+    .lightbox-info { width: auto; padding: 30px 24px; }
+    footer { grid-template-columns: 1fr 1fr; padding: 40px 24px; }
+    .footer-bottom { flex-direction: column; gap: 12px; padding: 20px 24px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">LDB</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="projects.html" class="active">Projects</a></li>
+    <li><a href="index.html#about">About</a></li>
+    <li><a href="index.html#values">Values</a></li>
+    <li><a href="index.html#property-care">Property Care</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+  </ul>
+  <div class="hamburger" id="hamburger">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html">Home</a>
+  <a href="projects.html">Projects</a>
+  <a href="index.html#about">About</a>
+  <a href="index.html#values">Values</a>
+  <a href="index.html#property-care">Property Care</a>
+  <a href="index.html#contact">Contact</a>
+</div>
+
+<!-- PAGE HERO -->
+<div class="page-hero" style="margin-top:0;padding-top:80px">
+  <div class="page-hero-bg"></div>
+  <div class="page-hero-overlay"></div>
+  <div class="page-hero-content">
+    <div class="page-hero-tag">Super-Prime London</div>
+    <h1><em>Our</em> Projects</h1>
+  </div>
+</div>
+
+<!-- FILTER -->
+<div class="filter-bar">
+  <span class="filter-label">Filter:</span>
+  <button class="filter-btn active" data-filter="all">All</button>
+  <button class="filter-btn" data-filter="chelsea">Chelsea</button>
+  <button class="filter-btn" data-filter="belgravia">Belgravia</button>
+  <button class="filter-btn" data-filter="kensington">Kensington</button>
+  <button class="filter-btn" data-filter="knightsbridge">Knightsbridge</button>
+  <button class="filter-btn" data-filter="other">Other</button>
+</div>
+
+<!-- PROJECTS -->
+<div class="projects-section">
+  <div class="projects-masonry" id="projectsGrid">
+
+    <div class="proj-card large reveal" data-category="chelsea" onclick="openLightbox(0)" style="transition-delay:0.1s">
+      <img src="https://cdn.prod.website-files.com/685156a56eb5f8ca77f40916/68776b9ab2d44e7779d18d5e_chelsea-staphanie_thumbail.webp" alt="Chelsea">
+      <div class="proj-overlay">
+        <div class="proj-area">Chelsea</div>
+        <div class="proj-name">Penthouse Refurbishment</div>
+        <div class="proj-meta">
+          <div class="proj-meta-item"><span>Designer</span>Stéphane Parmentier</div>
+          <div class="proj-meta-item"><span>Value</span>£3.25M</div>
+          <div class="proj-meta-item"><span>Duration</span>45 Weeks</div>
+        </div>
+        <div class="proj-view-btn">View Project <svg width="14" height="9" viewBox="0 0 16 10" fill="none"><path d="M11 1L15 5L11 9M1 5H15" stroke="currentColor" stroke-width="1.2"/></svg></div>
+      </div>
+    </div>
+
+    <div class="proj-card reveal" data-category="belgravia" onclick="openLightbox(1)" style="transition-delay:0.15s">
+      <img src="https://cdn.prod.website-files.com/685156a56eb5f8ca77f40916/687763ba4a3fcb75e0f73d98_belgravia_thumbnail.webp" alt="Belgravia">
+      <div class="proj-overlay">
+        <div class="proj-area">Belgravia</div>
+        <div class="proj-name">Pied-à-Terre</div>
+        <div class="proj-meta">
+          <div class="proj-meta-item"><span>Designer</span>Studio Ashby</div>
+          <div class="proj-meta-item"><span>Value</span>£2.25M</div>
+        </div>
+        <div class="proj-view-btn">View Project <svg width="14" height="9" viewBox="0 0 16 10" fill="none"><path d="M11 1L15 5L11 9M1 5H15" stroke="currentColor" stroke-width="1.2"/></svg></div>
+      </div>
+    </div>
+
+    <div class="proj-card reveal" data-category="kensington" onclick="openLightbox(2)" style="transition-delay:0.2s">
+      <img src="https://cdn.prod.website-files.com/685156a56eb5f8ca77f40916/68778335efb83d620f6818fa_kensington-elicyon_thumbnail.webp" alt="Kensington">
+      <div class="proj-overlay">
+        <div class="proj-area">Kensington</div>
+        <div class="proj-name">Grade II Listed</div>
+        <div class="proj-meta">
+          <div class="proj-meta-item"><span>Designer</span>Elicyon</div>
+          <div class="proj-meta-item"><span>Value</span>£3M</div>
+        </div>
+        <div class="proj-view-btn">View Project <svg width="14" height="9" viewBox="0 0 16 10" fill="none"><path d="M11 1L15 5L11 9M1 5H15" stroke="currentColor" stroke-width="1.2"/></svg></div>
+      </div>
+    </div>
+
+    <div class="proj-card reveal" data-category="other" onclick="openLightbox(3)" style="transition-delay:0.25s">
+      <img src="https://cdn.prod.website-files.com/685156a56eb5f8ca77f408f2/685287ab26ed91ed81f04513_slide%3D4.webp" alt="Wandsworth">
+      <div class="proj-overlay">
+        <div class="proj-area">Wandsworth</div>
+        <div class="proj-name">Family Townhouse</div>
+        <div class="proj-meta">
+          <div class="proj-meta-item"><span>Type</span>Renovation</div>
+        </div>
+        <div class="proj-view-btn">View Project <svg width="14" height="9" viewBox="0 0 16 10" fill="none"><path d="M11 1L15 5L11 9M1 5H15" stroke="currentColor" stroke-width="1.2"/></svg></div>
+      </div>
+    </div>
+
+    <div class="proj-card large reveal" data-category="kensington" onclick="openLightbox(4)" style="transition-delay:0.3s">
+      <img src="https://cdn.prod.website-files.com/685156a56eb5f8ca77f408f2/685287abab86decf34f1cd8b_slide%3D2.webp" alt="Kensington Beata Heuman">
+      <div class="proj-overlay">
+        <div class="proj-area">Kensington</div>
+        <div class="proj-name">Beata Heuman Residence</div>
+        <div class="proj-meta">
+          <div class="proj-meta-item"><span>Designer</span>Beata Heuman</div>
+          <div class="proj-meta-item"><span>Type</span>Full Refurbishment</div>
+        </div>
+        <div class="proj-view-btn">View Project <svg width="14" height="9" viewBox="0 0 16 10" fill="none"><path d="M11 1L15 5L11 9M1 5H15" stroke="currentColor" stroke-width="1.2"/></svg></div>
+      </div>
+    </div>
+
+    <div class="proj-card reveal" data-category="belgravia" onclick="openLightbox(5)" style="transition-delay:0.35s">
+      <img src="https://cdn.prod.website-files.com/685156a56eb5f8ca77f40916/687763be016da2c31ca764c9_belgravia_slide_04.webp" alt="Belgravia Atelier">
+      <div class="proj-overlay">
+        <div class="proj-area">Belgravia</div>
+        <div class="proj-name">Atelier Hillier</div>
+        <div class="proj-meta">
+          <div class="proj-meta-item"><span>Designer</span>Atelier Hillier</div>
+        </div>
+        <div class="proj-view-btn">View Project <svg width="14" height="9" viewBox="0 0 16 10" fill="none"><path d="M11 1L15 5L11 9M1 5H15" stroke="currentColor" stroke-width="1.2"/></svg></div>
+      </div>
+    </div>
+
+    <div class="proj-card reveal" data-category="other" onclick="openLightbox(6)" style="transition-delay:0.4s">
+      <img src="https://cdn.prod.website-files.com/685156a56eb5f8ca77f408f2/685287abad10fd7aabd29c0d_slide%3D1.webp" alt="Mayfair">
+      <div class="proj-overlay">
+        <div class="proj-area">Mayfair</div>
+        <div class="proj-name">Mayfair Mansion</div>
+        <div class="proj-meta">
+          <div class="proj-meta-item"><span>Type</span>New Build</div>
+        </div>
+        <div class="proj-view-btn">View Project <svg width="14" height="9" viewBox="0 0 16 10" fill="none"><path d="M11 1L15 5L11 9M1 5H15" stroke="currentColor" stroke-width="1.2"/></svg></div>
+      </div>
+    </div>
+
+    <div class="proj-card large reveal" data-category="other" onclick="openLightbox(7)" style="transition-delay:0.45s">
+      <img src="https://cdn.prod.website-files.com/685156a56eb5f8ca77f408f2/685287ac2488289c36b8486f_slide%3D3.webp" alt="Wentworth">
+      <div class="proj-overlay">
+        <div class="proj-area">Wentworth</div>
+        <div class="proj-name">Wentworth Estate</div>
+        <div class="proj-meta">
+          <div class="proj-meta-item"><span>Type</span>Country Estate</div>
+          <div class="proj-meta-item"><span>Duration</span>72 Weeks</div>
+        </div>
+        <div class="proj-view-btn">View Project <svg width="14" height="9" viewBox="0 0 16 10" fill="none"><path d="M11 1L15 5L11 9M1 5H15" stroke="currentColor" stroke-width="1.2"/></svg></div>
+      </div>
+    </div>
+
+    <div class="proj-card reveal" data-category="chelsea" onclick="openLightbox(8)" style="transition-delay:0.5s">
+      <img src="https://cdn.prod.website-files.com/685156a56eb5f8ca77f40916/68776bb801e39db42b3d4b12_chelsea-stephaine_slide_01.webp" alt="Chelsea Kelly Hoppen">
+      <div class="proj-overlay">
+        <div class="proj-area">Chelsea</div>
+        <div class="proj-name">Kelly Hoppen</div>
+        <div class="proj-meta">
+          <div class="proj-meta-item"><span>Designer</span>Kelly Hoppen</div>
+        </div>
+        <div class="proj-view-btn">View Project <svg width="14" height="9" viewBox="0 0 16 10" fill="none"><path d="M11 1L15 5L11 9M1 5H15" stroke="currentColor" stroke-width="1.2"/></svg></div>
+      </div>
+    </div>
+
+    <div class="proj-card reveal" data-category="other" onclick="openLightbox(9)" style="transition-delay:0.55s">
+      <img src="https://cdn.prod.website-files.com/685156a56eb5f8ca77f40916/687763be5bfe8fbec028ae5d_belgravia_slide_03.webp" alt="Holland Park">
+      <div class="proj-overlay">
+        <div class="proj-area">Holland Park</div>
+        <div class="proj-name">Holland Park Villa</div>
+        <div class="proj-meta">
+          <div class="proj-meta-item"><span>Type</span>Full Refurbishment</div>
+        </div>
+        <div class="proj-view-btn">View Project <svg width="14" height="9" viewBox="0 0 16 10" fill="none"><path d="M11 1L15 5L11 9M1 5H15" stroke="currentColor" stroke-width="1.2"/></svg></div>
+      </div>
+    </div>
+
+    <div class="proj-card reveal" data-category="knightsbridge" onclick="openLightbox(10)" style="transition-delay:0.6s">
+      <img src="https://cdn.prod.website-files.com/685156a56eb5f8ca77f40916/6877833a193934bad750e3c9_kensington-elicyon_slide_01.webp" alt="Knightsbridge">
+      <div class="proj-overlay">
+        <div class="proj-area">Knightsbridge</div>
+        <div class="proj-name">Knightsbridge Apartment</div>
+        <div class="proj-meta">
+          <div class="proj-meta-item"><span>Type</span>Luxury Apartment</div>
+        </div>
+        <div class="proj-view-btn">View Project <svg width="14" height="9" viewBox="0 0 16 10" fill="none"><path d="M11 1L15 5L11 9M1 5H15" stroke="currentColor" stroke-width="1.2"/></svg></div>
+      </div>
+    </div>
+
+    <div class="proj-card large reveal" data-category="knightsbridge" onclick="openLightbox(11)" style="transition-delay:0.65s">
+      <img src="https://cdn.prod.website-files.com/685156a56eb5f8ca77f40916/6877833a76467e79b44769ad_kensington-elicyon_slide_03.webp" alt="Knightsbridge Louise Bradley">
+      <div class="proj-overlay">
+        <div class="proj-area">Knightsbridge</div>
+        <div class="proj-name">Louise Bradley Residence</div>
+        <div class="proj-meta">
+          <div class="proj-meta-item"><span>Designer</span>Louise Bradley</div>
+          <div class="proj-meta-item"><span>Type</span>Penthouse</div>
+        </div>
+        <div class="proj-view-btn">View Project <svg width="14" height="9" viewBox="0 0 16 10" fill="none"><path d="M11 1L15 5L11 9M1 5H15" stroke="currentColor" stroke-width="1.2"/></svg></div>
+      </div>
+    </div>
+
+    <div class="proj-card reveal" data-category="kensington" onclick="openLightbox(12)" style="transition-delay:0.7s">
+      <img src="https://cdn.prod.website-files.com/685156a56eb5f8ca77f40916/6877833a6e655759ba431596_kensington-elicyon_slide_05.webp" alt="Kensington Louise Bradley">
+      <div class="proj-overlay">
+        <div class="proj-area">Kensington</div>
+        <div class="proj-name">Kensington Townhouse</div>
+        <div class="proj-meta">
+          <div class="proj-meta-item"><span>Designer</span>Louise Bradley</div>
+        </div>
+        <div class="proj-view-btn">View Project <svg width="14" height="9" viewBox="0 0 16 10" fill="none"><path d="M11 1L15 5L11 9M1 5H15" stroke="currentColor" stroke-width="1.2"/></svg></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox">
+  <button class="lb-close" onclick="closeLightbox()">✕</button>
+  <div class="lightbox-inner">
+    <div class="lightbox-gallery">
+      <img class="lightbox-img active" id="lbMainImg" src="" alt="">
+    </div>
+    <div class="lightbox-info">
+      <div>
+        <div class="lb-tag" id="lbTag"></div>
+        <div class="lb-title" id="lbTitle"></div>
+        <div class="lb-desc" id="lbDesc"></div>
+        <div class="lb-stats" id="lbStats"></div>
+      </div>
+      <div>
+        <div class="lb-img-nav" id="lbThumbs"></div>
+        <div class="lb-nav" style="margin-top:20px">
+          <button class="lb-btn" onclick="lightboxPrev()">
+            <svg width="16" height="10" viewBox="0 0 16 10" fill="none"><path d="M5 1L1 5L5 9M15 5H1" stroke="currentColor" stroke-width="1.2"/></svg>
+          </button>
+          <button class="lb-btn" onclick="lightboxNext()">
+            <svg width="16" height="10" viewBox="0 0 16 10" fill="none"><path d="M11 1L15 5L11 9M1 5H15" stroke="currentColor" stroke-width="1.2"/></svg>
+          </button>
+          <button class="lb-btn" onclick="closeLightbox()" style="margin-left:auto">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 1l12 12M13 1L1 13" stroke="currentColor" stroke-width="1.2"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div>
+    <div class="footer-logo">LDB</div>
+    <p class="footer-tagline">The leader in super-prime London construction since 2007. Precision, discretion, uncompromising quality.</p>
+  </div>
+  <div class="footer-col">
+    <h4>Pages</h4>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="index.html#values">Values</a></li>
+      <li><a href="index.html#property-care">Property Care</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+  </div>
+  <div class="footer-col">
+    <h4>Legal</h4>
+    <ul>
+      <li><a href="#">Accreditations</a></li>
+      <li><a href="#">Terms & Conditions</a></li>
+      <li><a href="#">Email Disclaimer</a></li>
+    </ul>
+  </div>
+  <div class="footer-col">
+    <h4>Social</h4>
+    <ul>
+      <li><a href="https://www.instagram.com/ldb_construction/" target="_blank">Instagram</a></li>
+      <li><a href="https://www.linkedin.com/company/ldb-construction-uk" target="_blank">LinkedIn</a></li>
+    </ul>
+  </div>
+</footer>
+<div class="footer-bottom">
+  <p>© 2025 LDB Construction</p>
+  <div class="social-links">
+    <a href="https://www.instagram.com/ldb_construction/" target="_blank">Instagram</a>
+    <a href="https://www.linkedin.com/company/ldb-construction-uk" target="_blank">LinkedIn</a>
+  </div>
+</div>
+
+<script>
+  // Cursor
+  const cursor = document.getElementById('cursor');
+  const cursorRing = document.getElementById('cursorRing');
+  let mx = 0, my = 0, rx = 0, ry = 0;
+  document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; cursor.style.left = mx+'px'; cursor.style.top = my+'px'; });
+  function animateRing() { rx += (mx-rx)*0.12; ry += (my-ry)*0.12; cursorRing.style.left = rx+'px'; cursorRing.style.top = ry+'px'; requestAnimationFrame(animateRing); }
+  animateRing();
+  document.querySelectorAll('a,button,.proj-card').forEach(el => {
+    el.addEventListener('mouseenter', () => cursorRing.classList.add('hover'));
+    el.addEventListener('mouseleave', () => cursorRing.classList.remove('hover'));
+  });
+
+  // Hamburger
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', () => { hamburger.classList.toggle('open'); mobileMenu.classList.toggle('open'); });
+  mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { hamburger.classList.remove('open'); mobileMenu.classList.remove('open'); }));
+
+  // Reveal
+  const obs = new IntersectionObserver(entries => entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); }), {threshold:0.1});
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+  // Filter
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const filter = btn.dataset.filter;
+      document.querySelectorAll('.proj-card').forEach(card => {
+        const show = filter === 'all' || card.dataset.category === filter;
+        card.style.display = show ? 'block' : 'none';
+      });
+    });
+  });
+
+  // Projects data
+  const projects = [
+    { area:'Chelsea', name:'Penthouse Refurbishment', designer:'Stéphane Parmentier', value:'£3.25M', duration:'45 Weeks', desc:'A contemporary penthouse apartment in one of London\'s most prestigious towers. The uncompromising design balances sophistication, simplicity, and modernity, showcasing raw materials such as marble, travertine, lava stone, bronze, brass, wood, and leather.', imgs:['https://cdn.prod.website-files.com/685156a56eb5f8ca77f40916/68776b9ab2d44e7779d18d5e_chelsea-staphanie_thumbail.webp','https://cdn.prod.website-files.com/685156a56eb5f8ca77f40916/68776bb9871cc751cd95ea53_chelsea-stephaine_slide_03.webp','https://cdn.prod.website-files.com/685156a56eb5f8ca77f40916/68776cae9122e149e2e5029a_chelsea-stephaine_slide_09.webp','https://cdn.prod.website-files.com/685156a56eb5f8ca77f40916/68776cae0d33acb234b63ab4_chelsea-stephaine_slide_07.webp','https://cdn.prod.website-files.com/685156a56eb5f8ca77f40916/68776bb8cc6cd781d4123ebd_chelsea-stephaine_slide_04.webp'] },
+    { area:'Belgravia', name:'Pied-à-Terre', designer:'Studio Ashby', value:'£2.25M', duration:'45 Weeks', desc:'Inside a historic building on a London street lined with stucco-fronted mansions, this pied-à-terre was reconfigured from three bedrooms to two. The entry hall features an intricate marble marquetry floor, showcasing craftsmanship at its finest.', imgs:['https://cdn.prod.website-files.com/685156a56eb5f8ca77f40916/687763ba4a3fcb75e0f73d98_belgravia_thumbnail.webp','https://cdn.prod.website-files.com/685156a56eb5f8ca77f40916/687763be98eca1bec62730c8_belgravia_slide_09.webp','https://cdn.prod.website-files.com/685156a56eb5f8ca77f40916/687763be127b81e8b4e87491_belgravia_slide_05.webp','https://cdn.prod.website-files.com/685156a56eb5f8ca77f40916/687763be5bfe8fbec028ae5d_belgravia_slide_03.webp','https://cdn.prod.website-files.com/685156a56eb5f8ca77f40916/687763beb9d7ac1d5946cc09_belgravia_slide_02.webp'] },
+    { area:'Kensington', name:'Grade II Listed Renovation', designer:'Elicyon', value:'£3M', duration:'42 Weeks', desc:'This North London home in a Grade II-listed, five-storey property near Regent\'s Park required both renovation and restoration. LDB implemented essential upgrades while carefully restoring original features such as floorboards, Regency-inspired panelling, and balustrades.', imgs:['https://cdn.prod.website-files.com/685156a56eb5f8ca77f40916/68778335efb83d620f6818fa_kensington-elicyon_thumbnail.webp','https://cdn.prod.website-files.com/685156a56eb5f8ca77f40916/68778344186d4a9d9697ffc3_kensington-elicyon_slide_09.webp','https://cdn.prod.website-files.com/685156a56eb5f8ca77f40916/6877833aae5dd2e91309b6b8_kensington-elicyon_slide_04.webp','https://cdn.prod.website-files.com/685156a56eb5f8ca77f40916/6877833a76467e79b44769ad_kensington-elicyon_slide_03.webp','https://cdn.prod.website-files.com/685156a56eb5f8ca77f40916/6877833a193934bad750e3c9_kensington-elicyon_slide_01.webp'] },
+    { area:'Wandsworth', name:'Family Townhouse', designer:'—', value:'—', duration:'—', desc:'A complete renovation of a Victorian townhouse in Wandsworth, transformed into a bright modern family home while honouring the building\'s original architectural character.', imgs:['https://cdn.prod.website-files.com/685156a56eb5f8ca77f408f2/685287ab26ed91ed81f04513_slide%3D4.webp','https://cdn.prod.website-files.com/685156a56eb5f8ca77f408f2/685287abad10fd7aabd29c0d_slide%3D1.webp'] },
+    { area:'Kensington', name:'Beata Heuman Residence', designer:'Beata Heuman', value:'—', duration:'—', desc:'A joyful, characterful refurbishment in Kensington in collaboration with Stockholm-born designer Beata Heuman, known for her playful yet refined interiors.', imgs:['https://cdn.prod.website-files.com/685156a56eb5f8ca77f408f2/685287abab86decf34f1cd8b_slide%3D2.webp','https://cdn.prod.website-files.com/685156a56eb5f8ca77f40916/6877833abd6ab37e006a5c04_kensington-elicyon_slide_02.webp'] },
+    { area:'Belgravia', name:'Atelier Hillier', designer:'Atelier Hillier', value:'—', duration:'—', desc:'An exquisite Belgravia refurbishment with bespoke joinery, fine finishes, and a commitment to period-appropriate craftsmanship throughout.', imgs:['https://cdn.prod.website-files.com/685156a56eb5f8ca77f40916/687763be016da2c31ca764c9_belgravia_slide_04.webp','https://cdn.prod.website-files.com/685156a56eb5f8ca77f40916/687763bed4ffde01cccdcab7_belgravia_slide_06.webp','https://cdn.prod.website-files.com/685156a56eb5f8ca77f40916/687763be08e27966c7049285_belgravia_slide_01.webp'] },
+    { area:'Mayfair', name:'Mayfair Mansion', designer:'—', value:'—', duration:'—', desc:'A prestigious new-build mansion in Mayfair, delivering the highest standards of luxury residential construction in one of London\'s most coveted addresses.', imgs:['https://cdn.prod.website-files.com/685156a56eb5f8ca77f408f2/685287abad10fd7aabd29c0d_slide%3D1.webp','https://cdn.prod.website-files.com/685156a56eb5f8ca77f408f2/685287ac2488289c36b8486f_slide%3D3.webp'] },
+    { area:'Wentworth', name:'Wentworth Estate', designer:'—', value:'—', duration:'72 Weeks', desc:'An extensive country estate renovation combining modern systems with the estate\'s historic fabric, spanning multiple structures and extensive grounds.', imgs:['https://cdn.prod.website-files.com/685156a56eb5f8ca77f408f2/685287ac2488289c36b8486f_slide%3D3.webp','https://cdn.prod.website-files.com/685156a56eb5f8ca77f408f2/685287abab86decf34f1cd8b_slide%3D2.webp'] },
+    { area:'Chelsea', name:'Kelly Hoppen', designer:'Kelly Hoppen', value:'—', duration:'—', desc:'A sleek, monochromatic Chelsea refurbishment with Kelly Hoppen\'s signature neutral palette, refined textures, and meticulous attention to detail.', imgs:['https://cdn.prod.website-files.com/685156a56eb5f8ca77f40916/68776bb801e39db42b3d4b12_chelsea-stephaine_slide_01.webp','https://cdn.prod.website-files.com/685156a56eb5f8ca77f40916/68776bb9b36898a36df50074_chelsea-stephaine_slide_02.webp','https://cdn.prod.website-files.com/685156a56eb5f8ca77f40916/68776bb8cc6cd781d4123ebd_chelsea-stephaine_slide_04.webp'] },
+    { area:'Holland Park', name:'Holland Park Villa', designer:'—', value:'—', duration:'—', desc:'A full refurbishment of a stunning Holland Park villa, blending classical proportions with contemporary living standards and bespoke interior detailing.', imgs:['https://cdn.prod.website-files.com/685156a56eb5f8ca77f40916/687763be5bfe8fbec028ae5d_belgravia_slide_03.webp','https://cdn.prod.website-files.com/685156a56eb5f8ca77f40916/687763be9929b78ec85da6b3_belgravia_slide_07.webp'] },
+    { area:'Knightsbridge', name:'Knightsbridge Apartment', designer:'—', value:'—', duration:'—', desc:'A luxury apartment refurbishment in Knightsbridge, combining timeless British craftsmanship with contemporary luxury finishes and smart home integration.', imgs:['https://cdn.prod.website-files.com/685156a56eb5f8ca77f40916/6877833a193934bad750e3c9_kensington-elicyon_slide_01.webp','https://cdn.prod.website-files.com/685156a56eb5f8ca77f40916/6877833abd6ab37e006a5c04_kensington-elicyon_slide_02.webp','https://cdn.prod.website-files.com/685156a56eb5f8ca77f40916/6877833a6e655759ba431596_kensington-elicyon_slide_05.webp'] },
+    { area:'Knightsbridge', name:'Louise Bradley Residence', designer:'Louise Bradley', value:'—', duration:'—', desc:'A landmark Knightsbridge penthouse created with acclaimed interior designer Louise Bradley, featuring bespoke materials, exceptional craftsmanship, and breathtaking views.', imgs:['https://cdn.prod.website-files.com/685156a56eb5f8ca77f40916/6877833a76467e79b44769ad_kensington-elicyon_slide_03.webp','https://cdn.prod.website-files.com/685156a56eb5f8ca77f40916/68778342c66a393f03d0ee85_kensington-elicyon_slide_07.webp','https://cdn.prod.website-files.com/685156a56eb5f8ca77f40916/687783421f4af31a1d61de01_kensington-elicyon_slide_08.webp'] },
+    { area:'Kensington', name:'Kensington Townhouse', designer:'Louise Bradley', value:'—', duration:'—', desc:'A distinguished Kensington townhouse refurbishment with Louise Bradley Studio, harmonising heritage character with effortless modern luxury across all levels.', imgs:['https://cdn.prod.website-files.com/685156a56eb5f8ca77f40916/6877833a6e655759ba431596_kensington-elicyon_slide_05.webp','https://cdn.prod.website-files.com/685156a56eb5f8ca77f40916/687783429a6a6148ea09a39a_kensington-elicyon_slide_06.webp'] }
+  ];
+
+  let lbProject = 0, lbImg = 0;
+  function openLightbox(idx) {
+    lbProject = idx; lbImg = 0;
+    renderLightbox();
+    document.getElementById('lightbox').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeLightbox() {
+    document.getElementById('lightbox').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  function renderLightbox() {
+    const p = projects[lbProject];
+    document.getElementById('lbTag').textContent = p.area;
+    document.getElementById('lbTitle').textContent = p.name;
+    document.getElementById('lbDesc').textContent = p.desc;
+    document.getElementById('lbMainImg').src = p.imgs[lbImg];
+    const stats = document.getElementById('lbStats');
+    stats.innerHTML = '';
+    if(p.designer && p.designer !== '—') { const d = document.createElement('div'); d.innerHTML = `<div class="lb-stat-label">Designer</div><div class="lb-stat-val">${p.designer}</div>`; stats.appendChild(d); }
+    if(p.value && p.value !== '—') { const v = document.createElement('div'); v.innerHTML = `<div class="lb-stat-label">Project Value</div><div class="lb-stat-val">${p.value}</div>`; stats.appendChild(v); }
+    if(p.duration && p.duration !== '—') { const dur = document.createElement('div'); dur.innerHTML = `<div class="lb-stat-label">Duration</div><div class="lb-stat-val">${p.duration}</div>`; stats.appendChild(dur); }
+    const thumbs = document.getElementById('lbThumbs');
+    thumbs.innerHTML = '';
+    p.imgs.forEach((img, i) => {
+      const t = document.createElement('img');
+      t.className = 'lb-thumb' + (i === lbImg ? ' active' : '');
+      t.src = img;
+      t.onclick = () => { lbImg = i; renderLightbox(); };
+      thumbs.appendChild(t);
+    });
+  }
+  function lightboxPrev() {
+    const p = projects[lbProject];
+    lbImg = (lbImg - 1 + p.imgs.length) % p.imgs.length;
+    renderLightbox();
+  }
+  function lightboxNext() {
+    const p = projects[lbProject];
+    lbImg = (lbImg + 1) % p.imgs.length;
+    renderLightbox();
+  }
+  document.getElementById('lightbox').addEventListener('click', e => {
+    if(e.target === document.getElementById('lightbox')) closeLightbox();
+  });
+  document.addEventListener('keydown', e => {
+    if(e.key === 'Escape') closeLightbox();
+    if(e.key === 'ArrowLeft') lightboxPrev();
+    if(e.key === 'ArrowRight') lightboxNext();
+  });
+</script>
+</body>
+</html>

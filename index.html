@@ -1,0 +1,1424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Luxury Construction Company London | LDB Construction</title>
+  <meta name="description" content="A London-based luxury construction company delivering bespoke residential projects with precision, discretion and uncompromising attention to detail since 2007.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream: #F5F0E8;
+      --warm-white: #FAF8F4;
+      --charcoal: #1C1C1A;
+      --dark: #0E0E0C;
+      --gold: #B8965A;
+      --gold-light: #D4AF7A;
+      --stone: #8C8070;
+      --stone-light: #C4B8A8;
+      --fog: #E8E2D8;
+      --serif: 'Cormorant Garamond', Georgia, serif;
+      --sans: 'Montserrat', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--dark);
+      color: var(--cream);
+      font-family: var(--sans);
+      font-weight: 300;
+      overflow-x: hidden;
+    }
+    ::-webkit-scrollbar { width: 3px; }
+    ::-webkit-scrollbar-track { background: var(--dark); }
+    ::-webkit-scrollbar-thumb { background: var(--gold); }
+
+    /* ── CURVE DIVIDERS ── */
+    .curve { line-height: 0; overflow: hidden; display: block; }
+    .curve svg { display: block; width: 100%; }
+
+    /* ── BLOB DECORATIONS ── */
+    .blob {
+      position: absolute;
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0;
+      transition: opacity 1.2s ease;
+    }
+    .blob.visible { opacity: 1; }
+
+    /* ── ORGANIC IMAGE BORDERS ── */
+    .organic-1 { border-radius: 52% 48% 38% 62% / 44% 56% 44% 56%; overflow: hidden; }
+    .organic-2 { border-radius: 40% 60% 60% 40% / 50% 40% 60% 50%; overflow: hidden; }
+    .organic-3 { border-radius: 60% 40% 50% 50% / 50% 60% 40% 50%; overflow: hidden; }
+
+    /* gold accent line top of page */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      z-index: 2000;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 28px 60px;
+      transition: background 0.5s, padding 0.4s;
+    }
+    nav.scrolled {
+      background: rgba(14,14,12,0.95);
+      backdrop-filter: blur(12px);
+      padding: 18px 60px;
+      border-bottom: 1px solid rgba(184,150,90,0.15);
+    }
+    .nav-logo {
+      font-family: var(--serif);
+      font-size: 1.5rem;
+      font-weight: 300;
+      letter-spacing: 0.25em;
+      color: var(--cream);
+      text-decoration: none;
+      text-transform: uppercase;
+      opacity: 0;
+      animation: fadeDown 1s 0.3s forwards;
+    }
+    .nav-links {
+      display: flex;
+      gap: 40px;
+      list-style: none;
+      opacity: 0;
+      animation: fadeDown 1s 0.5s forwards;
+    }
+    .nav-links a {
+      color: var(--stone-light);
+      text-decoration: none;
+      font-size: 0.68rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      font-weight: 500;
+      position: relative;
+      transition: color 0.3s;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px; left: 0;
+      width: 0; height: 1px;
+      background: var(--gold);
+      transition: width 0.4s ease;
+    }
+    .nav-links a:hover { color: var(--gold); }
+    .nav-links a:hover::after { width: 100%; }
+    .nav-links a.active { color: var(--gold); }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      z-index: 1001;
+    }
+    .hamburger span {
+      display: block;
+      width: 26px; height: 1px;
+      background: var(--cream);
+      transition: all 0.3s;
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+
+    .mobile-menu {
+      position: fixed;
+      inset: 0;
+      background: var(--dark);
+      z-index: 999;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 40px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.4s;
+    }
+    .mobile-menu.open { opacity: 1; pointer-events: all; }
+    .mobile-menu a {
+      font-family: var(--serif);
+      font-size: 2.5rem;
+      color: var(--cream);
+      text-decoration: none;
+      letter-spacing: 0.1em;
+      transition: color 0.3s;
+    }
+    .mobile-menu a:hover { color: var(--gold); }
+
+    /* HERO */
+    #home {
+      height: 100vh;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: flex-end;
+      padding: 0 60px 80px;
+    }
+    .hero-slider { position: absolute; inset: 0; }
+    .hero-slide {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      opacity: 0;
+      transition: opacity 1.4s ease;
+      transform: scale(1.06);
+    }
+    .hero-slide.active {
+      opacity: 1;
+      animation: zoomOut 8s ease forwards;
+    }
+    @keyframes zoomOut {
+      from { transform: scale(1.06); }
+      to   { transform: scale(1.0); }
+    }
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(14,14,12,0.92) 0%, rgba(14,14,12,0.3) 50%, rgba(14,14,12,0.2) 100%);
+    }
+    /* hero bottom wave */
+    .hero-wave {
+      position: absolute;
+      bottom: -1px; left: 0; right: 0;
+      z-index: 3;
+      line-height: 0;
+    }
+    .hero-wave svg { display: block; width: 100%; height: 70px; }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 720px;
+      opacity: 0;
+      animation: fadeUp 1.2s 0.8s forwards;
+    }
+    .hero-tag {
+      font-size: 0.65rem;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .hero-tag::before {
+      content: '';
+      display: inline-block;
+      width: 40px; height: 1px;
+      background: var(--gold);
+    }
+    .hero-h1 {
+      font-family: var(--serif);
+      font-size: clamp(3rem, 6vw, 5.5rem);
+      font-weight: 300;
+      line-height: 1.1;
+      margin-bottom: 28px;
+      letter-spacing: 0.02em;
+    }
+    .hero-h1 em { font-style: italic; color: var(--gold-light); }
+    .hero-sub {
+      font-size: 0.8rem;
+      letter-spacing: 0.12em;
+      color: var(--stone-light);
+      line-height: 1.9;
+      max-width: 460px;
+      margin-bottom: 40px;
+    }
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      text-decoration: none;
+      font-size: 0.65rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      padding: 16px 32px;
+      transition: background 0.4s, color 0.4s;
+      font-weight: 500;
+      cursor: pointer;
+    }
+    .btn-primary:hover { background: var(--gold); color: var(--dark); }
+    .btn-primary svg { transition: transform 0.3s; }
+    .btn-primary:hover svg { transform: translateX(6px); }
+
+    .hero-indicators {
+      position: absolute;
+      right: 60px; bottom: 80px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      z-index: 2;
+    }
+    .hero-dot {
+      width: 3px; height: 24px;
+      background: rgba(255,255,255,0.2);
+      cursor: pointer;
+      transition: background 0.3s, height 0.3s;
+    }
+    .hero-dot.active { background: var(--gold); height: 40px; }
+
+    .hero-scroll {
+      position: absolute;
+      bottom: 80px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      z-index: 2;
+      font-size: 0.6rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--stone-light);
+      opacity: 0;
+      animation: fadeIn 1s 2s forwards;
+    }
+    .hero-scroll::after {
+      content: '';
+      display: block;
+      width: 1px; height: 48px;
+      background: linear-gradient(to bottom, var(--gold), transparent);
+      animation: scrollLine 2s ease infinite;
+    }
+    @keyframes scrollLine {
+      0%  { transform: scaleY(0); transform-origin: top; }
+      50% { transform: scaleY(1); transform-origin: top; }
+      51% { transform-origin: bottom; }
+      100%{ transform: scaleY(0); transform-origin: bottom; }
+    }
+
+    /* STATS BANNER */
+    .stats-banner {
+      background: var(--charcoal);
+      padding: 60px;
+      border-top: 1px solid rgba(184,150,90,0.2);
+      border-bottom: 1px solid rgba(184,150,90,0.2);
+      position: relative;
+      overflow: hidden;
+    }
+    /* decorative blob inside stats */
+    .stats-banner::before {
+      content: '';
+      position: absolute;
+      top: -80px; right: -80px;
+      width: 360px; height: 360px;
+      background: radial-gradient(ellipse at center, rgba(184,150,90,0.06) 0%, transparent 70%);
+      border-radius: 52% 48% 38% 62% / 44% 56% 44% 56%;
+      pointer-events: none;
+    }
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 30px;
+      max-width: 1200px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+    .stat-item { text-align: center; padding: 20px; }
+    .stat-num {
+      font-family: var(--serif);
+      font-size: 3.5rem;
+      font-weight: 300;
+      color: var(--gold);
+      line-height: 1;
+      margin-bottom: 12px;
+    }
+    .stat-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--stone);
+    }
+
+    /* SECTION COMMONS */
+    section { position: relative; }
+    .section-label {
+      font-size: 0.6rem;
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .section-label::before {
+      content: '';
+      display: inline-block;
+      width: 30px; height: 1px;
+      background: var(--gold);
+    }
+
+    /* REVEAL */
+    .reveal {
+      opacity: 0; transform: translateY(40px);
+      transition: opacity 0.9s ease, transform 0.9s ease;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-left {
+      opacity: 0; transform: translateX(-50px);
+      transition: opacity 0.9s ease, transform 0.9s ease;
+    }
+    .reveal-left.visible { opacity: 1; transform: translateX(0); }
+    .reveal-right {
+      opacity: 0; transform: translateX(50px);
+      transition: opacity 0.9s ease, transform 0.9s ease;
+    }
+    .reveal-right.visible { opacity: 1; transform: translateX(0); }
+
+    /* PROJECTS PREVIEW */
+    #projects-preview {
+      padding: 140px 60px;
+      background: var(--dark);
+      position: relative;
+      overflow: hidden;
+    }
+    /* blob deco behind projects */
+    #projects-preview::before {
+      content: '';
+      position: absolute;
+      bottom: -120px; left: -100px;
+      width: 500px; height: 500px;
+      background: radial-gradient(ellipse, rgba(184,150,90,0.05) 0%, transparent 65%);
+      border-radius: 40% 60% 55% 45% / 50% 45% 55% 50%;
+      pointer-events: none;
+    }
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 80px;
+    }
+    .section-h2 {
+      font-family: var(--serif);
+      font-size: clamp(2.5rem, 4vw, 4rem);
+      font-weight: 300;
+      line-height: 1.15;
+      letter-spacing: 0.02em;
+    }
+    .section-h2 em { font-style: italic; color: var(--gold-light); }
+    .projects-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+      position: relative;
+      z-index: 1;
+    }
+    .project-card {
+      position: relative;
+      overflow: hidden;
+      aspect-ratio: 4/3;
+      cursor: pointer;
+      text-decoration: none;
+      display: block;
+    }
+    .project-card:first-child { grid-column: 1 / 2; grid-row: 1 / 3; aspect-ratio: auto; }
+    /* rounded organic on project cards */
+    .project-card:nth-child(2) { border-radius: 0 18px 0 0; }
+    .project-card:nth-child(3) { border-radius: 0 0 18px 0; }
+    .project-card img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform 0.8s ease;
+      display: block;
+    }
+    .project-card:hover img { transform: scale(1.06); }
+    .project-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(14,14,12,0.88) 0%, transparent 60%);
+      display: flex; flex-direction: column; justify-content: flex-end;
+      padding: 32px;
+      transition: background 0.4s;
+    }
+    .project-card:hover .project-overlay {
+      background: linear-gradient(to top, rgba(14,14,12,0.95) 0%, rgba(14,14,12,0.2) 100%);
+    }
+    .project-location {
+      font-size: 0.6rem; letter-spacing: 0.3em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 8px;
+    }
+    .project-name {
+      font-family: var(--serif); font-size: 1.8rem; font-weight: 300; color: var(--cream);
+    }
+    .project-designer {
+      font-size: 0.7rem; color: var(--stone-light); letter-spacing: 0.1em; margin-top: 6px;
+      opacity: 0; transform: translateY(10px);
+      transition: opacity 0.3s, transform 0.3s;
+    }
+    .project-card:hover .project-designer { opacity: 1; transform: translateY(0); }
+
+    /* ABOUT */
+    #about {
+      padding: 140px 60px;
+      background: var(--charcoal);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 100px;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+    /* decorative blob */
+    #about::after {
+      content: '';
+      position: absolute;
+      top: -60px; right: -80px;
+      width: 420px; height: 420px;
+      background: radial-gradient(ellipse, rgba(184,150,90,0.05) 0%, transparent 70%);
+      border-radius: 60% 40% 50% 50% / 45% 55% 45% 55%;
+      pointer-events: none;
+    }
+    .about-images {
+      position: relative;
+      height: 580px;
+    }
+    .about-img-main {
+      position: absolute;
+      top: 0; left: 0;
+      width: 78%; height: 80%;
+      object-fit: cover;
+      /* organic curve on main image */
+      border-radius: 52% 48% 38% 62% / 44% 56% 44% 56%;
+    }
+    .about-img-accent {
+      position: absolute;
+      bottom: 0; right: 0;
+      width: 55%; height: 55%;
+      object-fit: cover;
+      /* organic curve on accent */
+      border-radius: 40% 60% 60% 40% / 50% 40% 60% 50%;
+      border: 6px solid var(--charcoal);
+    }
+    .about-year {
+      position: absolute;
+      bottom: 30px; left: 30px;
+      font-family: var(--serif);
+      font-size: 5rem;
+      font-weight: 300;
+      color: rgba(184,150,90,0.2);
+      line-height: 1;
+      pointer-events: none;
+    }
+    .about-text { position: relative; z-index: 1; }
+    .about-text p {
+      color: var(--stone-light); font-size: 0.85rem; line-height: 2;
+      margin-bottom: 28px; letter-spacing: 0.04em;
+    }
+
+    /* VALUES */
+    #values {
+      padding: 140px 60px;
+      background: var(--dark);
+      position: relative;
+      overflow: hidden;
+    }
+    /* large blob bottom-right */
+    #values::before {
+      content: '';
+      position: absolute;
+      bottom: -100px; right: -120px;
+      width: 550px; height: 550px;
+      background: radial-gradient(ellipse, rgba(184,150,90,0.04) 0%, transparent 65%);
+      border-radius: 55% 45% 60% 40% / 50% 55% 45% 50%;
+      pointer-events: none;
+    }
+    .values-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+      margin-top: 80px;
+    }
+    .value-block {
+      padding: 50px;
+      border: 1px solid rgba(184,150,90,0.15);
+      position: relative;
+      transition: border-color 0.4s, background 0.4s;
+      /* slight curve on value blocks */
+      border-radius: 2px 16px 2px 16px;
+    }
+    .value-block:hover {
+      border-color: rgba(184,150,90,0.5);
+      background: rgba(184,150,90,0.03);
+    }
+    .value-num {
+      position: absolute;
+      top: -20px; right: 24px;
+      font-family: var(--serif);
+      font-size: 4rem; font-weight: 300;
+      color: rgba(184,150,90,0.12);
+      line-height: 1;
+    }
+    .value-icon { width: 40px; height: 40px; margin-bottom: 24px; color: var(--gold); }
+    .value-title {
+      font-family: var(--serif);
+      font-size: 1.7rem; font-weight: 300;
+      margin-bottom: 18px; letter-spacing: 0.02em;
+    }
+    .value-desc {
+      font-size: 0.82rem; color: var(--stone-light);
+      line-height: 1.9; letter-spacing: 0.04em; margin-bottom: 24px;
+    }
+    .value-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .value-list li {
+      font-size: 0.78rem; color: var(--stone-light);
+      padding-left: 20px; position: relative;
+      line-height: 1.6; letter-spacing: 0.04em;
+    }
+    .value-list li::before {
+      content: '';
+      position: absolute; left: 0; top: 9px;
+      width: 8px; height: 1px; background: var(--gold);
+    }
+    .values-img-wrapper { padding-top: 100px; }
+    .values-img {
+      width: 100%; aspect-ratio: 4/3; object-fit: cover;
+      /* organic curve on values image */
+      border-radius: 50% 50% 40% 60% / 45% 45% 55% 55%;
+    }
+
+    /* PROPERTY CARE */
+    #property-care {
+      background: var(--charcoal);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 600px;
+      position: relative;
+      overflow: hidden;
+    }
+    #property-care::before {
+      content: '';
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%,-50%);
+      width: 500px; height: 500px;
+      background: radial-gradient(ellipse, rgba(184,150,90,0.04) 0%, transparent 65%);
+      border-radius: 45% 55% 50% 50% / 52% 48% 52% 48%;
+      pointer-events: none;
+    }
+    .property-care-img { position: relative; overflow: hidden; }
+    .property-care-img img {
+      width: 100%; height: 100%; object-fit: cover;
+      transition: transform 0.8s; display: block;
+    }
+    .property-care-img:hover img { transform: scale(1.04); }
+    /* clip wave on the right edge of the image */
+    .property-care-img::after {
+      content: '';
+      position: absolute;
+      top: 0; right: -1px; bottom: 0;
+      width: 60px;
+      background: var(--charcoal);
+      clip-path: ellipse(60px 55% at 100% 50%);
+    }
+    .property-care-content {
+      padding: 100px 80px;
+      display: flex; flex-direction: column; justify-content: center;
+      position: relative; z-index: 1;
+    }
+    .property-care-content p {
+      font-size: 0.85rem; color: var(--stone-light);
+      line-height: 2; letter-spacing: 0.04em;
+      margin-bottom: 24px; margin-top: 30px;
+    }
+    .features-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 24px; margin-top: 40px;
+    }
+    .feature-item {
+      padding: 20px;
+      border-left: 2px solid rgba(184,150,90,0.3);
+      /* gentle curve top-right */
+      border-radius: 0 8px 0 0;
+    }
+    .feature-item strong {
+      display: block; font-size: 0.7rem;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 6px; font-weight: 500;
+    }
+    .feature-item span { font-size: 0.78rem; color: var(--stone-light); letter-spacing: 0.04em; }
+
+    /* VIDEO */
+    .video-section {
+      position: relative; height: 70vh; overflow: hidden;
+      display: flex; align-items: center; justify-content: center;
+      background: var(--dark);
+    }
+    .video-section video { width: 100%; height: 100%; object-fit: cover; opacity: 0.45; }
+    .video-overlay {
+      position: absolute; inset: 0;
+      background: rgba(14,14,12,0.5);
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      text-align: center; padding: 40px;
+    }
+    .video-overlay h2 {
+      font-family: var(--serif);
+      font-size: clamp(2.5rem, 5vw, 5rem);
+      font-weight: 300;
+      letter-spacing: 0.05em;
+      line-height: 1.1;
+      margin-bottom: 20px;
+    }
+    .video-overlay p {
+      font-size: 0.82rem; color: var(--stone-light);
+      letter-spacing: 0.1em; max-width: 500px;
+    }
+
+    /* PRESS */
+    .press-section {
+      padding: 80px 60px;
+      background: var(--charcoal);
+      border-top: 1px solid rgba(184,150,90,0.1);
+      position: relative; overflow: hidden;
+    }
+    .press-section::after {
+      content: '';
+      position: absolute;
+      bottom: -60px; left: -80px;
+      width: 380px; height: 380px;
+      background: radial-gradient(ellipse, rgba(184,150,90,0.05) 0%, transparent 65%);
+      border-radius: 50% 50% 40% 60% / 55% 45% 55% 45%;
+      pointer-events: none;
+    }
+    .press-grid {
+      display: flex; gap: 2px; margin-top: 50px; position: relative; z-index: 1;
+    }
+    .press-item {
+      flex: 1; padding: 40px 32px;
+      border: 1px solid rgba(184,150,90,0.1);
+      transition: border-color 0.3s, background 0.3s;
+      cursor: pointer;
+      border-radius: 2px 12px 2px 12px;
+    }
+    .press-item:hover {
+      border-color: rgba(184,150,90,0.4);
+      background: rgba(184,150,90,0.03);
+    }
+    .press-pub {
+      font-size: 0.6rem; letter-spacing: 0.3em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 12px; font-weight: 500;
+    }
+    .press-title {
+      font-family: var(--serif); font-size: 1.2rem;
+      font-weight: 300; line-height: 1.4; color: var(--cream);
+    }
+
+    /* CONTACT */
+    #contact {
+      padding: 140px 60px;
+      background: var(--dark);
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 100px;
+      position: relative; overflow: hidden;
+    }
+    #contact::before {
+      content: '';
+      position: absolute;
+      top: -80px; right: -100px;
+      width: 480px; height: 480px;
+      background: radial-gradient(ellipse, rgba(184,150,90,0.05) 0%, transparent 65%);
+      border-radius: 52% 48% 44% 56% / 50% 50% 50% 50%;
+      pointer-events: none;
+    }
+    .contact-text h2 {
+      font-family: var(--serif);
+      font-size: clamp(2.2rem, 3.5vw, 3.5rem);
+      font-weight: 300; line-height: 1.2; margin-bottom: 30px;
+    }
+    .contact-text p {
+      font-size: 0.85rem; color: var(--stone-light);
+      line-height: 2; letter-spacing: 0.04em; margin-bottom: 50px;
+    }
+    .contact-details { display: flex; flex-direction: column; gap: 28px; }
+    .contact-item { display: flex; gap: 20px; align-items: flex-start; }
+    .contact-icon { width: 18px; height: 18px; color: var(--gold); flex-shrink: 0; margin-top: 2px; }
+    .contact-item-label {
+      font-size: 0.6rem; letter-spacing: 0.25em; text-transform: uppercase;
+      color: var(--stone); margin-bottom: 5px;
+    }
+    .contact-item-val {
+      font-size: 0.85rem; color: var(--cream); letter-spacing: 0.05em;
+    }
+    .contact-item-val a { color: var(--cream); text-decoration: none; transition: color 0.3s; }
+    .contact-item-val a:hover { color: var(--gold); }
+
+    .contact-form { display: flex; flex-direction: column; gap: 24px; position: relative; z-index: 1; }
+    .form-group { position: relative; }
+    .form-group label {
+      display: block; font-size: 0.6rem;
+      letter-spacing: 0.25em; text-transform: uppercase;
+      color: var(--stone); margin-bottom: 10px;
+    }
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      width: 100%; background: transparent;
+      border: none; border-bottom: 1px solid rgba(184,150,90,0.3);
+      color: var(--cream); font-family: var(--sans);
+      font-size: 0.85rem; font-weight: 300;
+      padding: 12px 0; outline: none;
+      transition: border-color 0.3s;
+      letter-spacing: 0.05em; appearance: none;
+    }
+    .form-group select option { background: var(--charcoal); }
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus { border-color: var(--gold); }
+    .form-group textarea { resize: none; height: 100px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    .btn-submit {
+      background: transparent; border: 1px solid var(--gold);
+      color: var(--gold); font-family: var(--sans);
+      font-size: 0.65rem; letter-spacing: 0.3em; text-transform: uppercase;
+      padding: 18px 40px; cursor: pointer;
+      transition: background 0.4s, color 0.4s;
+      align-self: flex-start; font-weight: 500;
+      border-radius: 0 12px 0 12px;
+    }
+    .btn-submit:hover { background: var(--gold); color: var(--dark); }
+
+    /* FOOTER */
+    footer {
+      background: var(--charcoal);
+      padding: 60px;
+      border-top: 1px solid rgba(184,150,90,0.15);
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      gap: 50px;
+      align-items: start;
+      position: relative;
+      overflow: hidden;
+    }
+    footer::before {
+      content: '';
+      position: absolute;
+      bottom: -40px; right: -60px;
+      width: 300px; height: 300px;
+      background: radial-gradient(ellipse, rgba(184,150,90,0.04) 0%, transparent 70%);
+      border-radius: 50% 50% 40% 60% / 55% 45% 55% 45%;
+      pointer-events: none;
+    }
+    .footer-logo {
+      font-family: var(--serif); font-size: 1.6rem; font-weight: 300;
+      letter-spacing: 0.2em; color: var(--cream); text-transform: uppercase; margin-bottom: 16px;
+    }
+    .footer-tagline { font-size: 0.72rem; color: var(--stone); line-height: 1.8; letter-spacing: 0.06em; }
+    .footer-col h4 {
+      font-size: 0.6rem; letter-spacing: 0.3em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 22px; font-weight: 500;
+    }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+    .footer-col ul a {
+      color: var(--stone-light); text-decoration: none;
+      font-size: 0.78rem; letter-spacing: 0.08em; transition: color 0.3s;
+    }
+    .footer-col ul a:hover { color: var(--gold); }
+    .footer-bottom {
+      background: var(--charcoal);
+      padding: 24px 60px;
+      border-top: 1px solid rgba(255,255,255,0.05);
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .footer-bottom p { font-size: 0.7rem; color: var(--stone); letter-spacing: 0.08em; }
+    .social-links { display: flex; gap: 20px; }
+    .social-links a {
+      color: var(--stone); text-decoration: none;
+      font-size: 0.7rem; letter-spacing: 0.15em; transition: color 0.3s;
+    }
+    .social-links a:hover { color: var(--gold); }
+
+    /* KEYFRAMES */
+    @keyframes fadeDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 1024px) {
+      nav { padding: 24px 36px; }
+      nav.scrolled { padding: 16px 36px; }
+      .nav-links { gap: 28px; }
+      #home { padding: 0 36px 60px; }
+      .stats-banner { padding: 50px 36px; }
+      #projects-preview, #values, #contact { padding: 100px 36px; }
+      #about { padding: 100px 36px; gap: 60px; }
+      .property-care-content { padding: 80px 50px; }
+      footer, .footer-bottom { padding: 50px 36px; }
+    }
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      nav { padding: 20px 24px; }
+      nav.scrolled { padding: 14px 24px; }
+      #home { padding: 0 24px 60px; }
+      .hero-indicators { right: 24px; bottom: 60px; }
+      .hero-scroll { display: none; }
+      .stats-banner { padding: 40px 24px; }
+      .stats-grid { grid-template-columns: repeat(2,1fr); gap: 20px; }
+      .stat-num { font-size: 2.8rem; }
+      #projects-preview { padding: 80px 24px; }
+      .projects-grid { grid-template-columns: 1fr; }
+      .project-card:first-child { grid-column: auto; grid-row: auto; aspect-ratio: 4/3; }
+      .project-card:nth-child(2),
+      .project-card:nth-child(3) { border-radius: 0; }
+      .section-header { flex-direction: column; align-items: flex-start; gap: 24px; }
+      #about { grid-template-columns: 1fr; padding: 80px 24px; gap: 60px; }
+      .about-images { height: 360px; }
+      .about-img-main { border-radius: 44% 56% 38% 62% / 40% 52% 48% 60%; }
+      .about-img-accent { border-radius: 36% 64% 60% 40% / 46% 40% 60% 54%; }
+      #values { padding: 80px 24px; }
+      .values-layout { grid-template-columns: 1fr; gap: 40px; }
+      .values-img-wrapper { padding-top: 40px; }
+      .values-img { border-radius: 50% 50% 40% 60% / 45% 45% 55% 55%; }
+      #property-care { grid-template-columns: 1fr; }
+      .property-care-img::after { display: none; }
+      .property-care-content { padding: 60px 24px; }
+      #contact { grid-template-columns: 1fr; padding: 80px 24px; gap: 60px; }
+      footer { grid-template-columns: 1fr 1fr; padding: 50px 24px; gap: 36px; }
+      .footer-bottom { padding: 20px 24px; flex-direction: column; gap: 12px; text-align: center; }
+      .form-row { grid-template-columns: 1fr; }
+      .press-grid { flex-direction: column; }
+      .video-section { height: 50vh; }
+      .features-grid { grid-template-columns: 1fr; }
+      .hero-wave svg { height: 40px; }
+    }
+    @media (max-width: 480px) {
+      .about-images { height: 300px; }
+      .value-block { padding: 30px 20px; }
+      footer { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav id="mainNav">
+    <a href="#home" class="nav-logo">LDB</a>
+    <ul class="nav-links">
+      <li><a href="#home" class="active" data-section="home">Home</a></li>
+      <li><a href="projects.html" data-section="projects">Projects</a></li>
+      <li><a href="#about" data-section="about">About</a></li>
+      <li><a href="#values" data-section="values">Values</a></li>
+      <li><a href="#property-care" data-section="property-care">Property Care</a></li>
+      <li><a href="#contact" data-section="contact">Contact</a></li>
+    </ul>
+    <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+  </nav>
+
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#home" class="mobile-link">Home</a>
+    <a href="projects.html" class="mobile-link">Projects</a>
+    <a href="#about" class="mobile-link">About</a>
+    <a href="#values" class="mobile-link">Values</a>
+    <a href="#property-care" class="mobile-link">Property Care</a>
+    <a href="#contact" class="mobile-link">Contact</a>
+  </div>
+
+  <!-- HERO -->
+  <section id="home">
+    <div class="hero-slider" id="heroSlider">
+      <div class="hero-slide active" style="background-image:url('https://cdn.prod.website-files.com/685156a56eb5f8ca77f408f2/685287abad10fd7aabd29c0d_slide%3D1.webp')"></div>
+      <div class="hero-slide" style="background-image:url('https://cdn.prod.website-files.com/685156a56eb5f8ca77f408f2/685287abab86decf34f1cd8b_slide%3D2.webp')"></div>
+      <div class="hero-slide" style="background-image:url('https://cdn.prod.website-files.com/685156a56eb5f8ca77f408f2/685287ac2488289c36b8486f_slide%3D3.webp')"></div>
+      <div class="hero-slide" style="background-image:url('https://cdn.prod.website-files.com/685156a56eb5f8ca77f408f2/685287ab26ed91ed81f04513_slide%3D4.webp')"></div>
+    </div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="hero-tag">Est. 2007 — London</div>
+      <h1 class="hero-h1">Super-Prime<br><em>Residential</em><br>Construction</h1>
+      <p class="hero-sub">Bespoke homes built with precision, discretion, and an uncompromising focus on quality across London's most prestigious addresses.</p>
+      <a href="projects.html" class="btn-primary">
+        View Projects
+        <svg width="16" height="10" viewBox="0 0 16 10" fill="none"><path d="M11 1L15 5L11 9M1 5H15" stroke="currentColor" stroke-width="1.2"/></svg>
+      </a>
+    </div>
+    <div class="hero-indicators" id="heroIndicators">
+      <div class="hero-dot active"></div>
+      <div class="hero-dot"></div>
+      <div class="hero-dot"></div>
+      <div class="hero-dot"></div>
+    </div>
+    <div class="hero-scroll">Scroll</div>
+    <!-- WAVE BOTTOM OF HERO -->
+    <div class="hero-wave">
+      <svg viewBox="0 0 1440 70" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,70 C360,0 1080,0 1440,70 L1440,70 L0,70Z" fill="#1C1C1A"/>
+      </svg>
+    </div>
+  </section>
+
+  <!-- STATS BANNER -->
+  <div class="stats-banner">
+    <div class="stats-grid">
+      <div class="stat-item reveal">
+        <div class="stat-num" data-target="18">18+</div>
+        <div class="stat-label">Years of Excellence</div>
+      </div>
+      <div class="stat-item reveal" style="transition-delay:0.1s">
+        <div class="stat-num" data-target="50">50+</div>
+        <div class="stat-label">Projects Delivered</div>
+      </div>
+      <div class="stat-item reveal" style="transition-delay:0.2s">
+        <div class="stat-num">100%</div>
+        <div class="stat-label">Direct Workforce</div>
+      </div>
+      <div class="stat-item reveal" style="transition-delay:0.3s">
+        <div class="stat-num">£M+</div>
+        <div class="stat-label">Value Delivered</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CURVE: charcoal → dark -->
+  <div class="curve" style="background:var(--charcoal)">
+    <svg viewBox="0 0 1440 60" preserveAspectRatio="none" style="height:56px">
+      <path d="M0,0 C480,60 960,60 1440,0 L1440,60 L0,60Z" fill="#0E0E0C"/>
+    </svg>
+  </div>
+
+  <!-- PROJECTS PREVIEW -->
+  <section id="projects-preview">
+    <div class="section-header reveal">
+      <div>
+        <div class="section-label">Portfolio</div>
+        <h2 class="section-h2">Exceptional <em>Projects</em></h2>
+      </div>
+      <a href="projects.html" class="btn-primary" style="white-space:nowrap">
+        All Projects
+        <svg width="16" height="10" viewBox="0 0 16 10" fill="none"><path d="M11 1L15 5L11 9M1 5H15" stroke="currentColor" stroke-width="1.2"/></svg>
+      </a>
+    </div>
+    <div class="projects-grid">
+      <a href="projects.html" class="project-card reveal-left" style="transition-delay:0.1s">
+        <img src="https://cdn.prod.website-files.com/685156a56eb5f8ca77f40916/68776b9ab2d44e7779d18d5e_chelsea-staphanie_thumbail.webp" alt="Chelsea">
+        <div class="project-overlay">
+          <div class="project-location">Chelsea</div>
+          <div class="project-name">Penthouse</div>
+          <div class="project-designer">Stéphane Parmentier · £3.25M</div>
+        </div>
+      </a>
+      <a href="projects.html" class="project-card reveal-right" style="transition-delay:0.2s">
+        <img src="https://cdn.prod.website-files.com/685156a56eb5f8ca77f40916/687763ba4a3fcb75e0f73d98_belgravia_thumbnail.webp" alt="Belgravia">
+        <div class="project-overlay">
+          <div class="project-location">Belgravia</div>
+          <div class="project-name">Pied-à-Terre</div>
+          <div class="project-designer">Studio Ashby · £2.25M</div>
+        </div>
+      </a>
+      <a href="projects.html" class="project-card reveal-right" style="transition-delay:0.3s">
+        <img src="https://cdn.prod.website-files.com/685156a56eb5f8ca77f40916/68778335efb83d620f6818fa_kensington-elicyon_thumbnail.webp" alt="Kensington">
+        <div class="project-overlay">
+          <div class="project-location">Kensington</div>
+          <div class="project-name">Grade II Listed</div>
+          <div class="project-designer">Elicyon · £3M</div>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- CURVE: dark → charcoal -->
+  <div class="curve" style="background:var(--dark)">
+    <svg viewBox="0 0 1440 60" preserveAspectRatio="none" style="height:56px">
+      <path d="M0,60 C720,0 1440,60 1440,60 L1440,60 L0,60Z" fill="#1C1C1A"/>
+    </svg>
+  </div>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="about-images reveal-left">
+      <img class="about-img-main" src="https://cdn.prod.website-files.com/685156a56eb5f8ca77f408f2/6851798d28ec98b7efec106d_ldb-home-page-image-1.webp" alt="LDB staircase">
+      <img class="about-img-accent" src="https://cdn.prod.website-files.com/685156a56eb5f8ca77f40916/69240c75eb4402a604ee7899_ldb_team.webp" alt="LDB Team">
+      <div class="about-year">2007</div>
+    </div>
+    <div class="about-text reveal-right">
+      <div class="section-label">About LDB</div>
+      <h2 class="section-h2" style="margin-bottom:30px">The Leader in<br><em>Super-Prime</em><br>Construction</h2>
+      <p>LDB Construction was founded by Liam Birch in 2007. We are deeply committed to the business of building — working locally and internationally to construct the highest quality homes.</p>
+      <p>Our direct team, led by Managing Director Heath Adamson, offers a highly customisable service, facilitating in-depth discussions with global clients and their design teams to fully realise the goals of each project.</p>
+      <p>The company is owner-run, developed ethically and responsibly from the ground up without external investment. With our direct team of highly skilled in-house tradesmen, LDB has a significant edge over others who rely on casual labour.</p>
+      <a href="#contact" class="btn-primary" style="margin-top:10px">
+        Enquire Now
+        <svg width="16" height="10" viewBox="0 0 16 10" fill="none"><path d="M11 1L15 5L11 9M1 5H15" stroke="currentColor" stroke-width="1.2"/></svg>
+      </a>
+    </div>
+  </section>
+
+  <!-- VIDEO -->
+  <div class="video-section">
+    <video autoplay muted loop playsinline>
+      <source src="https://cdn.prod.website-files.com/685156a56eb5f8ca77f408f2%2F692425d673fc50f074d194d5_LDB%20Website%20Video%20for%20Bernhardt_mp4.mp4" type="video/mp4">
+    </video>
+    <div class="video-overlay">
+      <div class="section-label" style="justify-content:center;margin-bottom:20px">Since 2007</div>
+      <h2>Built on <em style="font-style:italic;color:var(--gold-light)">Mutual Respect</em><br>&amp; Transparency</h2>
+      <p>LDB's commitment to our clients and their homes is unmatched. We build relationships as enduring as the homes we create.</p>
+    </div>
+  </div>
+
+  <!-- CURVE: dark → dark (wave between video and values) -->
+  <div class="curve" style="background:var(--dark)">
+    <svg viewBox="0 0 1440 60" preserveAspectRatio="none" style="height:56px">
+      <path d="M0,0 C360,60 1080,60 1440,0 L1440,60 L0,60Z" fill="#0E0E0C"/>
+    </svg>
+  </div>
+
+  <!-- VALUES -->
+  <section id="values">
+    <div class="reveal">
+      <div class="section-label">Our Values</div>
+      <h2 class="section-h2">Principles That<br><em>Define Us</em></h2>
+    </div>
+    <div class="values-layout">
+      <div>
+        <div class="value-block reveal" style="transition-delay:0.1s">
+          <div class="value-num">01</div>
+          <svg class="value-icon" viewBox="0 0 40 40" fill="none">
+            <circle cx="20" cy="16" r="8" stroke="currentColor" stroke-width="1.2"/>
+            <path d="M8 36c0-6.627 5.373-12 12-12h0c6.627 0 12 5.373 12 12" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+          </svg>
+          <h3 class="value-title">Workplace Wellbeing</h3>
+          <p class="value-desc">The mental and physical wellbeing of our staff is an unyielding priority. We provide access to training and education, encouraging our staff to further their professional development through the Chartered Institution of Building.</p>
+        </div>
+        <div class="value-block reveal" style="margin-top:24px;transition-delay:0.2s">
+          <div class="value-num">02</div>
+          <svg class="value-icon" viewBox="0 0 40 40" fill="none">
+            <path d="M20 4C11.163 4 4 11.163 4 20s7.163 16 16 16 16-7.163 16-16S28.837 4 20 4z" stroke="currentColor" stroke-width="1.2"/>
+            <path d="M20 12v8l6 4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+          </svg>
+          <h3 class="value-title">Environmental Responsibility</h3>
+          <p class="value-desc">LDB Construction takes continuous, practical steps towards our goal of becoming London's greenest super-prime residential contractor.</p>
+          <ul class="value-list">
+            <li>1,000 new trees planted every year via Ecologi</li>
+            <li>500,000 plastic rubble bags saved annually with reusable alternatives</li>
+            <li>75% of site operatives cycle to work via LDB's Bike Scheme</li>
+            <li>5% reclaimed materials target on all projects</li>
+            <li>Prioritising recycled content in all purchasing</li>
+          </ul>
+        </div>
+      </div>
+      <div class="values-img-wrapper">
+        <img class="values-img reveal-right" src="https://cdn.prod.website-files.com/685156a56eb5f8ca77f408f2/6851798d3bbb440224270cf2_ldb-values-homepage.webp" alt="Values">
+      </div>
+    </div>
+  </section>
+
+  <!-- CURVE: dark → charcoal -->
+  <div class="curve" style="background:var(--dark)">
+    <svg viewBox="0 0 1440 60" preserveAspectRatio="none" style="height:56px">
+      <path d="M0,0 C480,60 960,60 1440,0 L1440,60 L0,60Z" fill="#1C1C1A"/>
+    </svg>
+  </div>
+
+  <!-- PROPERTY CARE -->
+  <section id="property-care">
+    <div class="property-care-img reveal-left">
+      <img src="https://cdn.prod.website-files.com/685156a56eb5f8ca77f408f2/6851798d2a237547dae129a6_ldbn-property-care.webp" alt="Property Care">
+    </div>
+    <div class="property-care-content reveal-right">
+      <div class="section-label">Service</div>
+      <h2 class="section-h2">Property <em>Care</em></h2>
+      <p>LDB's property care division channels our direct team of skilled in-house tradesmen to attend to small building works or alterations, continuing our client relationships after project completion.</p>
+      <p>We are equipped to handle a wide variety of tasks, big and small, with minimal lead time. We understand how to work in furnished and occupied high-value homes, always prioritising discretion and confidentiality.</p>
+      <div class="features-grid">
+        <div class="feature-item">
+          <strong>Discretion</strong>
+          <span>Confidential service for occupied, high-value homes</span>
+        </div>
+        <div class="feature-item">
+          <strong>Minimal Lead Time</strong>
+          <span>Rapid deployment of skilled in-house tradesmen</span>
+        </div>
+        <div class="feature-item">
+          <strong>Comprehensive</strong>
+          <span>Wide variety of tasks, big and small</span>
+        </div>
+        <div class="feature-item">
+          <strong>Continuity</strong>
+          <span>Continued relationship after project completion</span>
+        </div>
+      </div>
+      <a href="#contact" class="btn-primary" style="margin-top:40px">
+        Enquire About Care
+        <svg width="16" height="10" viewBox="0 0 16 10" fill="none"><path d="M11 1L15 5L11 9M1 5H15" stroke="currentColor" stroke-width="1.2"/></svg>
+      </a>
+    </div>
+  </section>
+
+  <!-- CURVE: charcoal → charcoal press section -->
+  <div class="curve" style="background:var(--charcoal)">
+    <svg viewBox="0 0 1440 60" preserveAspectRatio="none" style="height:48px">
+      <path d="M0,60 C360,0 1080,0 1440,60 L1440,60 L0,60Z" fill="#1C1C1A"/>
+    </svg>
+  </div>
+
+  <!-- PRESS -->
+  <div class="press-section">
+    <div class="section-label reveal">Press</div>
+    <div class="press-grid">
+      <div class="press-item reveal" style="transition-delay:0.1s">
+        <div class="press-pub">House &amp; Garden</div>
+        <div class="press-title">Elicyon — Featured Project, March 2025</div>
+      </div>
+      <div class="press-item reveal" style="transition-delay:0.2s">
+        <div class="press-pub">Architectural Digest</div>
+        <div class="press-title">Studio Ashby — A Vision of Refined Elegance</div>
+      </div>
+      <div class="press-item reveal" style="transition-delay:0.3s">
+        <div class="press-pub">Architectural Digest</div>
+        <div class="press-title">Beata Heuman — Colour &amp; Character</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CURVE: charcoal → dark -->
+  <div class="curve" style="background:var(--charcoal)">
+    <svg viewBox="0 0 1440 60" preserveAspectRatio="none" style="height:56px">
+      <path d="M0,0 C720,60 1440,0 1440,0 L1440,60 L0,60Z" fill="#0E0E0C"/>
+    </svg>
+  </div>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="contact-text reveal-left">
+      <div class="section-label">Get In Touch</div>
+      <h2>Begin Your <em style="font-family:var(--serif);font-style:italic;color:var(--gold-light)">Project</em></h2>
+      <p>We would love to discuss your project. Our team is ready to explore how LDB can bring your vision to life with the precision and quality you deserve.</p>
+      <div class="contact-details">
+        <div class="contact-item">
+          <svg class="contact-icon" viewBox="0 0 24 24" fill="none"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z" stroke="currentColor" stroke-width="1.2" fill="none"/></svg>
+          <div>
+            <div class="contact-item-label">Address</div>
+            <div class="contact-item-val">9 Woodman Works, 204 Durnsford Road,<br>London SW19 8DR</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <svg class="contact-icon" viewBox="0 0 24 24" fill="none"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" stroke="currentColor" stroke-width="1.2" fill="none"/></svg>
+          <div>
+            <div class="contact-item-label">Email</div>
+            <div class="contact-item-val"><a href="mailto:info@ldbconstruction.com">info@ldbconstruction.com</a></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <svg class="contact-icon" viewBox="0 0 24 24" fill="none"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" stroke="currentColor" stroke-width="1.2" fill="none"/></svg>
+          <div>
+            <div class="contact-item-label">Phone</div>
+            <div class="contact-item-val"><a href="tel:+442033270303">+44 (0)20 3327 0303</a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="reveal-right">
+      <div class="section-label">Send a Message</div>
+      <div class="contact-form" id="contactForm">
+        <div class="form-row">
+          <div class="form-group">
+            <label>First Name</label>
+            <input type="text" placeholder="Your first name">
+          </div>
+          <div class="form-group">
+            <label>Last Name</label>
+            <input type="text" placeholder="Your last name">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Email Address</label>
+          <input type="email" placeholder="your@email.com">
+        </div>
+        <div class="form-group">
+          <label>Enquiry Type</label>
+          <select>
+            <option value="">Select an option</option>
+            <option>New Construction Project</option>
+            <option>Renovation / Refurbishment</option>
+            <option>Property Care</option>
+            <option>General Enquiry</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Project Location</label>
+          <input type="text" placeholder="e.g. Mayfair, Knightsbridge...">
+        </div>
+        <div class="form-group">
+          <label>Message</label>
+          <textarea placeholder="Tell us about your project..."></textarea>
+        </div>
+        <button class="btn-submit" type="button" onclick="submitForm()">Send Enquiry</button>
+        <div id="formSuccess" style="display:none;color:var(--gold);font-size:0.8rem;letter-spacing:0.1em;padding:12px 0;">Thank you — we'll be in touch shortly.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CURVE: dark → charcoal footer -->
+  <div class="curve" style="background:var(--dark)">
+    <svg viewBox="0 0 1440 60" preserveAspectRatio="none" style="height:48px">
+      <path d="M0,60 C480,0 960,0 1440,60 L1440,60 L0,60Z" fill="#1C1C1A"/>
+    </svg>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div>
+      <div class="footer-logo">LDB</div>
+      <p class="footer-tagline">The leader in super-prime London construction since 2007. Precision, discretion, uncompromising quality.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Pages</h4>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#values">Values</a></li>
+        <li><a href="#property-care">Property Care</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Legal</h4>
+      <ul>
+        <li><a href="#">Accreditations</a></li>
+        <li><a href="#">Terms &amp; Conditions</a></li>
+        <li><a href="#">Email Disclaimer</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Social</h4>
+      <ul>
+        <li><a href="https://www.instagram.com/ldb_construction/" target="_blank">Instagram</a></li>
+        <li><a href="https://www.linkedin.com/company/ldb-construction-uk" target="_blank">LinkedIn</a></li>
+      </ul>
+    </div>
+  </footer>
+  <div class="footer-bottom">
+    <p>© 2025 LDB Construction</p>
+    <div class="social-links">
+      <a href="https://www.instagram.com/ldb_construction/" target="_blank">Instagram</a>
+      <a href="https://www.linkedin.com/company/ldb-construction-uk" target="_blank">LinkedIn</a>
+    </div>
+  </div>
+
+  <script>
+    // Nav scroll
+    const nav = document.getElementById('mainNav');
+    window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 60));
+
+    // Hero slider
+    const slides = document.querySelectorAll('.hero-slide');
+    const dots = document.querySelectorAll('.hero-dot');
+    let current = 0;
+    function nextSlide() {
+      slides[current].classList.remove('active');
+      dots[current].classList.remove('active');
+      current = (current + 1) % slides.length;
+      slides[current].classList.add('active');
+      dots[current].classList.add('active');
+    }
+    setInterval(nextSlide, 6000);
+    dots.forEach((dot, i) => dot.addEventListener('click', () => {
+      slides[current].classList.remove('active');
+      dots[current].classList.remove('active');
+      current = i;
+      slides[current].classList.add('active');
+      dots[current].classList.add('active');
+    }));
+
+    // Scroll reveal
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => observer.observe(el));
+
+    // Hamburger
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('open');
+      mobileMenu.classList.toggle('open');
+    });
+    document.querySelectorAll('.mobile-link').forEach(a => a.addEventListener('click', () => {
+      hamburger.classList.remove('open');
+      mobileMenu.classList.remove('open');
+    }));
+
+    // Active nav
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-links a[data-section]');
+    window.addEventListener('scroll', () => {
+      let active = '';
+      sections.forEach(s => { if (window.scrollY >= s.offsetTop - 120) active = s.id; });
+      navLinks.forEach(a => a.classList.toggle('active', a.getAttribute('data-section') === active));
+    });
+
+    // Form
+    function submitForm() {
+      document.getElementById('formSuccess').style.display = 'block';
+      document.querySelectorAll('#contactForm input, #contactForm textarea, #contactForm select').forEach(el => el.value = '');
+    }
+
+    // Count-up
+    function countUp(el, target, suffix) {
+      let n = 0; const step = target / 60;
+      const timer = setInterval(() => {
+        n = Math.min(n + step, target);
+        el.textContent = Math.round(n) + suffix;
+        if (n >= target) clearInterval(timer);
+      }, 20);
+    }
+    const statsObs = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.querySelectorAll('.stat-num[data-target]').forEach(n => {
+            const t = parseInt(n.getAttribute('data-target'));
+            if (t) countUp(n, t, '+');
+          });
+          statsObs.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.3 });
+    const statsBanner = document.querySelector('.stats-banner');
+    if (statsBanner) statsObs.observe(statsBanner);
+
+    // Parallax hero
+    window.addEventListener('scroll', () => {
+      const scrolled = window.scrollY;
+      document.querySelectorAll('.hero-slide').forEach(s => {
+        s.style.transform = `translateY(${scrolled * 0.3}px)`;
+      });
+    });
+  </script>
+</body>
+</html>
