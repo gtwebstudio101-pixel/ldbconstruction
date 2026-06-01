@@ -135,7 +135,7 @@
     .values-img-wrapper { padding-top: 76px; }
     .values-img { width: 100%; aspect-ratio: 4/3; object-fit: cover; border-radius: 48% 52% 38% 62% / 44% 44% 56% 56%; box-shadow: 0 24px 60px rgba(0,0,0,0.28); }
 
-    /* REVIEWS - Dotted pagination only, no horizontal scrollbar */
+    /* REVIEWS */
     #reviews { padding: 110px 60px; background: var(--dark-grey); overflow: hidden; }
     #reviews::before { content: ''; position: absolute; top: -50px; left: -40px; width: 360px; height: 360px; background: radial-gradient(ellipse, rgba(196,151,90,0.04) 0%, transparent 65%); pointer-events: none; }
     .reviews-container { max-width: 1100px; margin: 0 auto; position: relative; z-index: 1; }
@@ -144,7 +144,6 @@
     .google-icon-sm { width: 17px; height: 17px; }
     .google-rating-text { font-size: 0.66rem; color: rgba(255,255,255,0.58); letter-spacing: 0.08em; }
     .google-rating-text strong { color: var(--gold); font-size: 0.86rem; }
-    /* Desktop: 3 column grid */
     .reviews-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; transition: all 0.3s ease; }
     .review-card { padding: 32px 28px; background: rgba(255,255,255,0.024); border: 1px solid rgba(196,151,90,0.09); border-radius: 20px; transition: border-color 0.4s, background 0.4s; }
     .review-card:hover { border-color: rgba(196,151,90,0.26); background: rgba(196,151,90,0.025); }
@@ -155,13 +154,11 @@
     .review-meta { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 5px; }
     .review-author-name { font-size: 0.66rem; font-weight: 500; color: rgba(255,255,255,0.66); letter-spacing: 0.12em; text-transform: uppercase; }
     .review-time-ago { font-size: 0.6rem; color: rgba(255,255,255,0.26); }
-    /* Dotted pagination - no horizontal scrollbar */
     .reviews-dots-nav { display: flex; align-items: center; justify-content: center; gap: 12px; margin-top: 40px; }
     .review-dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.25); cursor: pointer; transition: all 0.3s ease; border: none; padding: 0; }
     .review-dot.active { background: var(--gold); transform: scale(1.4); }
     .review-dot:hover { background: var(--gold-light); transform: scale(1.2); }
 
-    /* Mobile: 1 review at a time with dotted pagination */
     @media (max-width: 768px) {
       .reviews-grid { grid-template-columns: 1fr; gap: 0; }
       .review-card { margin: 0; }
@@ -254,7 +251,7 @@
     .footer-top { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr 1.2fr; gap: 42px; margin-bottom: 48px; }
     .footer-logo { font-family: var(--serif); font-size: 1.45rem; font-weight: 300; letter-spacing: 0.25em; color: rgba(255,255,255,0.88); text-transform: uppercase; margin-bottom: 12px; }
     .footer-tagline { font-size: 0.7rem; color: rgba(255,255,255,0.28); line-height: 1.9; letter-spacing: 0.04em; }
-    .footer-social-row { display: flex; gap: 10px; margin-top: 22px; }
+    .footer-social-row { display: flex; gap: 10px; margin-top: 22px; display: none; } /* Hidden - removing duplicate icons */
     .footer-col h4 { font-size: 0.56rem; letter-spacing: 0.34em; text-transform: uppercase; color: var(--gold-muted); margin-bottom: 18px; font-weight: 500; }
     .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 11px; }
     .footer-col ul a, .footer-col .press-item { color: rgba(255,255,255,0.36); text-decoration: none; font-size: 0.74rem; letter-spacing: 0.07em; transition: color 0.3s; display: block; }
@@ -269,9 +266,6 @@
     .footer-credit { font-size: 0.66rem; color: rgba(255,255,255,0.2); letter-spacing: 0.06em; }
     .footer-credit a { color: rgba(196,151,90,0.55); text-decoration: none; transition: color 0.3s; }
     .footer-credit a:hover { color: var(--gold); }
-    .social-icon-btn { width: 34px; height: 34px; border-radius: 50%; border: 1px solid rgba(196,151,90,0.18); display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.36); transition: all 0.3s; text-decoration: none; }
-    .social-icon-btn:hover { border-color: var(--gold); color: var(--gold); background: rgba(196,151,90,0.07); }
-    .social-icon-btn svg { width: 14px; height: 14px; }
 
     @keyframes fadeDown { from{opacity:0;transform:translateY(-14px)}to{opacity:1;transform:translateY(0)} }
     @keyframes fadeUp   { from{opacity:0;transform:translateY(26px)} to{opacity:1;transform:translateY(0)} }
@@ -460,7 +454,7 @@
     </div>
   </section>
 
-  <!-- REVIEWS - Dotted pagination only -->
+  <!-- REVIEWS -->
   <section id="reviews">
     <div class="reviews-container">
       <div class="reviews-header-row reveal">
@@ -532,16 +526,24 @@
     </div>
   </section>
 
-  <!-- FOOTER -->
+  <!-- FOOTER - Instagram & LinkedIn logos removed from bottom, kept only in Social column -->
   <footer>
     <div class="footer-top">
-      <div><div class="footer-logo">LDB</div><p class="footer-tagline">The leader in super-prime London construction since 2007. Precision, discretion, uncompromising quality.</p><div class="footer-social-row"><a href="https://www.instagram.com/ldb_construction/" target="_blank" rel="noopener" class="social-icon-btn" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="5" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></a><a href="https://www.linkedin.com/company/ldb-construction-uk" target="_blank" rel="noopener" class="social-icon-btn" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="4" stroke="currentColor" stroke-width="1.5"/><path d="M7 10v7M7 7v.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M11 17v-4a2 2 0 014 0v4M11 10v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></a></div></div>
+      <div>
+        <div class="footer-logo">LDB</div>
+        <p class="footer-tagline">The leader in super-prime London construction since 2007. Precision, discretion, uncompromising quality.</p>
+      </div>
       <div class="footer-col"><h4>Pages</h4><ul><li><a href="index.html">Home</a></li><li><a href="projects.html">Projects</a></li><li><a href="index.html#about">About</a></li><li><a href="index.html#values">Values</a></li><li><a href="index.html#property-care">Property Care</a></li><li><a href="index.html#contact">Contact</a></li></ul></div>
       <div class="footer-col"><h4>Legal</h4><ul><li><a href="#">Accreditations</a></li><li><a href="#">Terms &amp; Conditions</a></li><li><a href="#">Email Disclaimer</a></li></ul></div>
       <div class="footer-col"><h4>Social</h4><ul><li><a href="https://www.instagram.com/ldb_construction/" target="_blank">Instagram</a></li><li><a href="https://www.linkedin.com/company/ldb-construction-uk" target="_blank">LinkedIn</a></li></ul></div>
       <div class="footer-col"><h4>Press</h4><ul><li><a href="https://www.houseandgarden.co.uk/gallery/elicyon-london-house" target="_blank" rel="noopener" class="press-item"><span class="press-pub">House &amp; Garden</span><span class="press-title-footer">Elicyon — Featured Project</span><span class="press-meta">March 2025</span></a></li><li><a href="https://www.architecturaldigest.com/gallery/tour-a-london-pied-a-terre-thats-a-dazzling-foray-into-maximalism" target="_blank" rel="noopener" class="press-item"><span class="press-pub">ARCHITECTURAL DIGEST</span><span class="press-title-footer">Studio Ashby — A Vision of Refined Elegance</span></a></li><li><a href="https://www.architecturaldigest.com/gallery/beata-heuman-shows-her-serious-side-in-a-landmark-london-town-house" target="_blank" rel="noopener" class="press-item"><span class="press-pub">ARCHITECTURAL DIGEST</span><span class="press-title-footer">Beata Heuman — Colour &amp; Character</span></a></li></ul></div>
     </div>
-    <div class="footer-bottom"><div class="footer-bottom-left"><p>© 2026 LDB Construction</p><p class="footer-credit">Created by <a href="https://gtwebstudio.site" target="_blank" rel="noopener">gtwebstudio.site</a></p></div><div class="footer-social-row"><a href="https://www.instagram.com/ldb_construction/" target="_blank" rel="noopener" class="social-icon-btn" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="5" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></a><a href="https://www.linkedin.com/company/ldb-construction-uk" target="_blank" rel="noopener" class="social-icon-btn" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="4" stroke="currentColor" stroke-width="1.5"/><path d="M7 10v7M7 7v.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M11 17v-4a2 2 0 014 0v4M11 10v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></a></div></div>
+    <div class="footer-bottom">
+      <div class="footer-bottom-left">
+        <p>© 2026 LDB Construction</p>
+        <p class="footer-credit">Created by <a href="https://gtwebstudio.site" target="_blank" rel="noopener">gtwebstudio.site</a></p>
+      </div>
+    </div>
   </footer>
 
   <!-- LIGHTBOX -->
@@ -593,7 +595,6 @@
 
     function starsSVG(n) { return Array.from({length:5},(_,i)=>`<svg class="${i<n?'star-gold':'star-grey'}" viewBox="0 0 20 20" fill="currentColor" style="width:12px;height:12px"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>`).join(''); }
 
-    // Pagination logic: desktop 3 per page, mobile 1 per page
     let currentPage = 0;
     let totalPages = 0;
 
@@ -622,7 +623,6 @@
         </div>
       `).join('');
       
-      // Render dots
       const dotsNav = document.getElementById('reviewsDotsNav');
       dotsNav.innerHTML = '';
       for (let i = 0; i < totalPages; i++) {
