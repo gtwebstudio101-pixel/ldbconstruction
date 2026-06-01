@@ -135,7 +135,7 @@
     .values-img-wrapper { padding-top: 76px; }
     .values-img { width: 100%; aspect-ratio: 4/3; object-fit: cover; border-radius: 48% 52% 38% 62% / 44% 44% 56% 56%; box-shadow: 0 24px 60px rgba(0,0,0,0.28); }
 
-    /* REVIEWS */
+    /* REVIEWS - Dotted pagination only, no horizontal scrollbar */
     #reviews { padding: 110px 60px; background: var(--dark-grey); overflow: hidden; }
     #reviews::before { content: ''; position: absolute; top: -50px; left: -40px; width: 360px; height: 360px; background: radial-gradient(ellipse, rgba(196,151,90,0.04) 0%, transparent 65%); pointer-events: none; }
     .reviews-container { max-width: 1100px; margin: 0 auto; position: relative; z-index: 1; }
@@ -144,7 +144,8 @@
     .google-icon-sm { width: 17px; height: 17px; }
     .google-rating-text { font-size: 0.66rem; color: rgba(255,255,255,0.58); letter-spacing: 0.08em; }
     .google-rating-text strong { color: var(--gold); font-size: 0.86rem; }
-    .reviews-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 18px; }
+    /* Desktop: 3 column grid */
+    .reviews-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; transition: all 0.3s ease; }
     .review-card { padding: 32px 28px; background: rgba(255,255,255,0.024); border: 1px solid rgba(196,151,90,0.09); border-radius: 20px; transition: border-color 0.4s, background 0.4s; }
     .review-card:hover { border-color: rgba(196,151,90,0.26); background: rgba(196,151,90,0.025); }
     .review-stars-row { display: flex; gap: 2px; margin-bottom: 14px; }
@@ -154,13 +155,16 @@
     .review-meta { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 5px; }
     .review-author-name { font-size: 0.66rem; font-weight: 500; color: rgba(255,255,255,0.66); letter-spacing: 0.12em; text-transform: uppercase; }
     .review-time-ago { font-size: 0.6rem; color: rgba(255,255,255,0.26); }
+    /* Dotted pagination - no horizontal scrollbar */
     .reviews-dots-nav { display: flex; align-items: center; justify-content: center; gap: 12px; margin-top: 40px; }
-    .review-dot { width: 6px; height: 6px; border-radius: 50%; background: rgba(255,255,255,0.2); cursor: pointer; transition: all 0.3s ease; border: none; padding: 0; }
-    .review-dot.active { background: var(--gold); transform: scale(1.6); width: 8px; height: 8px; }
+    .review-dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.25); cursor: pointer; transition: all 0.3s ease; border: none; padding: 0; }
+    .review-dot.active { background: var(--gold); transform: scale(1.4); }
+    .review-dot:hover { background: var(--gold-light); transform: scale(1.2); }
 
-    /* MOBILE: 1 review per page */
+    /* Mobile: 1 review at a time with dotted pagination */
     @media (max-width: 768px) {
-      .reviews-grid { grid-template-columns: 1fr; }
+      .reviews-grid { grid-template-columns: 1fr; gap: 0; }
+      .review-card { margin: 0; }
     }
 
     /* PROPERTY CARE */
@@ -195,9 +199,9 @@
     .fp-view-btn { margin-top: 12px; display: inline-flex; align-items: center; font-size: 0.58rem; letter-spacing: 0.26em; text-transform: uppercase; color: var(--gold); border: 1px solid rgba(196,151,90,0.48); padding: 7px 16px; opacity: 0; transform: translateY(7px); transition: opacity 0.35s 0.04s, transform 0.35s 0.04s, background 0.3s, color 0.3s; width: fit-content; border-radius: 50px; }
     .fp-card:hover .fp-view-btn { opacity: 1; transform: translateY(0); }
     .fp-view-btn:hover { background: var(--gold); color: var(--deeper); }
-    .fp-dots-row { display: flex; justify-content: center; gap: 7px; margin-top: 26px; }
-    .fp-dot { width: 6px; height: 6px; border-radius: 50%; background: rgba(255,255,255,0.14); border: none; cursor: pointer; transition: all 0.3s; padding: 0; }
-    .fp-dot.active { background: var(--gold); transform: scale(1.6); width: 8px; height: 8px; }
+    .fp-dots-row { display: flex; justify-content: center; gap: 10px; margin-top: 26px; }
+    .fp-dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.2); border: none; cursor: pointer; transition: all 0.3s; padding: 0; }
+    .fp-dot.active { background: var(--gold); transform: scale(1.3); }
 
     /* LIGHTBOX */
     .lightbox { position: fixed; inset: 0; z-index: 2000; background: rgba(10,8,6,0.97); display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity 0.4s; }
@@ -456,7 +460,7 @@
     </div>
   </section>
 
-  <!-- REVIEWS - Google Rating changed to ★ 5.0, mobile shows 1 review per page -->
+  <!-- REVIEWS - Dotted pagination only -->
   <section id="reviews">
     <div class="reviews-container">
       <div class="reviews-header-row reveal">
@@ -499,7 +503,7 @@
       <div class="fp-card" onclick="openLightbox(4)"><img src="https://cdn.prod.website-files.com/685156a56eb5f8ca77f40916/6877833a193934bad750e3c9_kensington-elicyon_slide_01.webp" alt="Knightsbridge"><div class="fp-overlay"><div class="fp-area">Knightsbridge</div><div class="fp-name">Knightsbridge Apartment</div><div class="fp-meta"><div class="fp-meta-item"><span>Type</span>Luxury Apartment</div></div><div class="fp-view-btn">View Project</div></div></div>
       <div class="fp-card" onclick="openLightbox(5)"><img src="https://cdn.prod.website-files.com/685156a56eb5f8ca77f408f2/685287ac2488289c36b8486f_slide%3D3.webp" alt="Wentworth Estate"><div class="fp-overlay"><div class="fp-area">Wentworth</div><div class="fp-name">Wentworth Estate</div><div class="fp-meta"><div class="fp-meta-item"><span>Duration</span>72 Weeks</div></div><div class="fp-view-btn">View Project</div></div></div>
     </div>
-    <div class="fp-dots-row" id="fpDotsRow"><button class="fp-dot active" data-index="0"></button><button class="fp-dot" data-index="1"></button><button class="fp-dot" data-index="2"></button><button class="fp-dot" data-index="3"></button><button class="fp-dot" data-index="4"></button><button class="fp-dot" data-index="5"></button></div>
+    <div class="fp-dots-row" id="fpDotsRow"></div>
   </section>
 
   <!-- CONTACT -->
@@ -575,7 +579,7 @@
       });
     });
 
-    // REVIEWS - responsive pages: 3 on desktop, 1 on mobile
+    // REVIEWS DATA
     const allReviews = [
       { name:'James H.', time:'5 years ago', stars:5, quote:'This company goes above and beyond to offer a white glove, worry free maintenance service. Their engineers are extremely polite, and very tidy. Highly recommended across all trades!' },
       { name:'Sarah M.', time:'2 years ago', stars:5, quote:'Exceptional craftsmanship on our Belgravia renovation. The attention to detail was remarkable. Minor delay on final snagging, but overall outstanding work from a truly professional team.' },
@@ -587,47 +591,89 @@
       { name:'Charlotte D.', time:'1 year ago', stars:5, quote:'Superb quality of finish throughout. The bespoke joinery is particularly outstanding. A minor scheduling issue arose mid-project but was resolved swiftly and professionally.' },
     ];
 
+    function starsSVG(n) { return Array.from({length:5},(_,i)=>`<svg class="${i<n?'star-gold':'star-grey'}" viewBox="0 0 20 20" fill="currentColor" style="width:12px;height:12px"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>`).join(''); }
+
+    // Pagination logic: desktop 3 per page, mobile 1 per page
+    let currentPage = 0;
+    let totalPages = 0;
+
     function getReviewsPerPage() {
       return window.innerWidth <= 768 ? 1 : 3;
     }
 
-    let rPage = 0;
-    let totalPages = Math.ceil(allReviews.length / getReviewsPerPage());
-
-    function starsSVG(n) { return Array.from({length:5},(_,i)=>`<svg class="${i<n?'star-gold':'star-grey'}" viewBox="0 0 20 20" fill="currentColor" style="width:12px;height:12px"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>`).join(''); }
-
     function renderReviews() {
       const perPage = getReviewsPerPage();
-      const newTotalPages = Math.ceil(allReviews.length / perPage);
-      if (rPage >= newTotalPages) rPage = newTotalPages - 1;
-      if (rPage < 0) rPage = 0;
-      totalPages = newTotalPages;
+      totalPages = Math.ceil(allReviews.length / perPage);
+      if (currentPage >= totalPages) currentPage = totalPages - 1;
+      if (currentPage < 0) currentPage = 0;
       
-      const start = rPage * perPage;
+      const start = currentPage * perPage;
+      const pageReviews = allReviews.slice(start, start + perPage);
+      
       const grid = document.getElementById('reviewsGrid');
-      grid.innerHTML = allReviews.slice(start, start + perPage).map(r => `<div class="review-card"><div class="review-stars-row">${starsSVG(r.stars)}</div><p class="review-quote">"${r.quote}"</p><div class="review-meta"><span class="review-author-name">${r.name}</span><span class="review-time-ago">${r.time}</span></div></div>`).join('');
+      grid.innerHTML = pageReviews.map(r => `
+        <div class="review-card">
+          <div class="review-stars-row">${starsSVG(r.stars)}</div>
+          <p class="review-quote">"${r.quote}"</p>
+          <div class="review-meta">
+            <span class="review-author-name">${r.name}</span>
+            <span class="review-time-ago">${r.time}</span>
+          </div>
+        </div>
+      `).join('');
       
+      // Render dots
       const dotsNav = document.getElementById('reviewsDotsNav');
       dotsNav.innerHTML = '';
       for (let i = 0; i < totalPages; i++) {
         const dot = document.createElement('button');
-        dot.className = 'review-dot' + (i === rPage ? ' active' : '');
-        dot.addEventListener('click', () => { rPage = i; renderReviews(); });
+        dot.className = 'review-dot' + (i === currentPage ? ' active' : '');
+        dot.addEventListener('click', () => {
+          currentPage = i;
+          renderReviews();
+        });
         dotsNav.appendChild(dot);
       }
     }
-
+    
     renderReviews();
     window.addEventListener('resize', () => renderReviews());
 
-    // FP Dots
+    // Featured Projects Dots
     const fpTrack = document.getElementById('fpScrollTrack');
-    const fpDots = document.querySelectorAll('.fp-dot');
     const fpCards = document.querySelectorAll('.fp-card');
-    const cardWidth = () => fpCards[0].offsetWidth + 18;
-    function updateFpDots() { let idx = Math.round(fpTrack.scrollLeft / cardWidth()); idx = Math.max(0, Math.min(idx, fpDots.length - 1)); fpDots.forEach((d, j) => d.classList.toggle('active', j === idx)); }
+    const fpDotsRow = document.getElementById('fpDotsRow');
+    const totalFpCards = fpCards.length;
+    
+    function renderFpDots() {
+      fpDotsRow.innerHTML = '';
+      for (let i = 0; i < totalFpCards; i++) {
+        const dot = document.createElement('button');
+        dot.className = 'fp-dot' + (i === 0 ? ' active' : '');
+        dot.dataset.index = i;
+        dot.addEventListener('click', () => {
+          const cardWidth = fpCards[0].offsetWidth + 18;
+          fpTrack.scrollTo({ left: i * cardWidth, behavior: 'smooth' });
+        });
+        fpDotsRow.appendChild(dot);
+      }
+    }
+    renderFpDots();
+    
+    function updateFpDots() {
+      const cardWidth = fpCards[0].offsetWidth + 18;
+      let idx = Math.round(fpTrack.scrollLeft / cardWidth);
+      idx = Math.max(0, Math.min(idx, totalFpCards - 1));
+      const dots = document.querySelectorAll('.fp-dot');
+      dots.forEach((dot, j) => {
+        dot.classList.toggle('active', j === idx);
+      });
+    }
     fpTrack.addEventListener('scroll', updateFpDots);
-    fpDots.forEach(d => d.addEventListener('click', () => fpTrack.scrollTo({ left: parseInt(d.dataset.index) * cardWidth(), behavior: 'smooth' })));
+    window.addEventListener('resize', () => {
+      renderFpDots();
+      updateFpDots();
+    });
 
     // Reveal
     const observer = new IntersectionObserver(entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }), { threshold: 0.1 });
