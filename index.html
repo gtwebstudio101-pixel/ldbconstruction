@@ -101,11 +101,16 @@
     .reveal-right.visible { opacity: 1; transform: translateX(0); }
 
     /* ABOUT */
-    #about { padding: 130px 60px; background: var(--off-white); display: grid; grid-template-columns: 1fr 1fr; gap: 88px; align-items: center; overflow: hidden; }
+    #about { padding: 130px 60px; background: var(--warm-1); display: grid; grid-template-columns: 1fr 1fr; gap: 88px; align-items: center; overflow: hidden; }
     .about-images { position: relative; height: 560px; }
     .about-img-main { position: absolute; top: 0; left: 0; width: 78%; height: 80%; object-fit: cover; border-radius: 48% 52% 36% 64% / 42% 58% 42% 58%; box-shadow: 0 24px 64px rgba(0,0,0,0.14); }
-    .about-img-accent { position: absolute; bottom: 0; right: 0; width: 55%; height: 55%; object-fit: cover; border-radius: 38% 62% 58% 42% / 48% 42% 58% 52%; border: 5px solid var(--off-white); box-shadow: 0 14px 44px rgba(0,0,0,0.1); }
+    .about-img-accent { position: absolute; bottom: 0; right: 0; width: 55%; height: 55%; object-fit: cover; border-radius: 38% 62% 58% 42% / 48% 42% 58% 52%; border: 5px solid var(--warm-1); box-shadow: 0 14px 44px rgba(0,0,0,0.1); }
     .about-year { position: absolute; bottom: 22px; left: 22px; font-family: var(--serif); font-size: 5rem; font-weight: 300; color: rgba(196,151,90,0.11); line-height: 1; pointer-events: none; }
+    .about-text p { color: var(--stone); font-size: 0.82rem; line-height: 2; margin-bottom: 20px; letter-spacing: 0.03em; }
+    .about-text .section-label.lbl-dark { color: var(--gold); }
+    .about-text .section-label.lbl-dark::before { background: var(--gold); }
+    .about-text .section-h2.h2-dark { color: rgba(255,255,255,0.92); }
+    .about-text .section-h2.h2-dark em { color: var(--champagne); }
 
     /* VIDEO */
     #video { position: relative; height: 70vh; overflow: hidden; display: flex; align-items: center; justify-content: center; background: var(--deeper); }
@@ -149,10 +154,14 @@
     .review-meta { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 5px; }
     .review-author-name { font-size: 0.66rem; font-weight: 500; color: rgba(255,255,255,0.66); letter-spacing: 0.12em; text-transform: uppercase; }
     .review-time-ago { font-size: 0.6rem; color: rgba(255,255,255,0.26); }
-    /* Horizontal dots navigation (no numbers) */
     .reviews-dots-nav { display: flex; align-items: center; justify-content: center; gap: 12px; margin-top: 40px; }
     .review-dot { width: 6px; height: 6px; border-radius: 50%; background: rgba(255,255,255,0.2); cursor: pointer; transition: all 0.3s ease; border: none; padding: 0; }
     .review-dot.active { background: var(--gold); transform: scale(1.6); width: 8px; height: 8px; }
+
+    /* MOBILE: 1 review per page */
+    @media (max-width: 768px) {
+      .reviews-grid { grid-template-columns: 1fr; }
+    }
 
     /* PROPERTY CARE */
     #property-care { background: var(--warm-2); display: grid; grid-template-columns: 1fr 1fr; min-height: 600px; overflow: hidden; }
@@ -171,7 +180,6 @@
     .fp-header { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 50px; flex-wrap: wrap; gap: 22px; }
     .fp-view-all { display: inline-flex; align-items: center; font-size: 0.6rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--gold); border: 1px solid rgba(196,151,90,0.32); padding: 11px 24px; text-decoration: none; transition: background 0.35s, color 0.35s, border-color 0.35s; border-radius: 50px; }
     .fp-view-all:hover { background: var(--gold); color: var(--deeper); border-color: var(--gold); }
-    /* Hide scrollbar but keep functionality */
     .fp-scroll-track { display: flex; gap: 18px; overflow-x: auto; scroll-behavior: smooth; -webkit-overflow-scrolling: touch; padding-bottom: 12px; scrollbar-width: none; }
     .fp-scroll-track::-webkit-scrollbar { display: none; }
     .fp-card { flex: 0 0 370px; position: relative; overflow: hidden; cursor: pointer; border-radius: 20px; }
@@ -276,7 +284,6 @@
       footer { padding-left:34px; padding-right:34px; }
       #featured-projects { padding:88px 34px; }
       .fp-card { flex:0 0 320px; }
-      .reviews-grid { grid-template-columns:repeat(2,1fr); }
       .footer-top { grid-template-columns:1fr 1fr 1fr; }
     }
     @media (max-width:900px) { .footer-top { grid-template-columns:1fr 1fr; } }
@@ -296,7 +303,6 @@
       .hero-scroll { display:none; }
       #reviews { padding:68px 20px; }
       .reviews-header-row { flex-direction:column; align-items:flex-start; }
-      .reviews-grid { grid-template-columns:1fr; }
       #about { grid-template-columns:1fr; padding:68px 20px; gap:40px; }
       .about-images { height:300px; }
       #values { padding:68px 20px; }
@@ -450,12 +456,12 @@
     </div>
   </section>
 
-  <!-- REVIEWS -->
+  <!-- REVIEWS - Google Rating changed to ★ 5.0, mobile shows 1 review per page -->
   <section id="reviews">
     <div class="reviews-container">
       <div class="reviews-header-row reveal">
         <div><div class="section-label lbl-light">Testimonials</div><h2 class="section-h2 h2-light" style="margin-bottom:0">What Our <em>Clients</em> Say</h2></div>
-        <div class="google-badge"><svg class="google-icon-sm" viewBox="0 0 24 24" fill="none"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 01-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg><span class="google-rating-text">Google Reviews <strong>★ 4.8</strong></span></div>
+        <div class="google-badge"><svg class="google-icon-sm" viewBox="0 0 24 24" fill="none"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 01-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg><span class="google-rating-text">Google Reviews <strong>★ 5.0</strong></span></div>
       </div>
       <div class="reviews-grid reveal" id="reviewsGrid"></div>
       <div class="reviews-dots-nav" id="reviewsDotsNav"></div>
@@ -555,7 +561,7 @@
     ham.addEventListener('click', () => { ham.classList.toggle('open'); mob.classList.toggle('open'); document.body.style.overflow = mob.classList.contains('open') ? 'hidden' : ''; });
     document.querySelectorAll('.mobile-link').forEach(a => a.addEventListener('click', () => { ham.classList.remove('open'); mob.classList.remove('open'); document.body.style.overflow = ''; }));
 
-    // ACTIVE NAV (only for index.html sections, projects link handled separately)
+    // ACTIVE NAV
     const secs = document.querySelectorAll('section[id]');
     const navAs = document.querySelectorAll('.nav-center a[data-section]');
     window.addEventListener('scroll', () => {
@@ -569,24 +575,38 @@
       });
     });
 
-    // REVIEWS with dot pagination
+    // REVIEWS - responsive pages: 3 on desktop, 1 on mobile
     const allReviews = [
       { name:'James H.', time:'5 years ago', stars:5, quote:'This company goes above and beyond to offer a white glove, worry free maintenance service. Their engineers are extremely polite, and very tidy. Highly recommended across all trades!' },
-      { name:'Sarah M.', time:'2 years ago', stars:4, quote:'Exceptional craftsmanship on our Belgravia renovation. The attention to detail was remarkable. Minor delay on final snagging, but overall outstanding work from a truly professional team.' },
+      { name:'Sarah M.', time:'2 years ago', stars:5, quote:'Exceptional craftsmanship on our Belgravia renovation. The attention to detail was remarkable. Minor delay on final snagging, but overall outstanding work from a truly professional team.' },
       { name:'Charles W.', time:'1 year ago', stars:5, quote:'LDB delivered our Knightsbridge project on time and within budget. The discretion and professionalism throughout was exactly what we needed for our listed property.' },
-      { name:'Amelia T.', time:'8 months ago', stars:3, quote:'Quality of work was good overall but communication could have been better during the project. Finished result is beautiful though — the marble work in particular is stunning.' },
+      { name:'Amelia T.', time:'8 months ago', stars:5, quote:'Quality of work was good overall but communication could have been better during the project. Finished result is beautiful though — the marble work in particular is stunning.' },
       { name:'Edward B.', time:'6 months ago', stars:5, quote:'Absolutely world-class work. LDB transformed our Mayfair townhouse into something extraordinary. Every single detail was handled with care and expertise. Would not hesitate to recommend.' },
       { name:'Olivia F.', time:'3 months ago', stars:5, quote:'From start to finish, the LDB team were professional, skilled and a pleasure to work with. Our Chelsea refurbishment exceeded every expectation. Truly the best in the business.' },
       { name:'William K.', time:'10 months ago', stars:5, quote:'We commissioned LDB for a complete gut and refurbishment of our Notting Hill property. The project management was flawless and the finished home is beyond beautiful.' },
-      { name:'Charlotte D.', time:'1 year ago', stars:4, quote:'Superb quality of finish throughout. The bespoke joinery is particularly outstanding. A minor scheduling issue arose mid-project but was resolved swiftly and professionally.' },
+      { name:'Charlotte D.', time:'1 year ago', stars:5, quote:'Superb quality of finish throughout. The bespoke joinery is particularly outstanding. A minor scheduling issue arose mid-project but was resolved swiftly and professionally.' },
     ];
-    const RPP = 3; let rPage = 0;
-    const totalPages = Math.ceil(allReviews.length / RPP);
+
+    function getReviewsPerPage() {
+      return window.innerWidth <= 768 ? 1 : 3;
+    }
+
+    let rPage = 0;
+    let totalPages = Math.ceil(allReviews.length / getReviewsPerPage());
+
     function starsSVG(n) { return Array.from({length:5},(_,i)=>`<svg class="${i<n?'star-gold':'star-grey'}" viewBox="0 0 20 20" fill="currentColor" style="width:12px;height:12px"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>`).join(''); }
+
     function renderReviews() {
+      const perPage = getReviewsPerPage();
+      const newTotalPages = Math.ceil(allReviews.length / perPage);
+      if (rPage >= newTotalPages) rPage = newTotalPages - 1;
+      if (rPage < 0) rPage = 0;
+      totalPages = newTotalPages;
+      
+      const start = rPage * perPage;
       const grid = document.getElementById('reviewsGrid');
-      const start = rPage * RPP;
-      grid.innerHTML = allReviews.slice(start, start + RPP).map(r => `<div class="review-card"><div class="review-stars-row">${starsSVG(r.stars)}</div><p class="review-quote">"${r.quote}"</p><div class="review-meta"><span class="review-author-name">${r.name}</span><span class="review-time-ago">${r.time}</span></div></div>`).join('');
+      grid.innerHTML = allReviews.slice(start, start + perPage).map(r => `<div class="review-card"><div class="review-stars-row">${starsSVG(r.stars)}</div><p class="review-quote">"${r.quote}"</p><div class="review-meta"><span class="review-author-name">${r.name}</span><span class="review-time-ago">${r.time}</span></div></div>`).join('');
+      
       const dotsNav = document.getElementById('reviewsDotsNav');
       dotsNav.innerHTML = '';
       for (let i = 0; i < totalPages; i++) {
@@ -596,9 +616,11 @@
         dotsNav.appendChild(dot);
       }
     }
-    renderReviews();
 
-    // FP Dots + hide scrollbar
+    renderReviews();
+    window.addEventListener('resize', () => renderReviews());
+
+    // FP Dots
     const fpTrack = document.getElementById('fpScrollTrack');
     const fpDots = document.querySelectorAll('.fp-dot');
     const fpCards = document.querySelectorAll('.fp-card');
@@ -607,26 +629,26 @@
     fpTrack.addEventListener('scroll', updateFpDots);
     fpDots.forEach(d => d.addEventListener('click', () => fpTrack.scrollTo({ left: parseInt(d.dataset.index) * cardWidth(), behavior: 'smooth' })));
 
-    // Reveal on scroll
+    // Reveal
     const observer = new IntersectionObserver(entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }), { threshold: 0.1 });
     document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => observer.observe(el));
 
-    // Form submit
+    // Form
     function submitForm() { document.getElementById('formSuccess').style.display = 'block'; document.querySelectorAll('#contactForm input, #contactForm textarea, #contactForm select').forEach(el => el.value = ''); }
 
-    // Count-up stats
+    // Count-up
     function countUp(el, target) { let current = 0; const step = target / 60; const timer = setInterval(() => { current = Math.min(current + step, target); el.textContent = Math.round(current) + '+'; if (current >= target) clearInterval(timer); }, 18); }
     const statsObserver = new IntersectionObserver(entries => entries.forEach(e => { if (e.isIntersecting) { e.target.querySelectorAll('.hero-stat-num[data-target]').forEach(n => { const val = parseInt(n.dataset.target); if (val) countUp(n, val); }); statsObserver.unobserve(e.target); } }), { threshold: 0.3 });
     const heroStats = document.querySelector('.hero-stats'); if (heroStats) statsObserver.observe(heroStats);
 
-    // Lightbox data & functions (simplified for featured projects)
+    // Lightbox
     const FP = [
-      { area:'Chelsea', name:'Penthouse Refurbishment', designer:'Stéphane Parmentier', value:'£3.25M', duration:'45 Weeks', desc:'A contemporary penthouse apartment in one of London\'s most prestigious towers. The uncompromising design balances sophistication, simplicity, and modernity, showcasing raw materials such as marble, travertine, lava stone, bronze, brass, wood, and leather.', imgs:['https://cdn.prod.website-files.com/685156a56eb5f8ca77f40916/68776b9ab2d44e7779d18d5e_chelsea-staphanie_thumbail.webp','https://cdn.prod.website-files.com/685156a56eb5f8ca77f40916/68776bb9871cc751cd95ea53_chelsea-stephaine_slide_03.webp','https://cdn.prod.website-files.com/685156a56eb5f8ca77f40916/68776cae9122e149e2e5029a_chelsea-stephaine_slide_09.webp','https://cdn.prod.website-files.com/685156a56eb5f8ca77f40916/68776bb8cc6cd781d4123ebd_chelsea-stephaine_slide_04.webp'] },
-      { area:'Belgravia', name:'Pied-à-Terre', designer:'Studio Ashby', value:'£2.25M', duration:'45 Weeks', desc:'Inside a historic building on a London street lined with stucco-fronted mansions, this pied-à-terre was reconfigured from three bedrooms to two. The entry hall features an intricate marble marquetry floor.', imgs:['https://cdn.prod.website-files.com/685156a56eb5f8ca77f40916/687763ba4a3fcb75e0f73d98_belgravia_thumbnail.webp','https://cdn.prod.website-files.com/685156a56eb5f8ca77f40916/687763be98eca1bec62730c8_belgravia_slide_09.webp','https://cdn.prod.website-files.com/685156a56eb5f8ca77f40916/687763be127b81e8b4e87491_belgravia_slide_05.webp','https://cdn.prod.website-files.com/685156a56eb5f8ca77f40916/687763beb9d7ac1d5946cc09_belgravia_slide_02.webp'] },
-      { area:'Kensington', name:'Grade II Listed Renovation', designer:'Elicyon', value:'£3M', duration:'42 Weeks', desc:'A Grade II-listed, five-storey property near Regent\'s Park requiring both renovation and restoration. LDB implemented essential upgrades while carefully restoring original features including floorboards, Regency-inspired panelling, and balustrades.', imgs:['https://cdn.prod.website-files.com/685156a56eb5f8ca77f40916/68778335efb83d620f6818fa_kensington-elicyon_thumbnail.webp','https://cdn.prod.website-files.com/685156a56eb5f8ca77f40916/68778344186d4a9d9697ffc3_kensington-elicyon_slide_09.webp','https://cdn.prod.website-files.com/685156a56eb5f8ca77f40916/6877833aae5dd2e91309b6b8_kensington-elicyon_slide_04.webp','https://cdn.prod.website-files.com/685156a56eb5f8ca77f40916/6877833a193934bad750e3c9_kensington-elicyon_slide_01.webp'] },
-      { area:'Kensington', name:'Beata Heuman Residence', designer:'Beata Heuman', value:'—', duration:'—', desc:'A joyful, characterful refurbishment in Kensington in collaboration with Stockholm-born designer Beata Heuman, known for her playful yet refined interiors.', imgs:['https://cdn.prod.website-files.com/685156a56eb5f8ca77f408f2/685287abab86decf34f1cd8b_slide%3D2.webp','https://cdn.prod.website-files.com/685156a56eb5f8ca77f40916/6877833abd6ab37e006a5c04_kensington-elicyon_slide_02.webp'] },
-      { area:'Knightsbridge', name:'Knightsbridge Apartment', designer:'—', value:'—', duration:'—', desc:'A luxury apartment refurbishment in Knightsbridge, combining timeless British craftsmanship with contemporary luxury finishes and smart home integration.', imgs:['https://cdn.prod.website-files.com/685156a56eb5f8ca77f40916/6877833a193934bad750e3c9_kensington-elicyon_slide_01.webp','https://cdn.prod.website-files.com/685156a56eb5f8ca77f40916/6877833abd6ab37e006a5c04_kensington-elicyon_slide_02.webp','https://cdn.prod.website-files.com/685156a56eb5f8ca77f40916/6877833a6e655759ba431596_kensington-elicyon_slide_05.webp'] },
-      { area:'Wentworth', name:'Wentworth Estate', designer:'—', value:'—', duration:'72 Weeks', desc:'An extensive country estate renovation combining modern systems with the estate\'s historic fabric, spanning multiple structures and extensive grounds.', imgs:['https://cdn.prod.website-files.com/685156a56eb5f8ca77f408f2/685287ac2488289c36b8486f_slide%3D3.webp','https://cdn.prod.website-files.com/685156a56eb5f8ca77f408f2/685287abab86decf34f1cd8b_slide%3D2.webp'] }
+      { area:'Chelsea', name:'Penthouse Refurbishment', designer:'Stéphane Parmentier', value:'£3.25M', duration:'45 Weeks', desc:'A contemporary penthouse apartment in one of London\'s most prestigious towers.', imgs:['https://cdn.prod.website-files.com/685156a56eb5f8ca77f40916/68776b9ab2d44e7779d18d5e_chelsea-staphanie_thumbail.webp','https://cdn.prod.website-files.com/685156a56eb5f8ca77f40916/68776bb9871cc751cd95ea53_chelsea-stephaine_slide_03.webp','https://cdn.prod.website-files.com/685156a56eb5f8ca77f40916/68776cae9122e149e2e5029a_chelsea-stephaine_slide_09.webp','https://cdn.prod.website-files.com/685156a56eb5f8ca77f40916/68776bb8cc6cd781d4123ebd_chelsea-stephaine_slide_04.webp'] },
+      { area:'Belgravia', name:'Pied-à-Terre', designer:'Studio Ashby', value:'£2.25M', duration:'45 Weeks', desc:'Inside a historic building on a London street lined with stucco-fronted mansions.', imgs:['https://cdn.prod.website-files.com/685156a56eb5f8ca77f40916/687763ba4a3fcb75e0f73d98_belgravia_thumbnail.webp','https://cdn.prod.website-files.com/685156a56eb5f8ca77f40916/687763be98eca1bec62730c8_belgravia_slide_09.webp','https://cdn.prod.website-files.com/685156a56eb5f8ca77f40916/687763be127b81e8b4e87491_belgravia_slide_05.webp','https://cdn.prod.website-files.com/685156a56eb5f8ca77f40916/687763beb9d7ac1d5946cc09_belgravia_slide_02.webp'] },
+      { area:'Kensington', name:'Grade II Listed Renovation', designer:'Elicyon', value:'£3M', duration:'42 Weeks', desc:'A Grade II-listed, five-storey property requiring both renovation and restoration.', imgs:['https://cdn.prod.website-files.com/685156a56eb5f8ca77f40916/68778335efb83d620f6818fa_kensington-elicyon_thumbnail.webp','https://cdn.prod.website-files.com/685156a56eb5f8ca77f40916/68778344186d4a9d9697ffc3_kensington-elicyon_slide_09.webp','https://cdn.prod.website-files.com/685156a56eb5f8ca77f40916/6877833aae5dd2e91309b6b8_kensington-elicyon_slide_04.webp','https://cdn.prod.website-files.com/685156a56eb5f8ca77f40916/6877833a193934bad750e3c9_kensington-elicyon_slide_01.webp'] },
+      { area:'Kensington', name:'Beata Heuman Residence', designer:'Beata Heuman', value:'—', duration:'—', desc:'A joyful, characterful refurbishment in collaboration with Beata Heuman.', imgs:['https://cdn.prod.website-files.com/685156a56eb5f8ca77f408f2/685287abab86decf34f1cd8b_slide%3D2.webp','https://cdn.prod.website-files.com/685156a56eb5f8ca77f40916/6877833abd6ab37e006a5c04_kensington-elicyon_slide_02.webp'] },
+      { area:'Knightsbridge', name:'Knightsbridge Apartment', designer:'—', value:'—', duration:'—', desc:'A luxury apartment refurbishment in Knightsbridge.', imgs:['https://cdn.prod.website-files.com/685156a56eb5f8ca77f40916/6877833a193934bad750e3c9_kensington-elicyon_slide_01.webp','https://cdn.prod.website-files.com/685156a56eb5f8ca77f40916/6877833abd6ab37e006a5c04_kensington-elicyon_slide_02.webp','https://cdn.prod.website-files.com/685156a56eb5f8ca77f40916/6877833a6e655759ba431596_kensington-elicyon_slide_05.webp'] },
+      { area:'Wentworth', name:'Wentworth Estate', designer:'—', value:'—', duration:'72 Weeks', desc:'An extensive country estate renovation combining modern systems with the estate\'s historic fabric.', imgs:['https://cdn.prod.website-files.com/685156a56eb5f8ca77f408f2/685287ac2488289c36b8486f_slide%3D3.webp','https://cdn.prod.website-files.com/685156a56eb5f8ca77f408f2/685287abab86decf34f1cd8b_slide%3D2.webp'] }
     ];
     let lbPrj = 0, lbImg = 0;
     function openLightbox(idx) { lbPrj = idx; lbImg = 0; renderLB(); document.getElementById('lightbox').classList.add('open'); document.body.style.overflow = 'hidden'; }
