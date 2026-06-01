@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Luxury Construction Company London | LDB Construction</title>
+  <meta name="description" content="A London-based luxury construction company delivering bespoke residential projects with precision, discretion and uncompromising attention to detail since 2007.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --white: #FFFFFF; --off-white: #F4F1ED; --light-grey: #E8E4DE;
+      --mid-grey: #7A7670; --grey: #4A4540; --dark-grey: #1E1B18;
+      --dark: #141210; --deeper: #0D0B09;
+      --warm-1: #2A2520; --warm-2: #332E28; --warm-3: #3D3730;
+      --gold: #C4975A; --gold-light: #D4AF7A; --gold-muted: #8A6B3E;
+      --champagne: #F0E6D0; --stone: #B5AFA6;
+      --serif: 'Cormorant Garamond', Georgia, serif;
+      --sans: 'Montserrat', sans-serif;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--sans); font-weight: 300; overflow-x: hidden; background: var(--dark); color: var(--stone); }
+    ::-webkit-scrollbar { width: 3px; }
+    ::-webkit-scrollbar-track { background: var(--deeper); }
+    ::-webkit-scrollbar-thumb { background: var(--gold-muted); border-radius: 2px; }
+    body::before { content: ''; position: fixed; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent 0%, var(--gold-muted) 30%, var(--gold) 50%, var(--gold-muted) 70%, transparent 100%); z-index: 2000; opacity: 0.6; }
+
+    /* NAV */
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; display: flex; align-items: center; justify-content: space-between; padding: 24px 60px; transition: background 0.5s, padding 0.4s, box-shadow 0.4s; }
+    nav.scrolled { background: rgba(13,11,9,0.96); backdrop-filter: blur(18px); padding: 14px 60px; box-shadow: 0 1px 40px rgba(0,0,0,0.4); border-bottom: 1px solid rgba(196,151,90,0.1); }
+    .nav-logo { font-family: var(--serif); font-size: 1.45rem; font-weight: 300; letter-spacing: 0.3em; color: #fff; text-decoration: none; text-transform: uppercase; opacity: 0; animation: fadeDown 1s 0.3s forwards; }
+    .nav-center { display: flex; gap: 36px; list-style: none; opacity: 0; animation: fadeDown 1s 0.5s forwards; position: absolute; left: 50%; transform: translateX(-50%); }
+    .nav-center a { color: rgba(255,255,255,0.6); text-decoration: none; font-size: 0.62rem; letter-spacing: 0.22em; text-transform: uppercase; font-weight: 500; position: relative; transition: color 0.3s; }
+    .nav-center a::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 1px; background: var(--gold); transition: width 0.4s; }
+    .nav-center a:hover, .nav-center a.active { color: var(--gold); }
+    .nav-center a:hover::after, .nav-center a.active::after { width: 100%; }
+    .nav-right { display: flex; align-items: center; gap: 18px; opacity: 0; animation: fadeDown 1s 0.6s forwards; }
+    .nav-phone-link { display: flex; align-items: center; gap: 7px; color: rgba(255,255,255,0.62); text-decoration: none; font-size: 0.62rem; letter-spacing: 0.1em; transition: color 0.3s; font-weight: 400; }
+    .nav-phone-link:hover { color: var(--gold); }
+    .nav-phone-link svg { width: 14px; height: 14px; flex-shrink: 0; }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; z-index: 1002; padding: 4px; }
+    .hamburger span { display: block; width: 22px; height: 1px; background: rgba(255,255,255,0.8); transition: all 0.35s; }
+    .hamburger.open span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    .hamburger.open span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+
+    /* MOBILE MENU */
+    .mobile-menu { position: fixed; top: 0; left: 0; right: 0; z-index: 999; background: rgba(13,11,9,0.98); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(196,151,90,0.12); padding: 80px 28px 32px; transform: translateY(-100%); transition: transform 0.45s cubic-bezier(0.22,1,0.36,1); pointer-events: none; }
+    .mobile-menu.open { transform: translateY(0); pointer-events: all; }
+    .mobile-menu a.ml { display: block; padding: 15px 0; font-family: var(--serif); font-size: 1.45rem; color: rgba(255,255,255,0.82); text-decoration: none; letter-spacing: 0.07em; border-bottom: 1px solid rgba(255,255,255,0.05); transition: color 0.3s, padding-left 0.3s; }
+    .mobile-menu a.ml:last-of-type { border-bottom: none; }
+    .mobile-menu a.ml:hover { color: var(--gold); padding-left: 8px; }
+    .mob-phone-row { margin-top: 22px; display: flex; align-items: center; gap: 10px; color: var(--gold); font-size: 0.78rem; letter-spacing: 0.1em; text-decoration: none; }
+    .mob-phone-row svg { width: 15px; height: 15px; }
+
+    /* HERO */
+    #home { min-height: 100vh; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; flex-direction: column; padding: 120px 60px 80px; background: var(--deeper); }
+    .hero-slider { position: absolute; inset: 0; }
+    .hero-slide { position: absolute; inset: 0; background-size: cover; background-position: center; opacity: 0; transition: opacity 1.6s ease; }
+    .hero-slide.active { opacity: 1; animation: zoomSlide 10s ease forwards; }
+    @keyframes zoomSlide { from { transform: scale(1.06); } to { transform: scale(1.0); } }
+    .hero-overlay { position: absolute; inset: 0; background: linear-gradient(155deg, rgba(13,11,9,0.9) 0%, rgba(13,11,9,0.52) 45%, rgba(13,11,9,0.96) 100%); }
+    .hero-content-wrap { position: relative; z-index: 2; width: 100%; max-width: 880px; text-align: center; opacity: 0; animation: fadeUp 1.2s 0.8s forwards; }
+    .hero-tag { font-size: 0.6rem; letter-spacing: 0.44em; text-transform: uppercase; color: var(--gold); margin-bottom: 22px; display: flex; align-items: center; justify-content: center; gap: 16px; }
+    .hero-tag::before, .hero-tag::after { content: ''; display: inline-block; width: 30px; height: 1px; background: var(--gold-muted); }
+    .hero-h1 { font-family: var(--serif); font-size: clamp(3rem,6vw,5.6rem); font-weight: 300; line-height: 1.08; margin-bottom: 24px; color: #fff; letter-spacing: 0.02em; }
+    .hero-h1 em { font-style: italic; color: var(--champagne); }
+    .hero-sub { font-size: 0.78rem; letter-spacing: 0.1em; color: rgba(255,255,255,0.5); line-height: 2; max-width: 460px; margin: 0 auto 36px; }
+    .btn-primary { display: inline-flex; align-items: center; border: 1px solid rgba(196,151,90,0.55); color: var(--gold); text-decoration: none; font-size: 0.62rem; letter-spacing: 0.28em; text-transform: uppercase; padding: 14px 32px; transition: background 0.4s, color 0.4s, border-color 0.4s; font-weight: 500; cursor: pointer; background: transparent; border-radius: 50px; }
+    .btn-primary:hover { background: var(--gold); color: var(--deeper); border-color: var(--gold); }
+    .btn-dark { border-color: rgba(42,37,32,0.7); color: var(--dark); }
+    .btn-dark:hover { background: var(--warm-1); color: var(--champagne); border-color: var(--warm-1); }
+    .hero-stats { display: grid; grid-template-columns: repeat(4,1fr); width: 100%; max-width: 800px; margin-top: 62px; padding-top: 46px; border-top: 1px solid rgba(196,151,90,0.15); position: relative; z-index: 2; opacity: 0; animation: fadeUp 1s 1.2s forwards; }
+    .hero-stat-item { text-align: center; padding: 16px 10px; border-right: 1px solid rgba(196,151,90,0.1); }
+    .hero-stat-item:last-child { border-right: none; }
+    .hero-stat-num { font-family: var(--serif); font-size: 2.5rem; font-weight: 300; color: var(--gold); line-height: 1; margin-bottom: 8px; }
+    .hero-stat-label { font-size: 0.56rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.36); }
+    .hero-indicators { position: absolute; right: 52px; bottom: 44px; display: flex; flex-direction: column; gap: 8px; z-index: 2; }
+    .hero-dot { width: 2px; height: 20px; background: rgba(255,255,255,0.14); cursor: pointer; transition: all 0.4s; border-radius: 2px; }
+    .hero-dot.active { background: var(--gold); height: 36px; }
+    .hero-scroll { position: absolute; bottom: 44px; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 10px; z-index: 2; font-size: 0.55rem; letter-spacing: 0.3em; text-transform: uppercase; color: rgba(255,255,255,0.28); opacity: 0; animation: fadeIn 1s 2s forwards; }
+    .hero-scroll::after { content: ''; display: block; width: 1px; height: 44px; background: linear-gradient(to bottom, var(--gold-muted), transparent); animation: scrollPulse 2.2s ease infinite; }
+    @keyframes scrollPulse { 0%{transform:scaleY(0);transform-origin:top;opacity:1}50%{transform:scaleY(1);transform-origin:top;opacity:1}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom;opacity:0} }
+
+    /* COMMONS */
+    section { position: relative; }
+    .section-label { font-size: 0.58rem; letter-spacing: 0.42em; text-transform: uppercase; margin-bottom: 14px; display: flex; align-items: center; gap: 12px; }
+    .section-label::before { content: ''; display: inline-block; width: 22px; height: 1px; }
+    .lbl-dark { color: var(--gold-muted); } .lbl-dark::before { background: var(--gold-muted); }
+    .lbl-light { color: var(--gold); } .lbl-light::before { background: var(--gold); }
+    .section-h2 { font-family: var(--serif); font-size: clamp(2.2rem,3.8vw,3.5rem); font-weight: 300; line-height: 1.15; letter-spacing: 0.02em; }
+    .section-h2 em { font-style: italic; }
+    .h2-dark { color: var(--dark); } .h2-dark em { color: var(--gold-muted); }
+    .h2-light { color: rgba(255,255,255,0.92); } .h2-light em { color: var(--champagne); }
+    .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.9s ease, transform 0.9s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-left { opacity: 0; transform: translateX(-40px); transition: opacity 0.9s ease, transform 0.9s ease; }
+    .reveal-left.visible { opacity: 1; transform: translateX(0); }
+    .reveal-right { opacity: 0; transform: translateX(40px); transition: opacity 0.9s ease, transform 0.9s ease; }
+    .reveal-right.visible { opacity: 1; transform: translateX(0); }
+
+    /* ABOUT */
+    #about { padding: 130px 60px; background: var(--off-white); display: grid; grid-template-columns: 1fr 1fr; gap: 88px; align-items: center; overflow: hidden; }
+    .about-images { position: relative; height: 560px; }
+    .about-img-main { position: absolute; top: 0; left: 0; width: 78%; height: 80%; object-fit: cover; border-radius: 48% 52% 36% 64% / 42% 58% 42% 58%; box-shadow: 0 24px 64px rgba(0,0,0,0.14); }
+    .about-img-accent { position: absolute; bottom: 0; right: 0; width: 55%; height: 55%; object-fit: cover; border-radius: 38% 62% 58% 42% / 48% 42% 58% 52%; border: 5px solid var(--off-white); box-shadow: 0 14px 44px rgba(0,0,0,0.1); }
+    .about-year { position: absolute; bottom: 22px; left: 22px; font-family: var(--serif); font-size: 5rem; font-weight: 300; color: rgba(196,151,90,0.11); line-height: 1; pointer-events: none; }
+
+    /* VIDEO */
+    #video { position: relative; height: 70vh; overflow: hidden; display: flex; align-items: center; justify-content: center; background: var(--deeper); }
+    #video video { width: 100%; height: 100%; object-fit: cover; opacity: 0.36; }
+    .video-overlay { position: absolute; inset: 0; background: rgba(13,11,9,0.5); display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 40px; }
+    .video-overlay h2 { font-family: var(--serif); font-size: clamp(2.4rem,5vw,4.8rem); font-weight: 300; letter-spacing: 0.04em; line-height: 1.1; margin-bottom: 16px; color: #fff; }
+    .video-overlay p { font-size: 0.78rem; color: rgba(255,255,255,0.48); letter-spacing: 0.1em; max-width: 440px; line-height: 1.9; }
+
+    /* VALUES */
+    #values { padding: 130px 60px; background: var(--warm-1); overflow: hidden; }
+    #values::before { content: ''; position: absolute; bottom: -80px; right: -90px; width: 440px; height: 440px; background: radial-gradient(ellipse, rgba(196,151,90,0.04) 0%, transparent 65%); pointer-events: none; }
+    .values-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; margin-top: 66px; }
+    .value-block { padding: 40px; border: 1px solid rgba(196,151,90,0.1); position: relative; transition: border-color 0.4s, background 0.4s, box-shadow 0.4s; border-radius: 24px; background: rgba(255,255,255,0.02); }
+    .value-block:hover { border-color: rgba(196,151,90,0.32); background: rgba(196,151,90,0.03); box-shadow: 0 8px 40px rgba(0,0,0,0.22); }
+    .value-num { position: absolute; top: -15px; right: 18px; font-family: var(--serif); font-size: 3.4rem; font-weight: 300; color: rgba(196,151,90,0.08); line-height: 1; }
+    .value-icon { width: 32px; height: 32px; margin-bottom: 18px; color: var(--gold); }
+    .value-title { font-family: var(--serif); font-size: 1.5rem; font-weight: 300; margin-bottom: 13px; color: rgba(255,255,255,0.86); }
+    .value-desc { font-size: 0.79rem; color: rgba(255,255,255,0.43); line-height: 1.95; letter-spacing: 0.03em; margin-bottom: 18px; }
+    .value-list { list-style: none; display: flex; flex-direction: column; gap: 7px; }
+    .value-list li { font-size: 0.75rem; color: rgba(255,255,255,0.38); padding-left: 16px; position: relative; line-height: 1.65; }
+    .value-list li::before { content: ''; position: absolute; left: 0; top: 10px; width: 7px; height: 1px; background: var(--gold-muted); }
+    .values-img-wrapper { padding-top: 76px; }
+    .values-img { width: 100%; aspect-ratio: 4/3; object-fit: cover; border-radius: 48% 52% 38% 62% / 44% 44% 56% 56%; box-shadow: 0 24px 60px rgba(0,0,0,0.28); }
+
+    /* REVIEWS */
+    #reviews { padding: 110px 60px; background: var(--dark-grey); overflow: hidden; }
+    #reviews::before { content: ''; position: absolute; top: -50px; left: -40px; width: 360px; height: 360px; background: radial-gradient(ellipse, rgba(196,151,90,0.04) 0%, transparent 65%); pointer-events: none; }
+    .reviews-container { max-width: 1100px; margin: 0 auto; position: relative; z-index: 1; }
+    .reviews-header-row { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 50px; flex-wrap: wrap; gap: 18px; }
+    .google-badge { display: flex; align-items: center; gap: 10px; background: rgba(255,255,255,0.03); border: 1px solid rgba(196,151,90,0.18); border-radius: 50px; padding: 9px 18px; }
+    .google-icon-sm { width: 17px; height: 17px; }
+    .google-rating-text { font-size: 0.66rem; color: rgba(255,255,255,0.58); letter-spacing: 0.08em; }
+    .google-rating-text strong { color: var(--gold); font-size: 0.86rem; }
+    .reviews-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 18px; }
+    .review-card { padding: 32px 28px; background: rgba(255,255,255,0.024); border: 1px solid rgba(196,151,90,0.09); border-radius: 20px; transition: border-color 0.4s, background 0.4s; }
+    .review-card:hover { border-color: rgba(196,151,90,0.26); background: rgba(196,151,90,0.025); }
+    .review-stars-row { display: flex; gap: 2px; margin-bottom: 14px; }
+    .review-stars-row svg { width: 12px; height: 12px; }
+    .star-gold { color: #FABB05; } .star-grey { color: rgba(255,255,255,0.11); }
+    .review-quote { font-family: var(--serif); font-size: 1rem; font-weight: 300; font-style: italic; color: rgba(255,255,255,0.68); line-height: 1.75; letter-spacing: 0.02em; margin-bottom: 18px; }
+    .review-meta { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 5px; }
+    .review-author-name { font-size: 0.66rem; font-weight: 500; color: rgba(255,255,255,0.66); letter-spacing: 0.12em; text-transform: uppercase; }
+    .review-time-ago { font-size: 0.6rem; color: rgba(255,255,255,0.26); }
+    /* Horizontal dots navigation (no numbers) */
+    .reviews-dots-nav { display: flex; align-items: center; justify-content: center; gap: 12px; margin-top: 40px; }
+    .review-dot { width: 6px; height: 6px; border-radius: 50%; background: rgba(255,255,255,0.2); cursor: pointer; transition: all 0.3s ease; border: none; padding: 0; }
+    .review-dot.active { background: var(--gold); transform: scale(1.6); width: 8px; height: 8px; }
+
+    /* PROPERTY CARE */
+    #property-care { background: var(--warm-2); display: grid; grid-template-columns: 1fr 1fr; min-height: 600px; overflow: hidden; }
+    .property-care-img { position: relative; overflow: hidden; }
+    .property-care-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.9s ease; display: block; }
+    .property-care-img:hover img { transform: scale(1.04); }
+    .property-care-content { padding: 100px 75px; display: flex; flex-direction: column; justify-content: center; }
+    .property-care-content p { font-size: 0.82rem; color: rgba(255,255,255,0.48); line-height: 2; letter-spacing: 0.03em; margin-bottom: 18px; margin-top: 24px; }
+    .features-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 30px; }
+    .feature-item { padding: 16px 18px; border-left: 2px solid rgba(196,151,90,0.22); border-radius: 0 12px 0 0; background: rgba(196,151,90,0.025); }
+    .feature-item strong { display: block; font-size: 0.63rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); margin-bottom: 4px; font-weight: 500; }
+    .feature-item span { font-size: 0.73rem; color: rgba(255,255,255,0.36); }
+
+    /* FEATURED PROJECTS */
+    #featured-projects { padding: 120px 60px; background: var(--dark); overflow: hidden; }
+    .fp-header { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 50px; flex-wrap: wrap; gap: 22px; }
+    .fp-view-all { display: inline-flex; align-items: center; font-size: 0.6rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--gold); border: 1px solid rgba(196,151,90,0.32); padding: 11px 24px; text-decoration: none; transition: background 0.35s, color 0.35s, border-color 0.35s; border-radius: 50px; }
+    .fp-view-all:hover { background: var(--gold); color: var(--deeper); border-color: var(--gold); }
+    /* Hide scrollbar but keep functionality */
+    .fp-scroll-track { display: flex; gap: 18px; overflow-x: auto; scroll-behavior: smooth; -webkit-overflow-scrolling: touch; padding-bottom: 12px; scrollbar-width: none; }
+    .fp-scroll-track::-webkit-scrollbar { display: none; }
+    .fp-card { flex: 0 0 370px; position: relative; overflow: hidden; cursor: pointer; border-radius: 20px; }
+    .fp-card img { width: 100%; height: 480px; object-fit: cover; display: block; transition: transform 0.9s ease; }
+    .fp-card:hover img { transform: scale(1.06); }
+    .fp-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(13,11,9,0.92) 0%, transparent 55%); display: flex; flex-direction: column; justify-content: flex-end; padding: 26px; }
+    .fp-area { font-size: 0.56rem; letter-spacing: 0.38em; text-transform: uppercase; color: var(--gold); margin-bottom: 6px; }
+    .fp-name { font-family: var(--serif); font-size: 1.38rem; font-weight: 300; color: rgba(255,255,255,0.9); line-height: 1.2; }
+    .fp-meta { display: flex; gap: 18px; margin-top: 9px; opacity: 0; transform: translateY(9px); transition: opacity 0.35s, transform 0.35s; }
+    .fp-card:hover .fp-meta { opacity: 1; transform: translateY(0); }
+    .fp-meta-item { font-size: 0.67rem; color: rgba(196,184,168,0.83); }
+    .fp-meta-item span { color: var(--gold); display: block; font-size: 0.53rem; letter-spacing: 0.22em; text-transform: uppercase; margin-bottom: 1px; }
+    .fp-view-btn { margin-top: 12px; display: inline-flex; align-items: center; font-size: 0.58rem; letter-spacing: 0.26em; text-transform: uppercase; color: var(--gold); border: 1px solid rgba(196,151,90,0.48); padding: 7px 16px; opacity: 0; transform: translateY(7px); transition: opacity 0.35s 0.04s, transform 0.35s 0.04s, background 0.3s, color 0.3s; width: fit-content; border-radius: 50px; }
+    .fp-card:hover .fp-view-btn { opacity: 1; transform: translateY(0); }
+    .fp-view-btn:hover { background: var(--gold); color: var(--deeper); }
+    .fp-dots-row { display: flex; justify-content: center; gap: 7px; margin-top: 26px; }
+    .fp-dot { width: 6px; height: 6px; border-radius: 50%; background: rgba(255,255,255,0.14); border: none; cursor: pointer; transition: all 0.3s; padding: 0; }
+    .fp-dot.active { background: var(--gold); transform: scale(1.6); width: 8px; height: 8px; }
+
+    /* LIGHTBOX */
+    .lightbox { position: fixed; inset: 0; z-index: 2000; background: rgba(10,8,6,0.97); display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity 0.4s; }
+    .lightbox.open { opacity: 1; pointer-events: all; }
+    .lightbox-inner { position: relative; width: 90vw; max-width: 1080px; height: 88vh; display: flex; }
+    .lightbox-gallery { flex: 1; position: relative; overflow: hidden; border-radius: 16px 0 0 16px; }
+    .lightbox-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 0.5s; }
+    .lightbox-img.active { opacity: 1; }
+    .lightbox-info { width: 290px; background: var(--warm-1); padding: 52px 34px; display: flex; flex-direction: column; justify-content: space-between; border-radius: 0 16px 16px 0; }
+    .lb-tag { font-size: 0.55rem; letter-spacing: 0.38em; text-transform: uppercase; color: var(--gold); margin-bottom: 9px; }
+    .lb-title { font-family: var(--serif); font-size: 2.1rem; font-weight: 300; line-height: 1.12; margin-bottom: 18px; color: var(--champagne); }
+    .lb-desc { font-size: 0.75rem; color: rgba(255,255,255,0.43); line-height: 1.9; letter-spacing: 0.03em; }
+    .lb-stats { display: flex; flex-direction: column; gap: 13px; padding-top: 18px; border-top: 1px solid rgba(196,151,90,0.14); margin-top: 18px; }
+    .lb-stat-label { font-size: 0.54rem; letter-spacing: 0.26em; text-transform: uppercase; color: rgba(196,151,90,0.55); margin-bottom: 2px; }
+    .lb-stat-val { font-size: 0.82rem; color: var(--champagne); }
+    .lb-nav { display: flex; gap: 9px; margin-top: 22px; }
+    .lb-btn { width: 38px; height: 38px; border: 1px solid rgba(196,151,90,0.22); background: transparent; color: var(--gold); display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.3s; border-radius: 50%; }
+    .lb-btn:hover { background: var(--gold); color: var(--deeper); border-color: var(--gold); }
+    .lb-close { position: absolute; top: 18px; right: 18px; width: 38px; height: 38px; border: 1px solid rgba(196,151,90,0.22); background: rgba(13,11,9,0.6); color: rgba(255,255,255,0.65); display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 10; transition: all 0.3s; font-size: 0.9rem; border-radius: 50%; }
+    .lb-close:hover { background: var(--gold); color: var(--deeper); }
+    .lb-img-nav { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 16px; }
+    .lb-thumb { width: 44px; height: 30px; object-fit: cover; opacity: 0.35; cursor: pointer; transition: opacity 0.3s; border-radius: 6px; }
+    .lb-thumb.active { opacity: 1; outline: 1px solid var(--gold); }
+
+    /* CONTACT */
+    #contact { padding: 130px 60px; background: var(--dark); display: grid; grid-template-columns: 1fr 1fr; gap: 88px; overflow: hidden; }
+    .contact-text h2 { font-family: var(--serif); font-size: clamp(2.1rem,3.4vw,3.1rem); font-weight: 300; line-height: 1.2; margin-bottom: 24px; color: rgba(255,255,255,0.88); }
+    .contact-text h2 em { font-style: italic; color: var(--champagne); }
+    .contact-text p { font-size: 0.8rem; color: rgba(255,255,255,0.43); line-height: 2; letter-spacing: 0.03em; margin-bottom: 40px; }
+    .contact-details { display: flex; flex-direction: column; gap: 22px; }
+    .contact-item { display: flex; gap: 14px; align-items: flex-start; }
+    .contact-icon { width: 15px; height: 15px; color: var(--gold); flex-shrink: 0; margin-top: 2px; }
+    .contact-item-label { font-size: 0.56rem; letter-spacing: 0.28em; text-transform: uppercase; color: rgba(255,255,255,0.26); margin-bottom: 3px; }
+    .contact-item-val { font-size: 0.8rem; color: rgba(255,255,255,0.68); letter-spacing: 0.04em; line-height: 1.7; }
+    .contact-item-val a { color: rgba(255,255,255,0.68); text-decoration: none; transition: color 0.3s; }
+    .contact-item-val a:hover { color: var(--gold); }
+    .contact-form { display: flex; flex-direction: column; gap: 18px; }
+    .form-group label { display: block; font-size: 0.56rem; letter-spacing: 0.28em; text-transform: uppercase; color: rgba(255,255,255,0.28); margin-bottom: 7px; }
+    .form-group input, .form-group textarea, .form-group select { width: 100%; background: rgba(255,255,255,0.03); border: none; border-bottom: 1px solid rgba(196,151,90,0.18); color: rgba(255,255,255,0.78); font-family: var(--sans); font-size: 0.82rem; font-weight: 300; padding: 9px 0; outline: none; transition: border-color 0.3s; letter-spacing: 0.04em; appearance: none; }
+    .form-group select option { background: var(--dark-grey); }
+    .form-group input:focus, .form-group textarea:focus, .form-group select:focus { border-color: var(--gold); }
+    .form-group textarea { resize: none; height: 85px; }
+    .form-group input::placeholder, .form-group textarea::placeholder { color: rgba(255,255,255,0.16); }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+    .btn-submit { background: transparent; border: 1px solid rgba(196,151,90,0.48); color: var(--gold); font-family: var(--sans); font-size: 0.62rem; letter-spacing: 0.28em; text-transform: uppercase; padding: 14px 34px; cursor: pointer; transition: background 0.4s, color 0.4s, border-color 0.4s; align-self: flex-start; font-weight: 500; border-radius: 50px; }
+    .btn-submit:hover { background: var(--gold); color: var(--deeper); border-color: var(--gold); }
+
+    /* FOOTER */
+    footer { background: var(--warm-1); padding: 62px 60px 38px; border-top: 1px solid rgba(196,151,90,0.09); }
+    .footer-top { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr 1.2fr; gap: 42px; margin-bottom: 48px; }
+    .footer-logo { font-family: var(--serif); font-size: 1.45rem; font-weight: 300; letter-spacing: 0.25em; color: rgba(255,255,255,0.88); text-transform: uppercase; margin-bottom: 12px; }
+    .footer-tagline { font-size: 0.7rem; color: rgba(255,255,255,0.28); line-height: 1.9; letter-spacing: 0.04em; }
+    .footer-social-row { display: flex; gap: 10px; margin-top: 22px; }
+    .footer-col h4 { font-size: 0.56rem; letter-spacing: 0.34em; text-transform: uppercase; color: var(--gold-muted); margin-bottom: 18px; font-weight: 500; }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 11px; }
+    .footer-col ul a, .footer-col .press-item { color: rgba(255,255,255,0.36); text-decoration: none; font-size: 0.74rem; letter-spacing: 0.07em; transition: color 0.3s; display: block; }
+    .footer-col ul a:hover, .footer-col .press-item:hover { color: var(--gold); }
+    .press-item { margin-bottom: 6px; line-height: 1.5; }
+    .press-pub { font-size: 0.68rem; font-weight: 500; letter-spacing: 0.1em; color: rgba(255,255,255,0.45); display: block; margin-bottom: 2px; }
+    .press-title-footer { font-size: 0.72rem; color: rgba(255,255,255,0.55); display: block; font-family: var(--serif); }
+    .press-meta { font-size: 0.55rem; color: var(--gold-muted); letter-spacing: 0.08em; display: block; margin-top: 2px; }
+    .footer-bottom { padding-top: 26px; border-top: 1px solid rgba(255,255,255,0.04); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+    .footer-bottom-left { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; }
+    .footer-bottom p { font-size: 0.66rem; color: rgba(255,255,255,0.2); letter-spacing: 0.07em; }
+    .footer-credit { font-size: 0.66rem; color: rgba(255,255,255,0.2); letter-spacing: 0.06em; }
+    .footer-credit a { color: rgba(196,151,90,0.55); text-decoration: none; transition: color 0.3s; }
+    .footer-credit a:hover { color: var(--gold); }
+    .social-icon-btn { width: 34px; height: 34px; border-radius: 50%; border: 1px solid rgba(196,151,90,0.18); display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.36); transition: all 0.3s; text-decoration: none; }
+    .social-icon-btn:hover { border-color: var(--gold); color: var(--gold); background: rgba(196,151,90,0.07); }
+    .social-icon-btn svg { width: 14px; height: 14px; }
+
+    @keyframes fadeDown { from{opacity:0;transform:translateY(-14px)}to{opacity:1;transform:translateY(0)} }
+    @keyframes fadeUp   { from{opacity:0;transform:translateY(26px)} to{opacity:1;transform:translateY(0)} }
+    @keyframes fadeIn   { from{opacity:0}to{opacity:1} }
+
+    /* RESPONSIVE */
+    @media (max-width:1024px) {
+      nav, nav.scrolled { padding-left:34px; padding-right:34px; }
+      .nav-center { gap:24px; }
+      #home { padding:110px 34px 60px; }
+      #reviews, #values, #contact { padding:88px 34px; }
+      #about { padding:88px 34px; gap:46px; }
+      .property-care-content { padding:68px 42px; }
+      footer { padding-left:34px; padding-right:34px; }
+      #featured-projects { padding:88px 34px; }
+      .fp-card { flex:0 0 320px; }
+      .reviews-grid { grid-template-columns:repeat(2,1fr); }
+      .footer-top { grid-template-columns:1fr 1fr 1fr; }
+    }
+    @media (max-width:900px) { .footer-top { grid-template-columns:1fr 1fr; } }
+    @media (max-width:768px) {
+      .nav-center { display:none; }
+      .nav-phone-link span { display:none; }
+      .hamburger { display:flex; }
+      nav { padding:15px 20px; } nav.scrolled { padding:11px 20px; }
+      .nav-right { gap:12px; }
+      #home { padding:96px 20px 38px; }
+      .hero-stats { grid-template-columns:repeat(2,1fr); margin-top:36px; padding-top:26px; }
+      .hero-stat-item { border-right:1px solid rgba(196,151,90,0.09); border-bottom:1px solid rgba(196,151,90,0.09); }
+      .hero-stat-item:nth-child(2),.hero-stat-item:nth-child(4) { border-right:none; }
+      .hero-stat-item:nth-child(3),.hero-stat-item:nth-child(4) { border-bottom:none; }
+      .hero-stat-num { font-size:1.95rem; }
+      .hero-indicators { right:20px; bottom:16px; }
+      .hero-scroll { display:none; }
+      #reviews { padding:68px 20px; }
+      .reviews-header-row { flex-direction:column; align-items:flex-start; }
+      .reviews-grid { grid-template-columns:1fr; }
+      #about { grid-template-columns:1fr; padding:68px 20px; gap:40px; }
+      .about-images { height:300px; }
+      #values { padding:68px 20px; }
+      .values-layout { grid-template-columns:1fr; gap:28px; }
+      .values-img-wrapper { padding-top:24px; }
+      #property-care { grid-template-columns:1fr; }
+      .property-care-content { padding:44px 20px; }
+      .features-grid { grid-template-columns:1fr; }
+      #contact { grid-template-columns:1fr; padding:68px 20px; gap:44px; }
+      .form-row { grid-template-columns:1fr; }
+      #video { height:50vh; }
+      #featured-projects { padding:68px 20px; }
+      .fp-card { flex:0 0 280px; }
+      .fp-card img { height:340px; }
+      .lightbox-inner { flex-direction:column; height:auto; max-height:92vh; overflow-y:auto; }
+      .lightbox-gallery { min-height:260px; border-radius:16px 16px 0 0; }
+      .lightbox-info { width:auto; padding:26px 20px; border-radius:0 0 16px 16px; }
+      footer { padding:44px 20px 30px; }
+      .footer-top { grid-template-columns:1fr; gap:32px; }
+      .footer-bottom { flex-direction:column; align-items:flex-start; gap:10px; }
+    }
+    @media (max-width:480px) {
+      .hero-stat-num { font-size:1.6rem; }
+      .about-images { height:260px; }
+      .value-block { padding:24px 16px; }
+      .fp-card { flex:0 0 248px; }
+      .fp-card img { height:300px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav id="mainNav">
+    <a href="index.html" class="nav-logo">LDB</a>
+    <ul class="nav-center">
+      <li><a href="index.html" data-section="home">Home</a></li>
+      <li><a href="projects.html" data-section="projects">Projects</a></li>
+      <li><a href="index.html#about" data-section="about">About</a></li>
+      <li><a href="index.html#values" data-section="values">Values</a></li>
+      <li><a href="index.html#property-care" data-section="property-care">Property Care</a></li>
+      <li><a href="index.html#contact" data-section="contact">Contact</a></li>
+    </ul>
+    <div class="nav-right">
+      <a href="tel:+442033270303" class="nav-phone-link" aria-label="Call us">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
+        <span>+44 (0)20 3327 0303</span>
+      </a>
+      <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+    </div>
+  </nav>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html" class="ml mobile-link">Home</a>
+    <a href="projects.html" class="ml mobile-link">Projects</a>
+    <a href="index.html#about" class="ml mobile-link">About</a>
+    <a href="index.html#values" class="ml mobile-link">Values</a>
+    <a href="index.html#property-care" class="ml mobile-link">Property Care</a>
+    <a href="index.html#contact" class="ml mobile-link">Contact</a>
+    <a href="tel:+442033270303" class="mob-phone-row">
+      <svg viewBox="0 0 24 24" fill="none"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
+      +44 (0)20 3327 0303
+    </a>
+  </div>
+
+  <!-- HERO -->
+  <section id="home">
+    <div class="hero-slider">
+      <div class="hero-slide active" style="background-image:url('https://cdn.prod.website-files.com/685156a56eb5f8ca77f408f2/685287abad10fd7aabd29c0d_slide%3D1.webp')"></div>
+      <div class="hero-slide" style="background-image:url('https://cdn.prod.website-files.com/685156a56eb5f8ca77f408f2/685287abab86decf34f1cd8b_slide%3D2.webp')"></div>
+      <div class="hero-slide" style="background-image:url('https://cdn.prod.website-files.com/685156a56eb5f8ca77f408f2/685287ac2488289c36b8486f_slide%3D3.webp')"></div>
+      <div class="hero-slide" style="background-image:url('https://cdn.prod.website-files.com/685156a56eb5f8ca77f408f2/685287ab26ed91ed81f04513_slide%3D4.webp')"></div>
+    </div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content-wrap">
+      <div class="hero-tag">Est. 2007 — London</div>
+      <h1 class="hero-h1">Super-Prime<br><em>Residential</em><br>Construction</h1>
+      <p class="hero-sub">Bespoke homes built with precision, discretion, and an uncompromising focus on quality across London's most prestigious addresses.</p>
+      <a href="#contact" class="btn-primary">Enquire Now</a>
+      <div class="hero-stats">
+        <div class="hero-stat-item"><div class="hero-stat-num" data-target="18">18+</div><div class="hero-stat-label">Years of Excellence</div></div>
+        <div class="hero-stat-item"><div class="hero-stat-num" data-target="50">50+</div><div class="hero-stat-label">Projects Delivered</div></div>
+        <div class="hero-stat-item"><div class="hero-stat-num">100%</div><div class="hero-stat-label">Direct Workforce</div></div>
+        <div class="hero-stat-item"><div class="hero-stat-num">£M+</div><div class="hero-stat-label">Value Delivered</div></div>
+      </div>
+    </div>
+    <div class="hero-indicators" id="heroIndicators">
+      <div class="hero-dot active"></div><div class="hero-dot"></div><div class="hero-dot"></div><div class="hero-dot"></div>
+    </div>
+    <div class="hero-scroll">Scroll</div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="about-images reveal-left">
+      <img class="about-img-main" src="https://cdn.prod.website-files.com/685156a56eb5f8ca77f408f2/6851798d28ec98b7efec106d_ldb-home-page-image-1.webp" alt="LDB staircase">
+      <img class="about-img-accent" src="https://cdn.prod.website-files.com/685156a56eb5f8ca77f40916/69240c75eb4402a604ee7899_ldb_team.webp" alt="LDB Team">
+      <div class="about-year">2007</div>
+    </div>
+    <div class="about-text reveal-right">
+      <div class="section-label lbl-dark">About LDB</div>
+      <h2 class="section-h2 h2-dark" style="margin-bottom:24px">The Leader in<br><em>Super-Prime</em><br>Construction</h2>
+      <p>LDB Construction was founded by Liam Birch in 2007. We are deeply committed to the business of building — working locally and internationally to construct the highest quality homes.</p>
+      <p>Our direct team, led by Managing Director Heath Adamson, offers a highly customisable service, facilitating in-depth discussions with global clients and their design teams to fully realise the goals of each project.</p>
+      <p>The company is owner-run, developed ethically and responsibly from the ground up without external investment. With our direct team of highly skilled in-house tradesmen, LDB has a significant edge over others who rely on casual labour.</p>
+      <a href="#contact" class="btn-primary btn-dark" style="margin-top:10px">Enquire Now</a>
+    </div>
+  </section>
+
+  <!-- VIDEO -->
+  <section id="video">
+    <video autoplay muted loop playsinline><source src="https://cdn.prod.website-files.com/685156a56eb5f8ca77f408f2/692425d673fc50f074d194d5_LDB%20Website%20Video%20for%20Bernhardt_mp4.mp4" type="video/mp4"></video>
+    <div class="video-overlay">
+      <div class="section-label lbl-light" style="justify-content:center;margin-bottom:14px">Since 2007</div>
+      <h2>Built on <em style="font-style:italic;color:var(--champagne)">Mutual Respect</em><br>&amp; Transparency</h2>
+      <p>LDB's commitment to our clients and their homes is unmatched. We build relationships as enduring as the homes we create.</p>
+    </div>
+  </section>
+
+  <!-- VALUES -->
+  <section id="values">
+    <div class="reveal">
+      <div class="section-label lbl-light">Our Values</div>
+      <h2 class="section-h2 h2-light">Principles That<br><em>Define Us</em></h2>
+    </div>
+    <div class="values-layout">
+      <div>
+        <div class="value-block reveal" style="transition-delay:.1s">
+          <div class="value-num">01</div>
+          <svg class="value-icon" viewBox="0 0 40 40" fill="none"><circle cx="20" cy="16" r="8" stroke="currentColor" stroke-width="1.2"/><path d="M8 36c0-6.627 5.373-12 12-12h0c6.627 0 12 5.373 12 12" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+          <h3 class="value-title">Workplace Wellbeing</h3>
+          <p class="value-desc">The mental and physical wellbeing of our staff is an unyielding priority. We provide access to training and education, encouraging our staff to further their professional development through the Chartered Institution of Building.</p>
+        </div>
+        <div class="value-block reveal" style="margin-top:18px;transition-delay:.2s">
+          <div class="value-num">02</div>
+          <svg class="value-icon" viewBox="0 0 40 40" fill="none"><path d="M20 4C11.163 4 4 11.163 4 20s7.163 16 16 16 16-7.163 16-16S28.837 4 20 4z" stroke="currentColor" stroke-width="1.2"/><path d="M20 12v8l6 4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+          <h3 class="value-title">Environmental Responsibility</h3>
+          <p class="value-desc">LDB Construction takes continuous, practical steps towards our goal of becoming London's greenest super-prime residential contractor.</p>
+          <ul class="value-list">
+            <li>1,000 new trees planted every year via Ecologi</li>
+            <li>500,000 plastic rubble bags saved annually with reusable alternatives</li>
+            <li>75% of site operatives cycle to work via LDB's Bike Scheme</li>
+            <li>5% reclaimed materials target on all projects</li>
+            <li>Prioritising recycled content in all purchasing</li>
+          </ul>
+        </div>
+      </div>
+      <div class="values-img-wrapper">
+        <img class="values-img reveal-right" src="https://cdn.prod.website-files.com/685156a56eb5f8ca77f408f2/6851798d3bbb440224270cf2_ldb-values-homepage.webp" alt="Values">
+      </div>
+    </div>
+  </section>
+
+  <!-- REVIEWS -->
+  <section id="reviews">
+    <div class="reviews-container">
+      <div class="reviews-header-row reveal">
+        <div><div class="section-label lbl-light">Testimonials</div><h2 class="section-h2 h2-light" style="margin-bottom:0">What Our <em>Clients</em> Say</h2></div>
+        <div class="google-badge"><svg class="google-icon-sm" viewBox="0 0 24 24" fill="none"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 01-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg><span class="google-rating-text">Google Reviews <strong>★ 4.8</strong></span></div>
+      </div>
+      <div class="reviews-grid reveal" id="reviewsGrid"></div>
+      <div class="reviews-dots-nav" id="reviewsDotsNav"></div>
+    </div>
+  </section>
+
+  <!-- PROPERTY CARE -->
+  <section id="property-care">
+    <div class="property-care-img reveal-left">
+      <img src="https://cdn.prod.website-files.com/685156a56eb5f8ca77f408f2/6851798d2a237547dae129a6_ldbn-property-care.webp" alt="Property Care">
+    </div>
+    <div class="property-care-content reveal-right">
+      <div class="section-label lbl-light">Service</div>
+      <h2 class="section-h2 h2-light">Property <em>Care</em></h2>
+      <p>LDB's property care division channels our direct team of skilled in-house tradesmen to attend to small building works or alterations, continuing our client relationships after project completion.</p>
+      <p>We are equipped to handle a wide variety of tasks, big and small, with minimal lead time. We understand how to work in furnished and occupied high-value homes, always prioritising discretion and confidentiality.</p>
+      <div class="features-grid">
+        <div class="feature-item"><strong>Discretion</strong><span>Confidential service for high-value homes</span></div>
+        <div class="feature-item"><strong>Minimal Lead Time</strong><span>Rapid deployment of skilled tradesmen</span></div>
+        <div class="feature-item"><strong>Comprehensive</strong><span>Wide variety of tasks, big and small</span></div>
+        <div class="feature-item"><strong>Continuity</strong><span>Continued relationship post-completion</span></div>
+      </div>
+      <a href="#contact" class="btn-primary" style="margin-top:34px">Enquire About Care</a>
+    </div>
+  </section>
+
+  <!-- FEATURED PROJECTS -->
+  <section id="featured-projects">
+    <div class="fp-header reveal"><div><div class="section-label lbl-light">Selected Work</div><h2 class="section-h2 h2-light">Featured <em>Projects</em></h2></div><a href="projects.html" class="fp-view-all">View All Projects</a></div>
+    <div class="fp-scroll-track reveal" id="fpScrollTrack">
+      <div class="fp-card" onclick="openLightbox(0)"><img src="https://cdn.prod.website-files.com/685156a56eb5f8ca77f40916/68776b9ab2d44e7779d18d5e_chelsea-staphanie_thumbail.webp" alt="Chelsea Penthouse"><div class="fp-overlay"><div class="fp-area">Chelsea</div><div class="fp-name">Penthouse Refurbishment</div><div class="fp-meta"><div class="fp-meta-item"><span>Designer</span>Stéphane Parmentier</div><div class="fp-meta-item"><span>Value</span>£3.25M</div></div><div class="fp-view-btn">View Project</div></div></div>
+      <div class="fp-card" onclick="openLightbox(1)"><img src="https://cdn.prod.website-files.com/685156a56eb5f8ca77f40916/687763ba4a3fcb75e0f73d98_belgravia_thumbnail.webp" alt="Belgravia"><div class="fp-overlay"><div class="fp-area">Belgravia</div><div class="fp-name">Pied-à-Terre</div><div class="fp-meta"><div class="fp-meta-item"><span>Designer</span>Studio Ashby</div></div><div class="fp-view-btn">View Project</div></div></div>
+      <div class="fp-card" onclick="openLightbox(2)"><img src="https://cdn.prod.website-files.com/685156a56eb5f8ca77f40916/68778335efb83d620f6818fa_kensington-elicyon_thumbnail.webp" alt="Kensington"><div class="fp-overlay"><div class="fp-area">Kensington</div><div class="fp-name">Grade II Listed</div><div class="fp-meta"><div class="fp-meta-item"><span>Designer</span>Elicyon</div></div><div class="fp-view-btn">View Project</div></div></div>
+      <div class="fp-card" onclick="openLightbox(3)"><img src="https://cdn.prod.website-files.com/685156a56eb5f8ca77f408f2/685287abab86decf34f1cd8b_slide%3D2.webp" alt="Kensington Beata Heuman"><div class="fp-overlay"><div class="fp-area">Kensington</div><div class="fp-name">Beata Heuman Residence</div><div class="fp-meta"><div class="fp-meta-item"><span>Designer</span>Beata Heuman</div></div><div class="fp-view-btn">View Project</div></div></div>
+      <div class="fp-card" onclick="openLightbox(4)"><img src="https://cdn.prod.website-files.com/685156a56eb5f8ca77f40916/6877833a193934bad750e3c9_kensington-elicyon_slide_01.webp" alt="Knightsbridge"><div class="fp-overlay"><div class="fp-area">Knightsbridge</div><div class="fp-name">Knightsbridge Apartment</div><div class="fp-meta"><div class="fp-meta-item"><span>Type</span>Luxury Apartment</div></div><div class="fp-view-btn">View Project</div></div></div>
+      <div class="fp-card" onclick="openLightbox(5)"><img src="https://cdn.prod.website-files.com/685156a56eb5f8ca77f408f2/685287ac2488289c36b8486f_slide%3D3.webp" alt="Wentworth Estate"><div class="fp-overlay"><div class="fp-area">Wentworth</div><div class="fp-name">Wentworth Estate</div><div class="fp-meta"><div class="fp-meta-item"><span>Duration</span>72 Weeks</div></div><div class="fp-view-btn">View Project</div></div></div>
+    </div>
+    <div class="fp-dots-row" id="fpDotsRow"><button class="fp-dot active" data-index="0"></button><button class="fp-dot" data-index="1"></button><button class="fp-dot" data-index="2"></button><button class="fp-dot" data-index="3"></button><button class="fp-dot" data-index="4"></button><button class="fp-dot" data-index="5"></button></div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="contact-text reveal-left">
+      <div class="section-label lbl-light">Get In Touch</div>
+      <h2>Begin Your <em>Project</em></h2>
+      <p>We would love to discuss your project. Our team is ready to explore how LDB can bring your vision to life with the precision and quality you deserve.</p>
+      <div class="contact-details">
+        <div class="contact-item"><svg class="contact-icon" viewBox="0 0 24 24" fill="none"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z" stroke="currentColor" stroke-width="1.2" fill="none"/></svg><div><div class="contact-item-label">Address</div><div class="contact-item-val">9 Woodman Works, 204 Durnsford Road,<br>London SW19 8DR</div></div></div>
+        <div class="contact-item"><svg class="contact-icon" viewBox="0 0 24 24" fill="none"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" stroke="currentColor" stroke-width="1.2" fill="none"/></svg><div><div class="contact-item-label">Email</div><div class="contact-item-val"><a href="mailto:info@ldbconstruction.com">info@ldbconstruction.com</a></div></div></div>
+        <div class="contact-item"><svg class="contact-icon" viewBox="0 0 24 24" fill="none"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" stroke="currentColor" stroke-width="1.2" fill="none"/></svg><div><div class="contact-item-label">Phone</div><div class="contact-item-val"><a href="tel:+442033270303">+44 (0)20 3327 0303</a></div></div></div>
+      </div>
+    </div>
+    <div class="reveal-right">
+      <div class="section-label lbl-light">Send a Message</div>
+      <div class="contact-form" id="contactForm">
+        <div class="form-row"><div class="form-group"><label>First Name</label><input type="text" placeholder="Your first name"></div><div class="form-group"><label>Last Name</label><input type="text" placeholder="Your last name"></div></div>
+        <div class="form-group"><label>Email Address</label><input type="email" placeholder="your@email.com"></div>
+        <div class="form-group"><label>Enquiry Type</label><select><option value="">Select an option</option><option>New Construction Project</option><option>Renovation / Refurbishment</option><option>Property Care</option><option>General Enquiry</option></select></div>
+        <div class="form-group"><label>Project Location</label><input type="text" placeholder="e.g. Mayfair, Knightsbridge..."></div>
+        <div class="form-group"><label>Message</label><textarea placeholder="Tell us about your project..."></textarea></div>
+        <button class="btn-submit" type="button" onclick="submitForm()">Send Enquiry</button>
+        <div id="formSuccess" style="display:none;color:var(--gold);font-size:.76rem;letter-spacing:.1em;padding:10px 0;">Thank you — we'll be in touch shortly.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-top">
+      <div><div class="footer-logo">LDB</div><p class="footer-tagline">The leader in super-prime London construction since 2007. Precision, discretion, uncompromising quality.</p><div class="footer-social-row"><a href="https://www.instagram.com/ldb_construction/" target="_blank" rel="noopener" class="social-icon-btn" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="5" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></a><a href="https://www.linkedin.com/company/ldb-construction-uk" target="_blank" rel="noopener" class="social-icon-btn" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="4" stroke="currentColor" stroke-width="1.5"/><path d="M7 10v7M7 7v.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M11 17v-4a2 2 0 014 0v4M11 10v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></a></div></div>
+      <div class="footer-col"><h4>Pages</h4><ul><li><a href="index.html">Home</a></li><li><a href="projects.html">Projects</a></li><li><a href="index.html#about">About</a></li><li><a href="index.html#values">Values</a></li><li><a href="index.html#property-care">Property Care</a></li><li><a href="index.html#contact">Contact</a></li></ul></div>
+      <div class="footer-col"><h4>Legal</h4><ul><li><a href="#">Accreditations</a></li><li><a href="#">Terms &amp; Conditions</a></li><li><a href="#">Email Disclaimer</a></li></ul></div>
+      <div class="footer-col"><h4>Social</h4><ul><li><a href="https://www.instagram.com/ldb_construction/" target="_blank">Instagram</a></li><li><a href="https://www.linkedin.com/company/ldb-construction-uk" target="_blank">LinkedIn</a></li></ul></div>
+      <div class="footer-col"><h4>Press</h4><ul><li><a href="https://www.houseandgarden.co.uk/gallery/elicyon-london-house" target="_blank" rel="noopener" class="press-item"><span class="press-pub">House &amp; Garden</span><span class="press-title-footer">Elicyon — Featured Project</span><span class="press-meta">March 2025</span></a></li><li><a href="https://www.architecturaldigest.com/gallery/tour-a-london-pied-a-terre-thats-a-dazzling-foray-into-maximalism" target="_blank" rel="noopener" class="press-item"><span class="press-pub">ARCHITECTURAL DIGEST</span><span class="press-title-footer">Studio Ashby — A Vision of Refined Elegance</span></a></li><li><a href="https://www.architecturaldigest.com/gallery/beata-heuman-shows-her-serious-side-in-a-landmark-london-town-house" target="_blank" rel="noopener" class="press-item"><span class="press-pub">ARCHITECTURAL DIGEST</span><span class="press-title-footer">Beata Heuman — Colour &amp; Character</span></a></li></ul></div>
+    </div>
+    <div class="footer-bottom"><div class="footer-bottom-left"><p>© 2026 LDB Construction</p><p class="footer-credit">Created by <a href="https://gtwebstudio.site" target="_blank" rel="noopener">gtwebstudio.site</a></p></div><div class="footer-social-row"><a href="https://www.instagram.com/ldb_construction/" target="_blank" rel="noopener" class="social-icon-btn" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="5" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></a><a href="https://www.linkedin.com/company/ldb-construction-uk" target="_blank" rel="noopener" class="social-icon-btn" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="4" stroke="currentColor" stroke-width="1.5"/><path d="M7 10v7M7 7v.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M11 17v-4a2 2 0 014 0v4M11 10v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></a></div></div>
+  </footer>
+
+  <!-- LIGHTBOX -->
+  <div class="lightbox" id="lightbox"><button class="lb-close" onclick="closeLightbox()">✕</button><div class="lightbox-inner"><div class="lightbox-gallery"><img class="lightbox-img active" id="lbMainImg" src="" alt=""></div><div class="lightbox-info"><div><div class="lb-tag" id="lbTag"></div><div class="lb-title" id="lbTitle"></div><div class="lb-desc" id="lbDesc"></div><div class="lb-stats" id="lbStats"></div></div><div><div class="lb-img-nav" id="lbThumbs"></div><div class="lb-nav"><button class="lb-btn" onclick="lightboxPrev()"><svg width="13" height="9" viewBox="0 0 16 10" fill="none"><path d="M5 1L1 5L5 9M15 5H1" stroke="currentColor" stroke-width="1.2"/></svg></button><button class="lb-btn" onclick="lightboxNext()"><svg width="13" height="9" viewBox="0 0 16 10" fill="none"><path d="M11 1L15 5L11 9M1 5H15" stroke="currentColor" stroke-width="1.2"/></svg></button><button class="lb-btn" onclick="closeLightbox()" style="margin-left:auto"><svg width="11" height="11" viewBox="0 0 14 14" fill="none"><path d="M1 1l12 12M13 1L1 13" stroke="currentColor" stroke-width="1.2"/></svg></button></div></div></div></div></div>
+
+  <script>
+    // NAV SCROLL
+    const nav = document.getElementById('mainNav');
+    window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 60));
+
+    // HERO SLIDER
+    const slides = document.querySelectorAll('.hero-slide');
+    const hDots = document.querySelectorAll('.hero-dot');
+    let cur = 0;
+    function goTo(n) { slides[cur].classList.remove('active'); hDots[cur].classList.remove('active'); cur = n; slides[cur].classList.add('active'); hDots[cur].classList.add('active'); }
+    setInterval(() => goTo((cur + 1) % slides.length), 7000);
+    hDots.forEach((d, i) => d.addEventListener('click', () => goTo(i)));
+
+    // MOBILE MENU
+    const ham = document.getElementById('hamburger'), mob = document.getElementById('mobileMenu');
+    ham.addEventListener('click', () => { ham.classList.toggle('open'); mob.classList.toggle('open'); document.body.style.overflow = mob.classList.contains('open') ? 'hidden' : ''; });
+    document.querySelectorAll('.mobile-link').forEach(a => a.addEventListener('click', () => { ham.classList.remove('open'); mob.classList.remove('open'); document.body.style.overflow = ''; }));
+
+    // ACTIVE NAV (only for index.html sections, projects link handled separately)
+    const secs = document.querySelectorAll('section[id]');
+    const navAs = document.querySelectorAll('.nav-center a[data-section]');
+    window.addEventListener('scroll', () => {
+      let act = '';
+      secs.forEach(s => { if (window.scrollY >= s.offsetTop - 130) act = s.id; });
+      navAs.forEach(a => {
+        const section = a.getAttribute('data-section');
+        if (section && section !== 'projects') {
+          a.classList.toggle('active', section === act);
+        }
+      });
+    });
+
+    // REVIEWS with dot pagination
+    const allReviews = [
+      { name:'James H.', time:'5 years ago', stars:5, quote:'This company goes above and beyond to offer a white glove, worry free maintenance service. Their engineers are extremely polite, and very tidy. Highly recommended across all trades!' },
+      { name:'Sarah M.', time:'2 years ago', stars:4, quote:'Exceptional craftsmanship on our Belgravia renovation. The attention to detail was remarkable. Minor delay on final snagging, but overall outstanding work from a truly professional team.' },
+      { name:'Charles W.', time:'1 year ago', stars:5, quote:'LDB delivered our Knightsbridge project on time and within budget. The discretion and professionalism throughout was exactly what we needed for our listed property.' },
+      { name:'Amelia T.', time:'8 months ago', stars:3, quote:'Quality of work was good overall but communication could have been better during the project. Finished result is beautiful though — the marble work in particular is stunning.' },
+      { name:'Edward B.', time:'6 months ago', stars:5, quote:'Absolutely world-class work. LDB transformed our Mayfair townhouse into something extraordinary. Every single detail was handled with care and expertise. Would not hesitate to recommend.' },
+      { name:'Olivia F.', time:'3 months ago', stars:5, quote:'From start to finish, the LDB team were professional, skilled and a pleasure to work with. Our Chelsea refurbishment exceeded every expectation. Truly the best in the business.' },
+      { name:'William K.', time:'10 months ago', stars:5, quote:'We commissioned LDB for a complete gut and refurbishment of our Notting Hill property. The project management was flawless and the finished home is beyond beautiful.' },
+      { name:'Charlotte D.', time:'1 year ago', stars:4, quote:'Superb quality of finish throughout. The bespoke joinery is particularly outstanding. A minor scheduling issue arose mid-project but was resolved swiftly and professionally.' },
+    ];
+    const RPP = 3; let rPage = 0;
+    const totalPages = Math.ceil(allReviews.length / RPP);
+    function starsSVG(n) { return Array.from({length:5},(_,i)=>`<svg class="${i<n?'star-gold':'star-grey'}" viewBox="0 0 20 20" fill="currentColor" style="width:12px;height:12px"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>`).join(''); }
+    function renderReviews() {
+      const grid = document.getElementById('reviewsGrid');
+      const start = rPage * RPP;
+      grid.innerHTML = allReviews.slice(start, start + RPP).map(r => `<div class="review-card"><div class="review-stars-row">${starsSVG(r.stars)}</div><p class="review-quote">"${r.quote}"</p><div class="review-meta"><span class="review-author-name">${r.name}</span><span class="review-time-ago">${r.time}</span></div></div>`).join('');
+      const dotsNav = document.getElementById('reviewsDotsNav');
+      dotsNav.innerHTML = '';
+      for (let i = 0; i < totalPages; i++) {
+        const dot = document.createElement('button');
+        dot.className = 'review-dot' + (i === rPage ? ' active' : '');
+        dot.addEventListener('click', () => { rPage = i; renderReviews(); });
+        dotsNav.appendChild(dot);
+      }
+    }
+    renderReviews();
+
+    // FP Dots + hide scrollbar
+    const fpTrack = document.getElementById('fpScrollTrack');
+    const fpDots = document.querySelectorAll('.fp-dot');
+    const fpCards = document.querySelectorAll('.fp-card');
+    const cardWidth = () => fpCards[0].offsetWidth + 18;
+    function updateFpDots() { let idx = Math.round(fpTrack.scrollLeft / cardWidth()); idx = Math.max(0, Math.min(idx, fpDots.length - 1)); fpDots.forEach((d, j) => d.classList.toggle('active', j === idx)); }
+    fpTrack.addEventListener('scroll', updateFpDots);
+    fpDots.forEach(d => d.addEventListener('click', () => fpTrack.scrollTo({ left: parseInt(d.dataset.index) * cardWidth(), behavior: 'smooth' })));
+
+    // Reveal on scroll
+    const observer = new IntersectionObserver(entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }), { threshold: 0.1 });
+    document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => observer.observe(el));
+
+    // Form submit
+    function submitForm() { document.getElementById('formSuccess').style.display = 'block'; document.querySelectorAll('#contactForm input, #contactForm textarea, #contactForm select').forEach(el => el.value = ''); }
+
+    // Count-up stats
+    function countUp(el, target) { let current = 0; const step = target / 60; const timer = setInterval(() => { current = Math.min(current + step, target); el.textContent = Math.round(current) + '+'; if (current >= target) clearInterval(timer); }, 18); }
+    const statsObserver = new IntersectionObserver(entries => entries.forEach(e => { if (e.isIntersecting) { e.target.querySelectorAll('.hero-stat-num[data-target]').forEach(n => { const val = parseInt(n.dataset.target); if (val) countUp(n, val); }); statsObserver.unobserve(e.target); } }), { threshold: 0.3 });
+    const heroStats = document.querySelector('.hero-stats'); if (heroStats) statsObserver.observe(heroStats);
+
+    // Lightbox data & functions (simplified for featured projects)
+    const FP = [
+      { area:'Chelsea', name:'Penthouse Refurbishment', designer:'Stéphane Parmentier', value:'£3.25M', duration:'45 Weeks', desc:'A contemporary penthouse apartment in one of London\'s most prestigious towers. The uncompromising design balances sophistication, simplicity, and modernity, showcasing raw materials such as marble, travertine, lava stone, bronze, brass, wood, and leather.', imgs:['https://cdn.prod.website-files.com/685156a56eb5f8ca77f40916/68776b9ab2d44e7779d18d5e_chelsea-staphanie_thumbail.webp','https://cdn.prod.website-files.com/685156a56eb5f8ca77f40916/68776bb9871cc751cd95ea53_chelsea-stephaine_slide_03.webp','https://cdn.prod.website-files.com/685156a56eb5f8ca77f40916/68776cae9122e149e2e5029a_chelsea-stephaine_slide_09.webp','https://cdn.prod.website-files.com/685156a56eb5f8ca77f40916/68776bb8cc6cd781d4123ebd_chelsea-stephaine_slide_04.webp'] },
+      { area:'Belgravia', name:'Pied-à-Terre', designer:'Studio Ashby', value:'£2.25M', duration:'45 Weeks', desc:'Inside a historic building on a London street lined with stucco-fronted mansions, this pied-à-terre was reconfigured from three bedrooms to two. The entry hall features an intricate marble marquetry floor.', imgs:['https://cdn.prod.website-files.com/685156a56eb5f8ca77f40916/687763ba4a3fcb75e0f73d98_belgravia_thumbnail.webp','https://cdn.prod.website-files.com/685156a56eb5f8ca77f40916/687763be98eca1bec62730c8_belgravia_slide_09.webp','https://cdn.prod.website-files.com/685156a56eb5f8ca77f40916/687763be127b81e8b4e87491_belgravia_slide_05.webp','https://cdn.prod.website-files.com/685156a56eb5f8ca77f40916/687763beb9d7ac1d5946cc09_belgravia_slide_02.webp'] },
+      { area:'Kensington', name:'Grade II Listed Renovation', designer:'Elicyon', value:'£3M', duration:'42 Weeks', desc:'A Grade II-listed, five-storey property near Regent\'s Park requiring both renovation and restoration. LDB implemented essential upgrades while carefully restoring original features including floorboards, Regency-inspired panelling, and balustrades.', imgs:['https://cdn.prod.website-files.com/685156a56eb5f8ca77f40916/68778335efb83d620f6818fa_kensington-elicyon_thumbnail.webp','https://cdn.prod.website-files.com/685156a56eb5f8ca77f40916/68778344186d4a9d9697ffc3_kensington-elicyon_slide_09.webp','https://cdn.prod.website-files.com/685156a56eb5f8ca77f40916/6877833aae5dd2e91309b6b8_kensington-elicyon_slide_04.webp','https://cdn.prod.website-files.com/685156a56eb5f8ca77f40916/6877833a193934bad750e3c9_kensington-elicyon_slide_01.webp'] },
+      { area:'Kensington', name:'Beata Heuman Residence', designer:'Beata Heuman', value:'—', duration:'—', desc:'A joyful, characterful refurbishment in Kensington in collaboration with Stockholm-born designer Beata Heuman, known for her playful yet refined interiors.', imgs:['https://cdn.prod.website-files.com/685156a56eb5f8ca77f408f2/685287abab86decf34f1cd8b_slide%3D2.webp','https://cdn.prod.website-files.com/685156a56eb5f8ca77f40916/6877833abd6ab37e006a5c04_kensington-elicyon_slide_02.webp'] },
+      { area:'Knightsbridge', name:'Knightsbridge Apartment', designer:'—', value:'—', duration:'—', desc:'A luxury apartment refurbishment in Knightsbridge, combining timeless British craftsmanship with contemporary luxury finishes and smart home integration.', imgs:['https://cdn.prod.website-files.com/685156a56eb5f8ca77f40916/6877833a193934bad750e3c9_kensington-elicyon_slide_01.webp','https://cdn.prod.website-files.com/685156a56eb5f8ca77f40916/6877833abd6ab37e006a5c04_kensington-elicyon_slide_02.webp','https://cdn.prod.website-files.com/685156a56eb5f8ca77f40916/6877833a6e655759ba431596_kensington-elicyon_slide_05.webp'] },
+      { area:'Wentworth', name:'Wentworth Estate', designer:'—', value:'—', duration:'72 Weeks', desc:'An extensive country estate renovation combining modern systems with the estate\'s historic fabric, spanning multiple structures and extensive grounds.', imgs:['https://cdn.prod.website-files.com/685156a56eb5f8ca77f408f2/685287ac2488289c36b8486f_slide%3D3.webp','https://cdn.prod.website-files.com/685156a56eb5f8ca77f408f2/685287abab86decf34f1cd8b_slide%3D2.webp'] }
+    ];
+    let lbPrj = 0, lbImg = 0;
+    function openLightbox(idx) { lbPrj = idx; lbImg = 0; renderLB(); document.getElementById('lightbox').classList.add('open'); document.body.style.overflow = 'hidden'; }
+    function closeLightbox() { document.getElementById('lightbox').classList.remove('open'); document.body.style.overflow = ''; }
+    function renderLB() {
+      const p = FP[lbPrj];
+      document.getElementById('lbTag').textContent = p.area;
+      document.getElementById('lbTitle').textContent = p.name;
+      document.getElementById('lbDesc').textContent = p.desc;
+      document.getElementById('lbMainImg').src = p.imgs[lbImg];
+      const statsDiv = document.getElementById('lbStats'); statsDiv.innerHTML = '';
+      if (p.designer !== '—') { const d = document.createElement('div'); d.innerHTML = `<div class="lb-stat-label">Designer</div><div class="lb-stat-val">${p.designer}</div>`; statsDiv.appendChild(d); }
+      if (p.value !== '—') { const v = document.createElement('div'); v.innerHTML = `<div class="lb-stat-label">Project Value</div><div class="lb-stat-val">${p.value}</div>`; statsDiv.appendChild(v); }
+      if (p.duration !== '—') { const dr = document.createElement('div'); dr.innerHTML = `<div class="lb-stat-label">Duration</div><div class="lb-stat-val">${p.duration}</div>`; statsDiv.appendChild(dr); }
+      const thumbsDiv = document.getElementById('lbThumbs'); thumbsDiv.innerHTML = '';
+      p.imgs.forEach((img, i) => { const thumb = document.createElement('img'); thumb.className = 'lb-thumb' + (i === lbImg ? ' active' : ''); thumb.src = img; thumb.onclick = () => { lbImg = i; renderLB(); }; thumbsDiv.appendChild(thumb); });
+    }
+    function lightboxPrev() { lbImg = (lbImg - 1 + FP[lbPrj].imgs.length) % FP[lbPrj].imgs.length; renderLB(); }
+    function lightboxNext() { lbImg = (lbImg + 1) % FP[lbPrj].imgs.length; renderLB(); }
+    document.getElementById('lightbox').addEventListener('click', e => { if (e.target === document.getElementById('lightbox')) closeLightbox(); });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); if (e.key === 'ArrowLeft') lightboxPrev(); if (e.key === 'ArrowRight') lightboxNext(); });
+  </script>
+</body>
+</html>
