@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <link rel="shortcut icon" type="image/jpeg" href="https://raw.githubusercontent.com/gtwebstudio101-pixel/ldbconstruction/9b6a18953166e9afc9e9938a1cc900141b96f4d9/img/ldb_construction_uk_logo.jpeg">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>Contact LDB Construction | Super-Prime London Builders</title>
@@ -290,7 +291,7 @@
     </div>
   </section>
 
-  <!-- ABOUT INTRO - UPDATED WITH NEW PROJECT IMAGES -->
+  <!-- ABOUT INTRO -->
   <section id="about-intro">
     <div class="about-images reveal-left">
       <img class="about-img-main" src="https://raw.githubusercontent.com/gtwebstudio101-pixel/ldbconstruction/83ccb7ba8d999f94a3b53d4af38e578d843da6a5/img/holland%20park/687762feddee74eb6002129d_holland-park_slide_04.webp" alt="Holland Park Luxury Project">
@@ -349,7 +350,7 @@
     </div>
   </section>
 
-  <!-- CONTACT SECTION -->
+  <!-- CONTACT SECTION WITH MAILTO FUNCTION -->
   <section id="contact">
     <div class="contact-text reveal-left">
       <div class="section-label lbl-light">Get In Touch</div>
@@ -383,14 +384,14 @@
       <div class="section-label lbl-light">Send a Message</div>
       <div class="contact-form" id="contactForm">
         <div class="form-row">
-          <div class="form-group"><label>First Name</label><input type="text" placeholder="Your first name"></div>
-          <div class="form-group"><label>Last Name</label><input type="text" placeholder="Your last name"></div>
+          <div class="form-group"><label>First Name</label><input type="text" placeholder="Your first name" id="firstName"></div>
+          <div class="form-group"><label>Last Name</label><input type="text" placeholder="Your last name" id="lastName"></div>
         </div>
-        <div class="form-group"><label>Email Address</label><input type="email" placeholder="your@email.com"></div>
-        <div class="form-group"><label>Enquiry Type</label><select><option value="">Select an option</option><option>New Construction Project</option><option>Renovation / Refurbishment</option><option>Property Care</option><option>General Enquiry</option></select></div>
-        <div class="form-group"><label>Project Location</label><input type="text" placeholder="e.g. Mayfair, Knightsbridge..."></div>
-        <div class="form-group"><label>Message</label><textarea placeholder="Tell us about your project..."></textarea></div>
-        <button class="btn-submit" type="button" onclick="submitForm()">Send Enquiry</button>
+        <div class="form-group"><label>Email Address</label><input type="email" placeholder="your@email.com" id="emailAddr"></div>
+        <div class="form-group"><label>Enquiry Type</label><select id="enquiryType"><option value="">Select an option</option><option>New Construction Project</option><option>Renovation / Refurbishment</option><option>Property Care</option><option>General Enquiry</option></select></div>
+        <div class="form-group"><label>Project Location</label><input type="text" placeholder="e.g. Mayfair, Knightsbridge..." id="projectLocation"></div>
+        <div class="form-group"><label>Message</label><textarea placeholder="Tell us about your project..." id="messageText"></textarea></div>
+        <button class="btn-submit" type="button" onclick="sendMail()">Send Enquiry</button>
         <div id="formSuccess" style="display:none;color:var(--gold);font-size:.76rem;letter-spacing:.1em;padding:10px 0;">Thank you — we'll be in touch shortly.</div>
       </div>
     </div>
@@ -434,8 +435,92 @@
     const observer = new IntersectionObserver(entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }), { threshold: 0.1 });
     document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => observer.observe(el));
 
-    // FORM
-    function submitForm() { document.getElementById('formSuccess').style.display = 'block'; document.querySelectorAll('#contactForm input, #contactForm textarea, #contactForm select').forEach(el => el.value = ''); }
+    // UNIVERSAL MAIL FUNCTION - Works on ALL devices
+    function sendMail() {
+      var firstName = document.getElementById('firstName').value;
+      var lastName = document.getElementById('lastName').value;
+      var email = document.getElementById('emailAddr').value;
+      var enquiryType = document.getElementById('enquiryType').value;
+      var location = document.getElementById('projectLocation').value;
+      var message = document.getElementById('messageText').value;
+      
+      // Validation
+      if(!firstName || !lastName || !email || !message) {
+        alert('Please fill in all required fields (First Name, Last Name, Email, and Message)');
+        return;
+      }
+      
+      // Email validation
+      var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if(!emailPattern.test(email)) {
+        alert('Please enter a valid email address');
+        return;
+      }
+      
+      // Prepare email content
+      var to = 'info@ldbconstruction.com';
+      var subject = 'Enquiry from ' + firstName + ' ' + lastName + ' - ' + enquiryType;
+      var body = 'Name: ' + firstName + ' ' + lastName + '\n';
+      body += 'Email: ' + email + '\n';
+      body += 'Enquiry Type: ' + enquiryType + '\n';
+      body += 'Project Location: ' + location + '\n\n';
+      body += 'Message:\n' + message;
+      
+      // Encode for URL
+      var encodedSubject = encodeURIComponent(subject);
+      var encodedBody = encodeURIComponent(body);
+      
+      // Detect device/platform
+      var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+      var isAndroid = /android/i.test(userAgent);
+      var isIOS = /iPad|iPhone|iPod/.test(userAgent) && !window.MSStream;
+      var isMac = /Mac/i.test(userAgent) && !isIOS;
+      
+      // Android: Open Gmail App
+      if (isAndroid) {
+        var gmailAppUrl = 'googlegmail:///co?to=' + to + '&subject=' + encodedSubject + '&body=' + encodedBody;
+        window.location.href = gmailAppUrl;
+        setTimeout(function() {
+          window.location.href = 'https://mail.google.com/mail/?view=cm&fs=1&to=' + to + '&su=' + encodedSubject + '&body=' + encodedBody;
+        }, 500);
+      }
+      // iOS (iPhone/iPad): Open Apple Mail App
+      else if (isIOS) {
+        var appleMailUrl = 'mailto:' + to + '?subject=' + encodedSubject + '&body=' + encodedBody;
+        window.location.href = appleMailUrl;
+      }
+      // Mac: Try Apple Mail first, then Gmail
+      else if (isMac) {
+        var macMailUrl = 'mailto:' + to + '?subject=' + encodedSubject + '&body=' + encodedBody;
+        window.location.href = macMailUrl;
+        setTimeout(function() {
+          window.open('https://mail.google.com/mail/?view=cm&fs=1&to=' + to + '&su=' + encodedSubject + '&body=' + encodedBody, '_blank');
+        }, 1000);
+      }
+      // Windows/Linux Desktop: Open Gmail Website
+      else {
+        var gmailWebUrl = 'https://mail.google.com/mail/?view=cm&fs=1&to=' + to + '&su=' + encodedSubject + '&body=' + encodedBody;
+        var outlookWebUrl = 'https://outlook.live.com/mail/0/deeplink/compose?to=' + to + '&subject=' + encodedSubject + '&body=' + encodedBody;
+        var mailtoUrl = 'mailto:' + to + '?subject=' + encodedSubject + '&body=' + encodedBody;
+        
+        var gmailWindow = window.open(gmailWebUrl, '_blank');
+        
+        if (!gmailWindow || gmailWindow.closed || typeof gmailWindow.closed == 'undefined') {
+          var outlookWindow = window.open(outlookWebUrl, '_blank');
+          if (!outlookWindow || outlookWindow.closed || typeof outlookWindow.closed == 'undefined') {
+            window.location.href = mailtoUrl;
+          }
+        }
+      }
+      
+      // Show success message and clear form
+      document.getElementById('formSuccess').style.display = 'block';
+      document.querySelectorAll('#contactForm input, #contactForm textarea, #contactForm select').forEach(el => el.value = '');
+      
+      setTimeout(function() {
+        document.getElementById('formSuccess').style.display = 'none';
+      }, 5000);
+    }
   </script>
 </body>
 </html>
